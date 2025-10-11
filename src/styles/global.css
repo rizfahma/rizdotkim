@@ -77,102 +77,115 @@
 }
 
 :root {
-  --background: 250 248 255; /* Light purple background */
-  --foreground: 45 35 75; /* Dark purple text */
-  --muted: 120 113 140; /* Muted purple */
-  --accent: 130 87 229; /* Shades of Purple accent */
-  --border: 221 214 254; /* Light purple border */
-  --ring: 130 87 229; /* Purple ring */
-  --radius: 0.75rem;
+  --background: 255 255 255;
+  --foreground: 23 23 23;
+  --muted: 115 115 115;
+  --accent: 0 0 0;
+  --border: 229 229 229;
+  --ring: 0 0 0;
+  --radius: 0.5rem;
 }
 
 :root.dark {
-  --background: 45 35 75; /* Shades of Purple dark background #2D234B */
-  --foreground: 250 248 255; /* Light purple text */
-  --muted: 165 180 252; /* Light purple muted */
-  --accent: 196 181 253; /* Light purple accent */
-  --border: 88 80 141; /* Purple border */
-  --ring: 196 181 253; /* Light purple ring */
-  --radius: 0.75rem;
+  --background: 13 13 13;
+  --foreground: 250 250 250;
+  --muted: 163 163 163;
+  --accent: 250 250 250;
+  --border: 38 38 38;
+  --ring: 250 250 250;
+  --radius: 0.5rem;
+  --card: 23 23 23;
+  --card-hover: 38 38 38;
 }
 
 /* Add smooth scrolling */
 html {
   scroll-behavior: smooth;
   overflow-y: scroll;
-  color-scheme: dark;
-  background-color: black;
+  color-scheme: light;
+  background-color: rgb(var(--background));
   font-family: "Geist", sans-serif;
 }
 
-html.light {
-  color-scheme: light;
-  background-color: white;
+html.dark {
+  color-scheme: dark;
 }
 
 html,
 body {
-  @apply h-full w-full antialiased;
-  @apply bg-white dark:bg-dark text-black/75 dark:text-dark-foreground;
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
 }
 
 body {
-  @apply relative flex flex-col;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-  @apply flex flex-col flex-1 bg-white dark:bg-dark;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgb(var(--background));
 }
 
 header {
-  @apply border-b border-black/10 dark:border-dark-border;
-  @apply transition-all duration-300 ease-in-out;
+  border-bottom: 1px solid rgba(var(--border), 0.1);
+  transition: all 0.3s ease;
 }
 
 header:not(.scrolled) {
-  @apply bg-transparent border-transparent;
+  background: transparent;
+  border-color: transparent;
 }
 
 header.scrolled {
-  @apply bg-white/75 dark:bg-dark/50;
-  @apply border-black/10 dark:border-dark-border;
-  @apply backdrop-blur-sm saturate-200;
+  background: rgba(var(--background), 0.8);
+  border-color: rgb(var(--border));
+  backdrop-filter: blur(8px);
 }
 
 article {
-  @apply prose dark:prose-invert max-w-full pb-12;
+  max-width: 100%;
+  padding-bottom: 3rem;
 }
 
 article h1 {
-  @apply mb-6 mt-8;
+  margin: 2rem 0 1.5rem;
 }
 
 article h2 {
-  @apply mb-4 mt-8;
+  margin: 2rem 0 1rem;
 }
 
 article h3 {
-  @apply mb-3 mt-6;
+  margin: 1.5rem 0 0.75rem;
 }
 
 article p {
-  @apply my-4;
+  margin: 1rem 0;
 }
 
 article > *:first-child {
-  @apply mt-0;
+  margin-top: 0;
 }
 
 article > *:last-child {
-  @apply mb-0;
+  margin-bottom: 0;
 }
 
 .page-heading {
-  @apply font-semibold text-black dark:text-white;
+  font-weight: 600;
+  color: rgb(var(--foreground));
 }
 
 .blend {
-  @apply transition-all duration-300 ease-in-out;
+  transition: all 0.3s ease;
 }
 
 /** Light theme particles on home page */
@@ -211,11 +224,12 @@ article img {
  */
 
 #twinkle-star.template {
-  @apply absolute -left-full; /* hide offscreen */
+  position: absolute;
+  left: -100%;
 }
 
 #twinkle-star.twinkle {
-  @apply animate-twinkle; /* defined in tailwind.config */
+  animation: twinkle 1s ease-in-out infinite;
 }
 
 /**
@@ -223,49 +237,67 @@ article img {
  */
 
 #meteors .shower {
-  @apply absolute inset-0 top-0;
-  @apply left-1/2 -translate-x-1/2;
-  @apply w-screen aspect-square;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  aspect-ratio: 1;
 }
 
 #meteors .meteor {
-  @apply animate-meteor; /* defined in tailwind.config */
-  @apply absolute top-1/2 left-1/2 w-px h-[75vh];
-  @apply bg-gradient-to-b from-white to-transparent;
+  animation: meteor 1s linear;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 75vh;
+  background: linear-gradient(to bottom, rgb(var(--foreground)), transparent);
 }
 
-#meteors .shower.ur {
-  @apply rotate-45;
-}
-
-#meteors .shower.dr {
-  @apply rotate-135;
-}
-
-#meteors .shower.dl {
-  @apply rotate-225;
-}
-
-#meteors .shower.ul {
-  @apply rotate-315;
-}
+#meteors .shower.ur { transform: rotate(45deg); }
+#meteors .shower.dr { transform: rotate(135deg); }
+#meteors .shower.dl { transform: rotate(225deg); }
+#meteors .shower.ul { transform: rotate(315deg); }
 
 .gradient-text {
-  color: #8257e5; /* Shades of Purple accent */
+  color: rgb(var(--accent));
 }
 
 
 /* Shadcn UI button style */
 .btn {
-  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
 }
 
 .btn-primary {
-  @apply bg-purple-500 text-white hover:bg-purple-800 dark:bg-purple-600 dark:text-white dark:hover:bg-purple-700 shadow-lg hover:shadow-xl;
+  background-color: rgb(var(--foreground));
+  color: rgb(var(--background));
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
 .btn-outline {
-  @apply border-2 border-purple-400 dark:border-purple-300 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800/30 shadow-sm hover:shadow-md;
+  border: 1px solid rgb(var(--foreground));
+  color: rgb(var(--foreground));
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: rgb(var(--foreground));
+  color: rgb(var(--background));
 }
 
 .text-muted {
@@ -273,19 +305,24 @@ article img {
 }
 
 .youtube-player iframe {
-  @apply w-full;
+  width: 100%;
   aspect-ratio: 16 / 9;
 }
 
-/* Gradient animation */
+/* Simple transitions */
 .gradient-animate {
-  background: linear-gradient(45deg, #8257e5, #c4b5fd, #a78bfa); /* Shades of Purple gradient */
-  background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  background-color: rgb(var(--background));
+  transition: background-color 0.2s ease;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Dark theme overrides */
+.dark .card {
+  background-color: rgb(var(--card));
+  border: 1px solid rgb(var(--border));
+}
+
+.dark header.scrolled {
+  background: rgba(var(--card), 0.7);
+  border-color: rgb(var(--border));
+  backdrop-filter: blur(12px);
 }

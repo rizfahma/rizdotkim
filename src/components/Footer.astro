@@ -3,63 +3,87 @@ import { SITE, SOCIALS } from "@consts"
 import Container from "@components/Container.astro"
 ---
 
-<footer class="relative bg-white dark:bg-dark">
+<footer style="background-color: rgb(var(--background));">
   <div class="animate">
     <section class="py-5">
       <Container size="md">
         <div class="flex items-center justify-center sm:justify-end">
-          <button id="back-to-top" aria-label="Back to top of page" class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-colors duration-300 ease-in-out">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current group-hover:stroke-black group-hover:dark:stroke-white rotate-90">
-              <line x1="19" y1="12" x2="5" y2="12" class="scale-x-0 group-hover:scale-x-100 translate-x-3 group-hover:translate-x-0 transition-all duration-300 ease-in-out" />
-              <polyline points="12 19 5 12 12 5" class="translate-x-1 group-hover:translate-x-0 transition-all duration-300 ease-in-out" />
+          <button id="back-to-top" aria-label="Back to top of page" 
+            style="
+              display: flex;
+              gap: 0.5rem;
+              padding: 0.5rem 1rem;
+              font-size: 0.875rem;
+              align-items: center;
+              border-radius: 0.375rem;
+              border: 1px solid rgb(var(--border));
+              color: rgb(var(--foreground));
+              transition: background-color 0.2s ease;
+            "
+            onmouseover="this.style.backgroundColor = `rgb(var(--card-hover))`"
+            onmouseout="this.style.backgroundColor = 'transparent'"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(90deg)">
+              <polyline points="12 19 5 12 12 5" />
             </svg>
-            <div class="w-full group-hover:text-black group-hover:dark:text-white transition-colors duration-300 ease-in-out">
-              Back to top
-            </div>
+            Back to top
           </button>
         </div>
       </Container>
     </section>
-  
-    <section class=" py-5 overflow-hidden whitespace-nowrap border-t border-black/10 dark:border-white/25">
+
+    <section class="py-5 border-t" style="border-color: rgb(var(--border));">
       <Container size="md">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col items-center sm:items-start">
-            <a href="/" class="flex gap-1 w-fit font-semibold text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-              <svg class="size-6 fill-current">
+            <a href="/" class="flex gap-1 w-fit font-semibold" 
+              style="
+                color: rgb(var(--foreground));
+                transition: opacity 0.2s ease;
+              "
+              onmouseover="this.style.opacity = '0.8'"
+              onmouseout="this.style.opacity = '1'"
+            >
+              <svg class="size-6" style="fill: currentColor">
                 <use href="/brand.svg#brand"/>
               </svg>
               {SITE.TITLE}
             </a>
           </div>
-          <div class="flex gap-2 justify-center sm:justify-end items-center">
+          <div class="flex gap-2 justify-center sm:justify-end items-center" style="color: rgb(var(--muted));">
             <span class="relative flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              <span class="absolute inline-flex h-full w-full rounded-full" 
+                style="
+                  background-color: rgb(34 197 94); 
+                  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+                "
+              ></span>
+              <span class="relative inline-flex rounded-full h-3 w-3" style="background-color: rgb(34 197 94);"></span>
             </span>
             All systems normal
           </div>
         </div>
       </Container>
     </section>
-  
-    <section class=" py-5 overflow-hidden whitespace-nowrap border-t border-black/10 dark:border-white/25">
+
+    <section class="py-5 border-t" style="border-color: rgb(var(--border));">
       <Container size="md">
-        <div class="h-full grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="order-2 sm:order-1 flex flex-col items-center justify-center sm:items-start">
-            <div class="legal">
-              <a href="/legal/terms" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="order-2 sm:order-1 flex flex-col items-center sm:items-start">
+            <div class="space-x-2">
+              <a href="/legal/terms" style="color: rgb(var(--muted)); transition: color 0.2s ease;" onmouseover="this.style.color = `rgb(var(--foreground))`" onmouseout="this.style.color = `rgb(var(--muted))`">
                 Terms
-              </a> |
-              <a href="/legal/privacy" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+              </a>
+              <span style="color: rgb(var(--muted));">|</span>
+              <a href="/legal/privacy" style="color: rgb(var(--muted)); transition: color 0.2s ease;" onmouseover="this.style.color = `rgb(var(--foreground))`" onmouseout="this.style.color = `rgb(var(--muted))`">
                 Privacy
               </a>
             </div>
-            <div class="text-sm mt-2">
+            <div class="text-sm mt-2" style="color: rgb(var(--muted));">
               &copy; 20XX | All rights reserved
             </div>
           </div>
-  
+
           <div class="order-1 sm:order-2 flex justify-center sm:justify-end">
             <div class="flex flex-wrap gap-1 items-center justify-center">
               {
@@ -68,21 +92,26 @@ import Container from "@components/Container.astro"
                     href={SOCIAL.HREF} 
                     target="_blank" 
                     aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`} 
-                    class="group size-10 rounded-full p-2 items-center justify-center hover:bg-black/5 dark:hover:bg-white/20  blend"
+                    class="group flex size-10 rounded-full p-2 items-center justify-center"
+                    style="
+                      transition: background-color 0.2s ease;
+                      color: rgb(var(--muted));
+                    "
+                    onmouseover="this.style.backgroundColor = `rgb(var(--card-hover))`; this.style.color = `rgb(var(--foreground))`"
+                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.color = `rgb(var(--muted))`"
                   >
-                    <svg class="size-full fill-current group-hover:fill-black group-hover:dark:fill-white blend">
+                    <svg class="size-full" style="fill: currentColor">
                       <use href={`/social.svg#${SOCIAL.ICON}`} />
                     </svg>
                   </a>
                 ))
               }
-              </div>
+            </div>
           </div>
         </div>
       </Container>
     </section>
   </div>
-
 </footer>
 
 <script is:inline>
