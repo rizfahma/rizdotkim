@@ -88,7 +88,7 @@
 }
 
 :root.dark {
-  --background: 13 13 13;
+  --background: 13 13 13;  /* Changed to pure black */
   --foreground: 255 255 255;
   --muted: 255 255 255;
   --subtle: 255 255 255;
@@ -318,6 +318,15 @@ article img {
 .dark .btn-outline:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(13, 13, 13);
+}
+
+.dark .btn-primary {
+  background-color: rgb(255, 255, 255);
+  color: rgb(13, 13, 13);
+}
+
+.dark .btn-primary:hover {
+  opacity: 0.9;
 }
 
 .text-muted {
