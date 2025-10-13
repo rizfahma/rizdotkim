@@ -67,6 +67,9 @@ export default {
       },
       ringColor: {
         ring: 'rgb(var(--ring))'
+      },
+      screens: {
+        'xs': '475px',
       }
     },
   },
