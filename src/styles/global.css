@@ -12,15 +12,6 @@
   }
 
   @font-face {
-    font-family: "Geist Mono";
-    src: url("https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2")
-      format("woff2-variations");
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
     font-family: "Geist";
     src: url("/fonts/Geist-Thin.woff2") format("woff2");
     font-weight: 100;
@@ -119,7 +110,7 @@
   --ring: 0 0 0;
   --radius: 0.5rem;
   --font-sans: "Geist VF", "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "Geist Mono", "CaskaydiaMono Nerd Font", "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: "CaskaydiaMono Nerd Font", "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 :root.dark {

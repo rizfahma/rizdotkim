@@ -6,15 +6,12 @@ import Footer from "@components/Footer.astro"
 import Drawer from "@components/Drawer.astro"
 const { title, description } = Astro.props
 import { SITE } from "@consts"
-import PostComments from "@components/PostComments.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={`${title} | ${SITE.TITLE}`} description={description} />
-    <script src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="da09ea80-2371-4852-929e-e3526fd74a6b" async></script>
-    <script defer src="https://stats.mumentum.net/script.js" data-website-id="7fe9be9e-b963-4f2c-bf19-d6b88de8ea4f"></script>
   </head>
   <body class="min-h-screen bg-white dark:bg-[#0D0D0D] text-black/75 dark:text-white">
     <Header />
