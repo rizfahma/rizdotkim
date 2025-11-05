@@ -29,7 +29,7 @@ function changeTheme() {
 }
 
 function preloadTheme() {
-  const theme = localStorage.theme || "dark";
+  const theme = localStorage.theme || "light";
   const element = document.documentElement;
   
   if (theme === "dark") {
