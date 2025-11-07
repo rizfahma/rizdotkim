@@ -1,3 +1,15 @@
+const THEME_STORAGE_KEY = "theme";
+const DEFAULT_THEME = "light";
+
+function applyTheme(theme) {
+  const element = document.documentElement;
+  if (theme === "dark") {
+    element.classList.add("dark");
+  } else {
+    element.classList.remove("dark");
+  }
+}
+
 function changeTheme() {
   const element = document.documentElement;
   const isDark = element.classList.contains("dark");
@@ -17,26 +29,20 @@ function changeTheme() {
   );
   document.head.appendChild(css);
 
-  if (theme === "dark") {
-    element.classList.add("dark");
-  } else {
-    element.classList.remove("dark");
-  }
+  applyTheme(theme);
 
   window.getComputedStyle(css).opacity;
   document.head.removeChild(css);
-  localStorage.theme = theme;
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
 }
 
 function preloadTheme() {
-  const theme = localStorage.theme || "light";
-  const element = document.documentElement;
-  
-  if (theme === "dark") {
-    element.classList.add("dark");
-  } else {
-    element.classList.remove("dark");
+  let theme = localStorage.getItem(THEME_STORAGE_KEY);
+  if (!theme) {
+    theme = DEFAULT_THEME;
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }
+  applyTheme(theme);
 }
 
 window.onload = () => {

@@ -345,52 +345,65 @@ article img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   white-space: nowrap;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  transition: all 0.2s ease;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border: 1px solid transparent;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .btn-primary {
   background-color: rgb(var(--foreground));
   color: rgb(var(--background));
-  transition: all 0.2s ease;
+  border-color: rgba(var(--foreground), 0.4);
+  box-shadow: 0 15px 40px rgba(var(--foreground), 0.2);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 25px 45px rgba(var(--foreground), 0.25);
 }
 
 .btn-outline {
-  border: 1px solid rgba(var(--foreground), 0.1);
+  border: 1px solid rgba(var(--foreground), 0.35);
   color: rgb(var(--foreground));
-  transition: all 0.2s ease;
+  background-color: rgba(var(--foreground), 0.02);
 }
 
 .dark .btn-outline {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
   color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 .btn-outline:hover {
-  background-color: rgb(var(--foreground));
-  color: rgb(var(--background));
+  border-color: rgba(var(--foreground), 0.6);
+  background-color: rgba(var(--foreground), 0.08);
+  color: rgb(var(--foreground));
 }
 
 .dark .btn-outline:hover {
-  background-color: rgb(255, 255, 255);
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.85);
   color: rgb(13, 13, 13);
 }
 
 .dark .btn-primary {
   background-color: rgb(255, 255, 255);
   color: rgb(13, 13, 13);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
 .dark .btn-primary:hover {
-  opacity: 0.9;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
 }
 
 .text-muted {
