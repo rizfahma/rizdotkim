@@ -184,8 +184,13 @@ header.scrolled {
 }
 
 article {
-  max-width: 100%;
+  max-width: min(70ch, 100%);
+  margin: 0 auto;
   padding-bottom: 3rem;
+  line-height: 1.7;
+  font-size: clamp(1rem, 1vw + 0.25rem, 1.15rem);
+  letter-spacing: 0.015em;
+  word-break: break-word;
 }
 
 article h1 {
@@ -231,7 +236,7 @@ article h6 {
 }
 
 article p {
-  margin: 1rem 0;
+  margin: 1rem 0 1.25rem;
 }
 
 code,
@@ -247,6 +252,18 @@ article > *:first-child {
 
 article > *:last-child {
   margin-bottom: 0;
+}
+
+.prose {
+  max-width: min(68ch, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+  font-size: clamp(0.95rem, 1vw + 0.2rem, 1.1rem);
+}
+
+.prose :where(p, li, blockquote) {
+  margin-block-end: 1rem;
 }
 
 .page-heading {

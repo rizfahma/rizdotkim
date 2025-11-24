@@ -18,11 +18,11 @@ All I know is that when I play these tracks, there are some weird feelings.
 
 **øneheart x reidenshi - snowfall**  
 
-https://youtu.be/LlN8MPS7KQs?si=hqzKbtsgcB8K5u5O
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LlN8MPS7KQs" title="øneheart x reidenshi - snowfall" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 **diedlonely - stellar**  
 
-https://youtu.be/z1GA\_eu\_3no?si=9Rdnc08GwlClu3j1
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z1GA_eu_3no" title="diedlonely - stellar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Everytime I listen to any of those tracks, I feel like being somewhere I have never been before.
 
