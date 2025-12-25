@@ -66,7 +66,7 @@ However, cost - benefit wise I believe I could make it more efficient. In fact, 
 ### Enter Static Blogs
 I had been exploring the alternatives of running blogs outside of WordPress ecosystem, and boy oh boy, there are so many out there. You could use Joomla (also available on free version if you don't want to use the enterprise version), blogger (the first blogging platform I used like centuries ago, and I believe you are familiar with it too), Ghost, Medium, or any other CMS (Content Management System) - list goes on and on, or you could just run yours in a static ways.
 
-A few years ago this approach started to gain more popularity. You could just host your blogs in markdown format, push it to github, use Jekyll, do some configs, and add your own domain, and it's live. 
+A few years ago this approach started to gain more popularity. You could just host your blogs in markdown format, push it to github, use Hugo - Jekyll, do some configs, and add your own domain, and it's live. 
 
 I am now using slightly similar approach, but using different flows and provider to publish my blogs.
 
