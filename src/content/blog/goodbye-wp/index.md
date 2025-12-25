@@ -4,8 +4,8 @@ date: "2025-12-25"
 categories: 
   - "Blog"
 tags: 
-  - "WordPress, Platform"
-summary: ""
+  - "Experience"
+summary: "After multiple years, I think it is the right time to unplug it and move on"
 ---
 ### A farewell after 17 years?
 
@@ -35,6 +35,14 @@ Honestly, I knew that could happen. That's why I didn't use many plugins on my b
 3. Make it pleasing to see (simple, yet not boring)
 
 Yet, somehow no matter how much I customize it as simple as I could, it still went down sometimes.
+
+In order to prevent downtimes which could be caused by security issues, I had to update both the Linux OS and related libraries, as well as the WP plugins across several blogs I maintained. 
+
+Sometimes I could easily find time for that, but sometimes I couldn't do so.
+
+Each update should be good for the blogs, but sometimes unpredictable things could happen too. 
+
+I could not know all the details happen on every updates.
 
 
 <u>**Spam Comments**</u>
@@ -74,12 +82,13 @@ Sometimes it is easily to figure out, sometimes it causes headaches.
 
 If you lost your passion doing that, you could just undo the deployment and return to the previous version. 
 
-Problem solved, curiosity grows though. Haha.
+_**Problem solved, curiosity grows though. Haha.**_
 
 ### Things I Sacrificed by Leaving WordPress
 Despite all the simplicity and efficiency from moving away, I still miss some of the beauty of using WP.
 
 **Image or any asset management simplicity.**
+
 When using WP, we just do drag and drop the images, or assets the way we wanted like when you do it on Microsoft **freaking Word. The CMS (WP) will do the heavy-lifting for you. If you have those plugins (mostly are free), they can optimize the images for you in the background. You just need to add some alt-text if you want the search engines "read" those images easily, that makes it search engine friendly.
 
 I know I can also add images on my current static blog too. But I have to put it somewhere, copy the URL, put the link within some code snippets. But when I put many images, it's going to be hell of things to manage.
