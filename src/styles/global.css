@@ -188,9 +188,49 @@ article {
   margin: 0 auto;
   padding-bottom: 3rem;
   line-height: 1.7;
-  font-size: clamp(1rem, 1vw + 0.25rem, 1.15rem);
+  font-size: clamp(1.125rem, 1.5vw + 0.25rem, 1.2rem);
   letter-spacing: 0.015em;
   word-break: break-word;
+}
+
+/* Mobile-specific typography improvements */
+@media (max-width: 768px) {
+  article {
+    font-size: clamp(1.2rem, 4vw + 0.5rem, 1.4rem);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+  }
+  
+  article h1 {
+    font-size: clamp(2rem, 8vw + 1rem, 2.8rem);
+    line-height: 1.2;
+  }
+  
+  article h2 {
+    font-size: clamp(1.5rem, 6vw + 0.8rem, 2rem);
+    line-height: 1.25;
+  }
+  
+  article h3 {
+    font-size: clamp(1.3rem, 5vw + 0.6rem, 1.6rem);
+    line-height: 1.3;
+  }
+  
+  article h4 {
+    font-size: clamp(1.2rem, 4vw + 0.5rem, 1.4rem);
+    line-height: 1.35;
+  }
+  
+  article ul, article ol {
+    padding-left: 1.5rem;
+    font-size: 1.1em;
+  }
+  
+  article blockquote {
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    font-size: 1.1em;
+  }
 }
 
 article h1 {
@@ -239,6 +279,302 @@ article p {
   margin: 1rem 0 1.25rem;
 }
 
+article blockquote {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid rgb(var(--foreground));
+  background-color: rgba(var(--foreground), 0.05);
+  border-radius: 0.5rem;
+  font-style: italic;
+  position: relative;
+}
+
+article blockquote p {
+  margin: 0;
+  color: rgb(var(--foreground));
+  opacity: 0.9;
+}
+
+.dark article blockquote {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left-color: rgb(255, 255, 255);
+}
+
+.dark article blockquote p {
+  color: rgb(255, 255, 255);
+  opacity: 0.85;
+}
+
+/* Add quote mark decoration */
+article blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-size: 3rem;
+  color: rgb(var(--foreground));
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.dark article blockquote::before {
+  color: rgb(255, 255, 255);
+}
+
+/* Prose quote mark decoration */
+.prose blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-size: 3rem;
+  color: rgb(var(--foreground));
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.dark .prose blockquote::before {
+  color: rgb(255, 255, 255);
+}
+
+article ul, article ol {
+  margin: 1rem 0 1.25rem;
+  padding-left: 2rem;
+}
+
+article ul {
+  list-style-type: disc;
+}
+
+article ol {
+  list-style-type: decimal;
+}
+
+article li {
+  margin: 0.5rem 0;
+  line-height: 1.7;
+}
+
+article ul ul, article ol ol, article ul ol, article ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Nested list styling */
+article ul ul {
+  list-style-type: circle;
+}
+
+article ul ul ul {
+  list-style-type: square;
+}
+
+/* Ensure list items in nested lists are properly styled */
+article li > ul, article li > ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Additional list styling for better readability */
+article li::marker {
+  color: rgb(var(--foreground));
+  font-size: 1.1em;
+}
+
+/* Dark theme list styling */
+.dark article li::marker {
+  color: rgb(255, 255, 255);
+}
+
+/* Ensure proper list spacing in prose class */
+.prose ul, .prose ol {
+  margin: 1rem 0 1.25rem;
+  padding-left: 2rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin: 0.5rem 0;
+  line-height: 1.75;
+}
+
+/* Prose blockquote styling */
+.prose blockquote {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid rgb(var(--foreground));
+  background-color: rgba(var(--foreground), 0.05);
+  border-radius: 0.5rem;
+  font-style: italic;
+}
+
+.prose blockquote p {
+  margin: 0;
+  color: rgb(var(--foreground));
+  opacity: 0.9;
+}
+
+.dark .prose blockquote {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left-color: rgb(255, 255, 255);
+}
+
+.dark .prose blockquote p {
+  color: rgb(255, 255, 255);
+  opacity: 0.85;
+}
+
+/* Override Tailwind typography plugin styles */
+.prose ul > li::marker {
+  color: rgb(var(--foreground));
+}
+
+.prose ol > li::marker {
+  color: rgb(var(--foreground));
+  font-weight: 600;
+}
+
+.dark .prose ul > li::marker,
+.dark .prose ol > li::marker {
+  color: rgb(255, 255, 255);
+}
+
+/* Ensure list styling works with typography plugin */
+article.prose ul,
+article.prose ol {
+  list-style-position: outside;
+  padding-left: 1.5em;
+}
+
+article.prose ul li,
+article.prose ol li {
+  padding-left: 0.5em;
+}
+
+/* Fix for any potential list-style reset */
+article ul, article ol, .prose ul, .prose ol {
+  list-style: revert !important;
+}
+
+/* Additional robust list styling */
+article *:not(li) > ul,
+article *:not(li) > ol {
+  margin: 1rem 0 1.25rem;
+  padding-left: 2rem;
+}
+
+article *:not(li) > ul {
+  list-style-type: disc;
+}
+
+article *:not(li) > ol {
+  list-style-type: decimal;
+}
+
+/* Ensure list markers are visible */
+article ul li, article ol li {
+  display: list-item;
+}
+
+/* Fix for any potential display issues */
+article ul, article ol {
+  display: block;
+}
+
+/* Ensure proper text alignment */
+article ul li, article ol li {
+  text-align: left;
+}
+
+/* Additional mobile improvements */
+@media (max-width: 768px) {
+  /* Better mobile body text */
+  body {
+    font-size: clamp(1.1rem, 3vw + 0.5rem, 1.25rem);
+    line-height: 1.7;
+  }
+  
+  /* Improve mobile main content */
+  main {
+    padding: 1rem 0;
+  }
+  /* Better mobile spacing */
+  article {
+    padding: 0 1rem 2rem;
+  }
+  
+  /* Improve mobile paragraph spacing */
+  article p {
+    margin: 1.25rem 0 1.5rem;
+  }
+  
+  /* Better mobile list spacing */
+  article ul, article ol {
+    margin: 1.25rem 0 1.5rem;
+  }
+  
+  article li {
+    margin: 0.75rem 0;
+  }
+  
+  /* Mobile-friendly blockquote */
+  article blockquote {
+    border-radius: 0.75rem;
+    border-left-width: 3px;
+  }
+  
+  /* Improve mobile heading spacing */
+  article h1, article h2, article h3, article h4, article h5, article h6 {
+    margin-top: 2.5rem;
+  }
+  
+  article h1 {
+    margin-top: 1.5rem;
+  }
+  
+  /* Better mobile code blocks */
+  article pre {
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.9em;
+    overflow-x: auto;
+  }
+  
+  article code {
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+  
+  /* Better mobile buttons and links */
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    min-height: 44px; /* Better touch target */
+  }
+  
+  /* Mobile-friendly navigation */
+  header a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Better mobile spacing for containers */
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 code,
 pre,
 kbd,
@@ -259,7 +595,27 @@ article > *:last-child {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.75;
-  font-size: clamp(0.95rem, 1vw + 0.2rem, 1.1rem);
+  font-size: clamp(1.05rem, 1.2vw + 0.25rem, 1.15rem);
+}
+
+/* Mobile prose improvements */
+@media (max-width: 768px) {
+  .prose {
+    font-size: clamp(1.2rem, 4vw + 0.5rem, 1.35rem);
+    line-height: 1.8;
+    padding: 0 1rem;
+  }
+  
+  .prose ul, .prose ol {
+    padding-left: 1.5rem;
+    font-size: 1.05em;
+  }
+  
+  .prose blockquote {
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    font-size: 1.05em;
+  }
 }
 
 .prose :where(p, li, blockquote) {
