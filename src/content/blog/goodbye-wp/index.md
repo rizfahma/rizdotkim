@@ -119,7 +119,7 @@ I guess so.
 
 I am getting busier and busier at work in the last few months. Much more busier than before. Glad that I made that move to this static blog solution.
 
-Now I have more time stressing and frustrating on some things else.
+Now I have more time stressing and frustrating on other things.
 
 > Here’s to simpler stacks, clearer minds, and writing that lasts longer than a server uptime.”
 

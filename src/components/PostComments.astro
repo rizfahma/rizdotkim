@@ -1,16 +1,141 @@
-<script src="https://giscus.app/client.js"
-        data-repo="rizfahma/nustrato"
-        data-repo-id="R_kgDOLyzK7A"
-        data-category="Blog Post Comment"
-        data-category-id="DIC_kwDOLyzK7M4CfCrp"
-        data-mapping="url"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
+<div id="comments-section">
+  <!-- Giscus Comments -->
+  <div id="giscus-comments" class="giscus-container"></div>
+  
+  <!-- Fallback Comment Section -->
+  <div id="fallback-comments" class="hidden">
+    <div class="bg-black/5 dark:bg-white/5 rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-black dark:text-white mb-4">Join the Discussion</h3>
+      <p class="text-black/70 dark:text-white/70 mb-4">
+        Comments are powered by GitHub Discussions. Click below to participate in the conversation.
+      </p>
+      <div class="space-y-3">
+        <a href="https://github.com/rizfahma/rizdotkim/discussions/new?category=general" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Start a Discussion
+        </a>
+        <a href="https://github.com/rizfahma/rizdotkim/discussions" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center px-4 py-2 border border-black/20 dark:border-white/20 text-black dark:text-white rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+          View All Discussions
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Set initial theme to light mode
+  const initialTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  
+  // Function to load Giscus with proper configuration
+  function loadGiscus() {
+    const container = document.getElementById('giscus-comments');
+    const fallback = document.getElementById('fallback-comments');
+    
+    if (!container) return;
+    
+    // Create Giscus script element with minimal required attributes
+    const giscusScript = document.createElement('script');
+    giscusScript.src = 'https://giscus.app/client.js';
+    giscusScript.setAttribute('data-repo', 'rizfahma/rizdotkim');
+    giscusScript.setAttribute('data-mapping', 'url');
+    giscusScript.setAttribute('data-strict', '0'); // Allow more flexible matching
+    giscusScript.setAttribute('data-reactions-enabled', '1');
+    giscusScript.setAttribute('data-emit-metadata', '0');
+    giscusScript.setAttribute('data-input-position', 'top');
+    giscusScript.setAttribute('data-theme', initialTheme);
+    giscusScript.setAttribute('data-lang', 'en');
+    giscusScript.setAttribute('data-loading', 'lazy');
+    giscusScript.setAttribute('crossorigin', 'anonymous');
+    giscusScript.async = true;
+    
+    // Set up timeout to show fallback if Giscus doesn't load
+    const timeout = setTimeout(() => {
+      if (container && !container.querySelector('iframe.giscus-frame')) {
+        console.log('Giscus failed to load, showing fallback');
+        container.style.display = 'none';
+        fallback.classList.remove('hidden');
+      }
+    }, 5000); // 5 second timeout
+    
+    // Add success handling
+    giscusScript.onload = function() {
+      clearTimeout(timeout);
+      // Check if Giscus loaded successfully after a short delay
+      setTimeout(() => {
+        if (container && !container.querySelector('iframe.giscus-frame')) {
+          console.log('Giscus loaded but no iframe found, showing fallback');
+          container.style.display = 'none';
+          fallback.classList.remove('hidden');
+        }
+      }, 2000);
+    };
+    
+    // Add error handling
+    giscusScript.onerror = function() {
+      clearTimeout(timeout);
+      console.log('Giscus script error, showing fallback');
+      container.style.display = 'none';
+      fallback.classList.remove('hidden');
+    };
+    
+    container.appendChild(giscusScript);
+  }
+  
+  // Function to update Giscus theme
+  function updateGiscusTheme() {
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage({
+        giscus: {
+          setConfig: {
+            theme: theme
+          }
+        }
+      }, 'https://giscus.app');
+    }
+  }
+  
+  // Set up theme change listeners
+  function setupThemeListeners() {
+    // Listen for theme changes by observing document element class changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          setTimeout(updateGiscusTheme, 100);
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    // Also listen to the theme buttons directly
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#header-theme-button, #drawer-theme-button')) {
+        setTimeout(updateGiscusTheme, 150);
+      }
+    });
+  }
+  
+  // Load Giscus and set up theme listeners
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      loadGiscus();
+      setTimeout(setupThemeListeners, 1000);
+    });
+  } else {
+    loadGiscus();
+    setTimeout(setupThemeListeners, 1000);
+  }
 </script>

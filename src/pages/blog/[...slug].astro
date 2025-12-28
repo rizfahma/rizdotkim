@@ -5,6 +5,7 @@ import TopLayout from "@layouts/TopLayout.astro"
 import BottomLayout from "@layouts/BottomLayout.astro"
 import ArticleTopLayout from "@layouts/ArticleTopLayout.astro"
 import ArticleBottomLayout from "@layouts/ArticleBottomLayout.astro"
+import PostComments from "@components/PostComments.astro"
 
 // Create the static blog pages
 export async function getStaticPaths() {
@@ -32,4 +33,18 @@ const { title, summary } = post.data
       <ArticleBottomLayout entry={post} />
     </div>
   </BottomLayout>
+  
+  <!-- Comments Section -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-16">
+    <div class="animate">
+      <div class="border-t border-black/15 dark:border-white/20 pt-8">
+        <h2 class="text-2xl font-bold text-black dark:text-white mb-6">Comments</h2>
+        <p class="text-sm text-black/75 dark:text-white/75 mb-6">
+          Join the discussion! Comments are powered by GitHub Discussions. 
+          <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer" class="text-purple-600 dark:text-purple-400 hover:underline">Sign up for GitHub</a> to comment.
+        </p>
+        <PostComments />
+      </div>
+    </div>
+  </div>
 </PageLayout>
