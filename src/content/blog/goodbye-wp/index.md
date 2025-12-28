@@ -7,32 +7,31 @@ tags:
   - "Experience"
 summary: "After multiple years, I think it is the right time to unplug it and move on"
 ---
-### A farewell after 17 years?
+### A Farewell After 17 Years?
 
-So I just moved out everything from WP, altogether a few months ago.
-It is not a sudden move, had been thinking about it for a few years actually.
+So I just moved everything out of WP a few months ago.
+It wasn't a sudden move; I had been thinking about it for a few years.
 
-I decided to stop using WordPress as my blogging platform any longer, including this blog that you are reading.
+I decided to stop using WordPress as my blogging platform, including this blog that you are reading.
 
-I managed my WordPress installations myself. I didn't put it on managed service cloud provider. I run it on linux based VPS (Virtual Private Server) installed and config myself, tried AWS too, switched to several cloud providers too. However, it had been overwhelming too handle.
+I managed my WordPress installations myself. I didn't use a managed cloud service. I ran it on a Linux-based VPS (Virtual Private Server) that I installed and configured myself, and I tried AWS too and switched to several cloud providers. However, it became overwhelming to handle.
 
 #### The Reasons
 
+**Tired of Downtime**
 
-<u>**Tired of downtimes**</u>
+Most of the time my blogs ran well, until I got emails notifying me of 8-minute outages. While less than 5 times a month wasn't terrible, it started bothering me when it happened 5 times a day. Sometimes I knew the cause; sometimes I had no idea why.
 
-For most of the time, my blogs run quite well, until suddenly I got emails notified me that they have been down for 8 minutes. It was not that terrible had it was just less than 5 times a month, but it started to bug me off when it happened 5 times a day. Sometimes I knew what caused it, sometimes I had no idea why.
+**Feeling Drained for Such a Simple Purpose**
 
-<u>**Somehow felt draining for just simple purpose I intended**</u>
-
-When you use WordPress, there's always that temptation to use plugins that could improve your blog performance, in terms of speed, security, visibility on search engine, users engagement, UI / UX, or anything. Each plugin has its own configs, settings, assets, and those things affect your backend.
+When you use WordPress, there's always the temptation to use plugins to improve your blog's performance—speed, security, search engine visibility, user engagement, UI/UX, and more. Each plugin has its own configurations, settings, and assets that affect your backend.
 
 Put more than tens of plugins under the hood without scaling up your stacks (which also meaning more cost), and see how those things slow down your blog. Let alone when more and more people visit your blog at the same time, and voila! your inbox will have warm greetings saying that your usage is spiking or probably downtime happens.
 
-Honestly, I knew that could happen. That's why I didn't use many plugins on my blogs. I only used several that:
-1. Enhance the speed
-2. Enhance the security
-3. Make it pleasing to see (simple, yet not boring)
+I knew this could happen, so I only used several plugins that:
+1. Enhance speed
+2. Enhance security
+3. Look pleasing (simple, yet not boring)
 
 Yet, somehow no matter how much I customize it as simple as I could, it still went down sometimes.
 
@@ -49,7 +48,9 @@ I could not know all the details happen on every updates.
 
 Well, that's hella issue when you manage your own WP installations. You could potentially attract 1000s of spam comments on your blogs on a monthly basis. Yes it was not a problem if you use something like Akismet - Jetpack spam filter, or any paid plugins to prevent or to auto delete those shit. My blog wasn't eligible no more for several free services from Jetpack including that spam filter.
 
-And I grew tired of manually deleting those spam comments flooded my blogs every week.
+And I grew tired of manually deleting those spam comments flooded my blogs every week. 
+
+Those spammers work with their own bots that deploys to inject spam comments on any target to put their links promotoing their products/ services. If you leave your WordPress blogs unguarded, most likely you would have tons of spam comments too.
 
 <u>**Cost efficiency**</u>
 

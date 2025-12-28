@@ -17,13 +17,24 @@ const items = (await getCollection(collection))
 const index = items.findIndex(x => x.slug === entry.slug)
 const prev = items[(index - 1 + items.length) % items.length]
 const next = items[(index + 1) % items.length]
+
+// Get random blog posts (only for blog entries, exclude current post)
+const randomPosts = collection === "blog" 
+  ? (() => {
+      const allBlogPosts = items.filter(post => post.slug !== entry.slug)
+      const shuffled = [...allBlogPosts].sort(() => 0.5 - Math.random())
+      return shuffled.slice(0, 3)
+    })()
+  : []
 ---
 
 <div>
   <article>
     <Content/>
   </article>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  
+  <!-- Prev/Next Navigation -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
     <a href={`/${prev.collection}/${prev.slug}`} class="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 blend">
       <div class="order-2 w-full h-full group-hover:text-black group-hover:dark:text-white blend">
         <div class="flex flex-wrap gap-2">
@@ -55,4 +66,55 @@ const next = items[(index + 1) % items.length]
       </svg>
     </a>
   </div>
+  
+  <!-- Random Blog Posts Section -->
+  {randomPosts.length > 0 && (
+    <div>
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-black dark:text-white mb-2">More Posts to Read</h2>
+        <p class="text-sm text-black/75 dark:text-white/75">Discover more interesting articles</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {randomPosts.map((post) => (
+          <a 
+            href={`/blog/${post.slug}`} 
+            class="group p-4 gap-3 flex items-start border rounded-lg backdrop-blur-sm
+                   border-purple-200/50 dark:border-purple-400/30 hover:bg-yellow-200 dark:hover:bg-purple-800/20
+                   hover:border-orange-300 dark:hover:border-purple-300/50 hover:shadow-lg hover:shadow-purple-500/10
+                   transition-all duration-300 ease-in-out"
+            role="article"
+            aria-label={`Read ${post.data.title}`}
+          >
+            <div class="w-full">
+              <div class="flex flex-wrap items-center gap-2">
+                <div class="text-sm capitalize px-2 py-0.5 rounded-full border border-black/15 dark:border-white/25">
+                  post
+                </div>
+                <div class="text-sm uppercase">
+                  {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </div>
+              </div>
+              <div class="font-semibold mt-3 text-black dark:text-white line-clamp-2">
+                {post.data.title}
+              </div>
+              <div class="text-sm line-clamp-3 mt-2 text-black/75 dark:text-white/75">
+                {post.data.summary}
+              </div>
+              <ul class="flex flex-wrap mt-2 gap-1">
+                {post.data.tags.slice(0, 3).map((tag: string) => (
+                  <li class="text-xs uppercase py-0.5 px-1 rounded bg-black/5 dark:bg-white/20 text-black/75 dark:text-white/75">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current mt-1 flex-shrink-0">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
 </div>
