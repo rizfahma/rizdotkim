@@ -8,4 +8,20 @@ import solidJs from "@astrojs/solid-js"
 export default defineConfig({
   site: "https://fahma.pages.dev",
   integrations: [mdx(), sitemap(), solidJs(), tailwind({ applyBaseStyles: false })],
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'search': ['src/components/Search.tsx'],
+            'arrowcard': ['src/components/ArrowCard.tsx'],
+          }
+        }
+      }
+    }
+  },
+  output: "static",
+  build: {
+    format: "directory"
+  }
 })

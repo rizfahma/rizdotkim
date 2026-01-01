@@ -1,0 +1,43 @@
+# Cloudflare Pages Performance Headers
+
+/*  Security Headers  */
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+/*  Performance Headers  */
+X-DNS-Prefetch-Control = "on"
+
+/*  Cache Static Assets  */
+/fonts/*
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/_astro/*
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/js/*
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/*.svg
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/*.jpg
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/*.png
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/*.woff2
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/*  HTML Pages  */
+/*.html
+  Cache-Control: "public, max-age=86400, must-revalidate"
+
+/*  Compress Text Assets  */
+/*.css
+  Cache-Control: "public, max-age=31536000, immutable"
+
+/*.js
+  Cache-Control: "public, max-age=31536000, immutable"
