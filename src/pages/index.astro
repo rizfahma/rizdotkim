@@ -20,9 +20,7 @@ const posts = (await getCollection("blog"))
     <div class='fixed inset-0 bg-gradient-to-br from-blue-50/30 via-white to-purple-50/20'></div>
     <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08)_0%,transparent_40%)]'></div>
     <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.06)_0%,transparent_40%)]'></div>
-    <div id='particles1' class='fixed inset-0'></div>
-    <div id='particles2' class='fixed inset-0'></div>
-    <div id='particles3' class='fixed inset-0'></div>
+    <div id='particles' class='fixed inset-0'></div>
   </div>
 
   <!-- Dark Theme: Modern Gradient Background -->
@@ -68,13 +66,13 @@ const posts = (await getCollection("blog"))
       <div class="flex flex-wrap justify-center gap-4 pt-8 animate-slide-up-delayed">
         <a href="/blog" class="btn-blog-card-glass group">
           <span>Read my blog</span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
         </a>
         <a href="/about" class="btn-blog-card-glass group">
           <span>More Info</span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
         </a>
@@ -97,22 +95,22 @@ const posts = (await getCollection("blog"))
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-500/20 dark:hover:from-blue-400/20 dark:hover:to-purple-400/20 transition-all duration-300">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-blue-500/15 hover:to-purple-500/15 dark:hover:from-blue-400/15 dark:hover:to-purple-400/15 transition-colors duration-200">
             <div class="text-3xl mb-2">🚀</div>
             <div class="font-semibold text-black dark:text-white">Fast</div>
             <div class="text-sm text-black/60 dark:text-white/60">Performance first</div>
           </div>
-          <div class="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-cyan-500/10 dark:from-green-400/10 dark:to-cyan-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-green-500/20 hover:to-cyan-500/20 dark:hover:from-green-400/20 dark:hover:to-cyan-400/20 transition-all duration-300">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-cyan-500/10 dark:from-green-400/10 dark:to-cyan-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-green-500/15 hover:to-cyan-500/15 dark:hover:from-green-400/15 dark:hover:to-cyan-400/15 transition-colors duration-200">
             <div class="text-3xl mb-2">🎨</div>
             <div class="font-semibold text-black dark:text-white">Clean</div>
             <div class="text-sm text-black/60 dark:text-white/60">Simple design</div>
           </div>
-          <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-500/10 to-red-500/10 dark:from-orange-400/10 dark:to-red-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-orange-500/20 hover:to-red-500/20 dark:hover:from-orange-400/20 dark:hover:to-red-400/20 transition-all duration-300">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-500/10 to-red-500/10 dark:from-orange-400/10 dark:to-red-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-orange-500/15 hover:to-red-500/15 dark:hover:from-orange-400/15 dark:hover:to-red-400/15 transition-colors duration-200">
             <div class="text-3xl mb-2">⚡</div>
             <div class="font-semibold text-black dark:text-white">Modern</div>
             <div class="text-sm text-black/60 dark:text-white/60">Latest tech</div>
           </div>
-          <div class="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 to-rose-500/10 dark:from-pink-400/10 dark:to-rose-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-pink-500/20 hover:to-rose-500/20 dark:hover:from-pink-400/20 dark:hover:to-rose-400/20 transition-all duration-300">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 to-rose-500/10 dark:from-pink-400/10 dark:to-rose-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-pink-500/15 hover:to-rose-500/15 dark:hover:from-pink-400/15 dark:hover:to-rose-400/15 transition-colors duration-200">
             <div class="text-3xl mb-2">💡</div>
             <div class="font-semibold text-black dark:text-white">Smart</div>
             <div class="text-sm text-black/60 dark:text-white/60">Thoughtful solutions</div>
@@ -133,7 +131,7 @@ const posts = (await getCollection("blog"))
           </div>
           <a href="/blog" class="group inline-flex items-center gap-2 text-lg font-medium text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <span>All posts</span>
-            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
           </a>

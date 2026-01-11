@@ -770,11 +770,9 @@ article img {
 }
 
 .btn-modern:hover {
-  transform: translateY(-1px);
   box-shadow: 
-    0 8px 28px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-    0 12px 40px rgba(0, 0, 0, 0.08);
+    0 6px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
 .btn-primary-modern {
@@ -906,11 +904,9 @@ article img {
 }
 
 .btn-hero-glass:hover {
-  transform: translateY(-2px);
   box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
-    0 20px 64px rgba(0, 0, 0, 0.08);
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.22) inset;
 }
 
 .dark .btn-hero-glass {
@@ -924,11 +920,9 @@ article img {
 }
 
 .dark .btn-hero-glass:hover {
-  transform: translateY(-2px);
   box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-    0 20px 64px rgba(0, 0, 0, 0.05);
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
 /* Blog card glassmorphic style */
@@ -958,11 +952,9 @@ article img {
 }
 
 .btn-blog-card-glass:hover {
-  transform: translateY(-2px);
   box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
-    0 20px 64px rgba(0, 0, 0, 0.08);
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.22) inset;
 }
 
 .dark .btn-blog-card-glass {
@@ -976,11 +968,9 @@ article img {
 }
 
 .dark .btn-blog-card-glass:hover {
-  transform: translateY(-2px);
   box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-    0 20px 64px rgba(0, 0, 0, 0.05);
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
 .btn-primary {
@@ -991,8 +981,7 @@ article img {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 25px 45px rgba(var(--foreground), 0.25);
+  box-shadow: 0 20px 40px rgba(var(--foreground), 0.22);
 }
 
 .btn-outline {
