@@ -30,32 +30,65 @@ function formatWorkDate(input: Date | string) {
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <TopLayout>
-    <section class="animate prose dark:prose-invert mb-12 max-w-3xl">
-      <p class="text-center font-bold text-lg md:text-xl italic bg-black/5 dark:bg-white/5 py-6 px-4 rounded-xl">I read, I write, I swim, but I don't smoke.</p>
-      <p class="text-base md:text-lg">Here's a summary of my professional journey so far:</p>
+    <section class="animate prose dark:prose-invert mb-16 max-w-4xl">
+      <div class="relative backdrop-blur-sm bg-white/10 dark:bg-black/20 rounded-2xl p-8 md:p-10 border border-white/20 dark:border-white/10 shadow-2xl">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl"></div>
+        <div class="relative z-10">
+          <p class="text-center font-semibold text-xl md:text-2xl italic text-black/90 dark:text-white/90 leading-relaxed">
+            "I read, I write, I swim, but I don't smoke."
+          </p>
+        </div>
+      </div>
+      <p class="text-lg md:text-xl font-medium text-black/80 dark:text-white/80 mt-8 text-center">
+        Here's a summary of my professional journey so far:
+      </p>
     </section>
-    <div class="animate page-heading text-3xl md:text-4xl lg:text-5xl">
+    <div class="animate page-heading text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-black via-gray-800 to-black dark:from-white dark:via-gray-200 dark:to-white bg-clip-text text-transparent">
       {WORK.TITLE}
     </div>
   </TopLayout>
   <BottomLayout>
     
-    <div class="space-y-6 md:space-y-8">
+    <div class="space-y-8 md:space-y-12">
       { 
-        work.map((entry) => (
-          <div class="work-card animate border border-black/10 dark:border-white/25 rounded-lg p-6 md:p-8 bg-white/50 dark:bg-black/20 backdrop-blur-sm transition-all hover:shadow-lg">
-            <div class="text-base md:text-lg font-mono uppercase tracking-wide mb-3 text-black/60 dark:text-white/60">
-              {formatWorkDate(entry.data.dateStart)} — {formatWorkDate(entry.data.dateEnd)}
+        work.map((entry, index) => (
+          <div class="work-card animate group relative border-0 rounded-2xl p-8 md:p-10 backdrop-blur-xl bg-white/30 dark:bg-black/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden" style={`animation-delay: ${index * 0.1}s`}>
+            <!-- Background gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Decorative corner element -->
+            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-bl-2xl"></div>
+            
+            <!-- Content wrapper -->
+            <div class="relative z-10">
+              <!-- Timeline -->
+              <div class="inline-flex items-center px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full mb-6 backdrop-blur-sm border border-black/10 dark:border-white/10">
+                <svg class="w-4 h-4 mr-2 text-black/60 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <span class="text-sm md:text-base font-medium text-black/70 dark:text-white/70">
+                  {formatWorkDate(entry.data.dateStart)} — {formatWorkDate(entry.data.dateEnd)}
+                </span>
+              </div>
+              
+              <!-- Company name -->
+              <div class="text-2xl md:text-3xl font-bold text-black dark:text-white mb-3 tracking-tight">
+                {entry.data.company}
+              </div>
+              
+              <!-- Role -->
+              <div class="text-lg md:text-xl font-semibold text-black/80 dark:text-white/80 mb-6 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-black/50 dark:text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                {entry.data.role}
+              </div>
+              
+              <!-- Work description -->
+              <div class="work-entry prose dark:prose-invert max-w-none prose-lg">
+                <entry.Content />
+              </div>
             </div>
-            <div class="text-xl md:text-2xl font-bold text-black dark:text-white mb-2">
-              {entry.data.company}
-            </div>
-            <div class="text-base md:text-lg font-medium text-black/80 dark:text-white/80 mb-4">
-              {entry.data.role}
-            </div>
-            <article class="work-entry prose dark:prose-invert max-w-none">
-              <entry.Content />
-            </article>
           </div>
         ))
       }
@@ -64,24 +97,111 @@ function formatWorkDate(input: Date | string) {
 </PageLayout>
 
 <style>
-  /* Work entry specific improvements */
+  /* Enhanced work entry typography */
   .work-entry {
-    font-size: clamp(1.05rem, 2.5vw + 0.5rem, 1.15rem);
-    line-height: 1.7;
+    font-size: clamp(1.1rem, 2.5vw + 0.5rem, 1.2rem);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
   }
   
-  @media (max-width: 768px) {
-    .work-entry {
-      font-size: clamp(1.1rem, 4vw + 0.6rem, 1.25rem);
-      line-height: 1.75;
-    }
+  .work-entry p {
+    margin-bottom: 1.25rem;
+    color: rgb(23 23 23 / 0.85);
+  }
+  
+  .dark .work-entry p {
+    color: rgb(255 255 255 / 0.85);
+  }
+  
+  .work-entry ul {
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .work-entry li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
   }
   
   /* Better mobile spacing for work cards */
   @media (max-width: 768px) {
     .work-card {
-      padding: 1.25rem;
-      margin-bottom: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
     }
+    
+    .work-entry {
+      font-size: clamp(1.2rem, 4vw + 0.6rem, 1.35rem);
+      line-height: 1.8;
+    }
+    
+    .work-card .text-2xl {
+      font-size: 1.5rem;
+    }
+    
+    .work-card .text-xl {
+      font-size: 1.25rem;
+    }
+  }
+  
+  /* Enhanced animations */
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .work-card {
+    animation: slideUpFade 0.8s ease-out forwards;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .dark .work-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Prose improvements for work entries */
+  .work-entry.prose {
+    color: inherit;
+  }
+  
+  .work-entry.prose h3 {
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: rgb(23 23 23);
+  }
+  
+  .dark .work-entry.prose h3 {
+    color: rgb(255 255 255);
+  }
+  
+  .work-entry.prose strong {
+    font-weight: 600;
+    color: rgb(23 23 23);
+  }
+  
+  .dark .work-entry.prose strong {
+    color: rgb(255 255 255);
+  }
+  
+  /* Add subtle glow effect on hover */
+  .work-card:hover {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .work-card:hover {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 </style>
