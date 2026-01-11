@@ -8,7 +8,7 @@ tags:
   - "life"
   - "rain"
   - "sunshine"
-summary: "feel good and sometimes bad too about it"
+summary: "Rain's dual nature: finding peace in December storms while battling the gloom that follows"
 ---
 
 ## November Rain, And Now It Is December Already

@@ -1,0 +1,172 @@
+---
+import { getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import ArrowCard from "@components/ArrowCard"
+import { SITE, SOCIALS } from "@consts"
+import TwinklingStars from "@components/TwinklingStars.astro"
+import MeteorShower from "@components/MeteorShower.astro"
+
+const posts = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0,3)
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0,3)
+
+const stack = [
+  {
+    text: "Cloudflare Pages",
+    icon: "cloudflarepages",
+    href: "https://pages.cloudflare.com"
+  },
+  {
+    text: "Astro",
+    icon: "astro",
+    href: "https://astro.build"
+  },
+  { 
+    text: "Javascript", 
+    icon: "javascript", 
+    href: "https://www.javascript.com" 
+  },
+  { 
+    text: "Typescript", 
+    icon: "typescript", 
+    href: "https://www.typescriptlang.org" 
+  },
+  { 
+    text: "Tailwind", 
+    icon: "tailwind", 
+    href: "https://tailwindcss.com" 
+  },
+]
+---
+
+<PageLayout title="Home" description={SITE.DESCRIPTION}>
+  <!-- Background elements -->
+  <!-- Light Mode: Particles -->
+  <div class='absolute inset-0 block dark:hidden'>
+    <div id='particles1' class='fixed inset-0'></div>
+    <div id='particles2' class='fixed inset-0'></div>
+    <div id='particles3' class='fixed inset-0'></div>
+  </div>
+
+  <!-- Dark Theme: Modern Gradient Background -->
+  <div class='absolute inset-0 hidden dark:block'>
+    <div class='fixed inset-0 bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-zinc-900/80'></div>
+    <div class='fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(94,234,212,0.08)_0%,transparent_65%)]'></div>
+  </div>
+
+  <!-- Dark Theme: Twinkling Stars / Metors -->
+  <div id="galaxy" class="fixed inset-0">
+    <div class="hidden dark:block">
+      <TwinklingStars/>
+      <MeteorShower/>
+    </div>
+  </div>
+
+  <script is:inline src="/js/bg.js"></script>
+  
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center">
+    <div class="mx-auto max-w-screen-md text-center space-y-8 px-4">
+      <div class="relative inline-block">
+        <h1 class="text-5xl sm:text-7xl font-bold text-black dark:text-white" style="font-family: 'CaskaydiaMono Nerd Font', monospace;">
+          Hi there! 👋
+          <span class="block text-2xl sm:text-3xl font-light mt-3">Welcome to my presence on the internet</span>
+        </h1>
+        <div class="absolute -z-10 inset-0 blur-3xl opacity-20 bg-gradient-to-r from-blue-600 to-cyan-500 animate-pulse"></div>
+      </div>
+
+      <p class="text-xl sm:text-0.5xl text-black/75 dark:text-white/75 max-w-4xl mx-auto leading-relaxed">
+      The contents of this site are a reflection of my thoughts, experiences, and projects. Feel free to explore and connect!</p><p> PS: the contents here might be a bit unconventional / opinionated.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 pt-8">
+        <a href="/blog" class="btn btn-primary group">
+          <span>Read my blog</span>
+          <span
+            aria-hidden="true"
+            class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-current text-[0.65rem] transition-transform duration-200 group-hover:translate-x-1"
+          >
+            ↗
+          </span>
+        </a>
+        <a href="/work" class="btn btn-outline group">
+          <span>View more</span>
+          <span
+            aria-hidden="true"
+            class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-current text-[0.65rem] transition-transform duration-200 group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="relative">
+    <div class="mx-auto max-w-screen-sm p-5 space-y-12">
+
+      <!-- About Section -->
+      <section>
+        <article>
+          <p>I’m just a regular person —someone who enjoys simple things done well.</p>
+          <p>I enjoy building things. I thrive on challenges that let me learn by doing and solving problems.</p>
+        </article>
+      </section>
+
+      <!-- Blog Preview Section -->
+      <section>
+        <div class="space-y-4">
+          <div class="flex justify-between">
+            <p class="font-semibold text-black dark:text-white">
+              Recent posts
+            </p>
+            <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-blue/25 dark:decoration-white/50 hover:decoration-blue dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                All posts
+              </span>
+            </a>
+          </div>
+          <ul class="space-y-4">
+            {posts.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section>
+        <div class="text-center">
+          <p class="font-semibold text-black dark:text-white">
+            Let's Connect
+          </p>
+          <p class="mb-4">
+            Reach out to me via email or on social media.
+          </p>
+          <div class="flex flex-col items-center gap-4">
+            {SOCIALS.map(social => (
+              <div class="text-center">
+                <div class="font-medium mb-1">
+                  {social.NAME}
+                </div>
+                <a href={social.HREF} target="_blank" 
+                   class="group underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+                  <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                    {social.TEXT}
+                  </span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</PageLayout>

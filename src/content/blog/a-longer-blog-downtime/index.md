@@ -1,6 +1,6 @@
 ---
 title: "A Longer Blog Downtime"
-summary: "my blog is down, so what am I talking?"
+summary: "The month my blog disappeared: SSL nightmares, server upgrades, and the relief of finally fixing it"
 date: "2022-03-02"
 categories: 
   - "story"

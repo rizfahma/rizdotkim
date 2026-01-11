@@ -1,7 +1,7 @@
 ---
 title: "Anak S2 Main Game SimCity"
 date: "2016-03-08"
-summary: "Main game SimCity, padahal kuliah S2"
+summary: "Why my Master's program required playing SimCity: learning urban planning through gaming"
 categories: 
   - "study"
 tags: 

@@ -1,7 +1,7 @@
 ---
 title: "Bangun Pagi"
 date: "2016-07-22"
-summary: "Bercerita tentang bangun pagi setelah kembali dari indonesia dan tiba di Belanda"
+summary: "How Ramadan changed my biological clock: from chronic night owl to early riser in the Netherlands"
 categories: 
   - "story"
 tags: 

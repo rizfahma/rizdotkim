@@ -7,7 +7,7 @@ tags:
   - "habit"
   - "health"
   - "intermittent-fasting"
-summary: "Guess What, I am doing It. Consistently"
+summary: "55 days of intermittent fasting: the real story behind the weight loss journey and daily discipline"
 ---
 
 ## Adjustment of Behavior

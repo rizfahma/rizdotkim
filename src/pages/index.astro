@@ -1,54 +1,25 @@
 ---
+
 import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
-import { SITE, SOCIALS } from "@consts"
+import { SITE } from "@consts"
 import TwinklingStars from "@components/TwinklingStars.astro"
 import MeteorShower from "@components/MeteorShower.astro"
 
 const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0,3)
-
-const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0,3)
-
-const stack = [
-  {
-    text: "Cloudflare Pages",
-    icon: "cloudflarepages",
-    href: "https://pages.cloudflare.com"
-  },
-  {
-    text: "Astro",
-    icon: "astro",
-    href: "https://astro.build"
-  },
-  { 
-    text: "Javascript", 
-    icon: "javascript", 
-    href: "https://www.javascript.com" 
-  },
-  { 
-    text: "Typescript", 
-    icon: "typescript", 
-    href: "https://www.typescriptlang.org" 
-  },
-  { 
-    text: "Tailwind", 
-    icon: "tailwind", 
-    href: "https://tailwindcss.com" 
-  },
-]
+  .slice(0,5)
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
   <!-- Background elements -->
-  <!-- Light Mode: Particles -->
+  <!-- Light Mode: Modern Gradient + Particles -->
   <div class='absolute inset-0 block dark:hidden'>
+    <div class='fixed inset-0 bg-gradient-to-br from-blue-50/30 via-white to-purple-50/20'></div>
+    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08)_0%,transparent_40%)]'></div>
+    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.06)_0%,transparent_40%)]'></div>
     <div id='particles1' class='fixed inset-0'></div>
     <div id='particles2' class='fixed inset-0'></div>
     <div id='particles3' class='fixed inset-0'></div>
@@ -56,8 +27,9 @@ const stack = [
 
   <!-- Dark Theme: Modern Gradient Background -->
   <div class='absolute inset-0 hidden dark:block'>
-    <div class='fixed inset-0 bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-zinc-900/80'></div>
-    <div class='fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(94,234,212,0.08)_0%,transparent_65%)]'></div>
+    <div class='fixed inset-0 bg-gradient-to-br from-zinc-900 via-slate-900/95 to-zinc-900/90'></div>
+    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15)_0%,transparent_50%)]'></div>
+    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.12)_0%,transparent_50%)]'></div>
   </div>
 
   <!-- Dark Theme: Twinkling Stars / Metors -->
@@ -69,104 +41,118 @@ const stack = [
   </div>
 
   <script is:inline src="/js/bg.js"></script>
+  <script is:inline src="/js/scroll-animations.js" defer></script>
   
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center">
-    <div class="mx-auto max-w-screen-md text-center space-y-8 px-4">
-      <div class="relative inline-block">
-        <h1 class="text-5xl sm:text-7xl font-bold text-black dark:text-white" style="font-family: 'CaskaydiaMono Nerd Font', monospace;">
+  <section class="relative min-h-[70vh] flex items-center justify-center py-20">
+    <div class="mx-auto max-w-4xl text-center space-y-10 px-6">
+      <div class="relative inline-block animate-fade-in">
+        <h1 class="text-6xl sm:text-8xl font-black text-black dark:text-white mb-4 bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent" style="font-family: 'CaskaydiaMono Nerd Font', monospace;">
           Hi there! 👋
-          <span class="block text-2xl sm:text-3xl font-light mt-3">Welcome to my presence on the internet</span>
         </h1>
-        <div class="absolute -z-10 inset-0 blur-3xl opacity-20 bg-gradient-to-r from-blue-600 to-cyan-500 animate-pulse"></div>
+        <h2 class="text-3xl sm:text-4xl font-light text-black/80 dark:text-white/80 mb-8">
+          Welcome to my corner of the internet
+        </h2>
+        <div class="absolute -z-10 inset-0 blur-3xl opacity-30 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 animate-pulse"></div>
       </div>
 
-      <p class="text-xl sm:text-0.5xl text-black/75 dark:text-white/75 max-w-4xl mx-auto leading-relaxed">
-      The contents of this site are a reflection of my thoughts, experiences, and projects. Feel free to explore and connect!</p><p> PS: the contents here might be a bit unconventional / opinionated.
-      </p>
-      <div class="flex flex-wrap justify-center gap-3 pt-8">
-        <a href="/blog" class="btn btn-primary group">
+      <div class="max-w-3xl mx-auto space-y-6 animate-slide-up">
+        <p class="text-xl sm:text-2xl text-black/70 dark:text-white/70 leading-relaxed font-light">
+          A collection of thoughts, experiences, and projects.
+        </p>
+        <p class="text-lg sm:text-xl text-black/60 dark:text-white/60 italic">
+          Fair warning: the contents here might be a bit unconventional.
+        </p>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4 pt-8 animate-slide-up-delayed">
+        <a href="/blog" class="btn-blog-card-glass group">
           <span>Read my blog</span>
-          <span
-            aria-hidden="true"
-            class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-current text-[0.65rem] transition-transform duration-200 group-hover:translate-x-1"
-          >
-            ↗
-          </span>
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
         </a>
-        <a href="/work" class="btn btn-outline group">
-          <span>View more</span>
-          <span
-            aria-hidden="true"
-            class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-current text-[0.65rem] transition-transform duration-200 group-hover:translate-x-1"
-          >
-            →
-          </span>
+        <a href="/work" class="btn-blog-card-glass group">
+          <span>View my work</span>
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
         </a>
       </div>
     </div>
   </section>
 
-  <div class="relative">
-    <div class="mx-auto max-w-screen-sm p-5 space-y-12">
+  <div class="relative bg-gradient-to-b from-transparent via-white/30 dark:via-zinc-900/30 to-transparent">
+    <div class="mx-auto max-w-6xl px-6 py-20 space-y-24">
 
       <!-- About Section -->
-      <section>
-        <article>
-          <p>I’m just a regular person —someone who enjoys simple things done well.</p>
-          <p>I enjoy building things. I thrive on challenges that let me learn by doing and solving problems.</p>
-        </article>
-      </section>
+      <section class="grid md:grid-cols-2 gap-12 items-center animate-section">
+        <div class="space-y-6">
+          <h2 class="text-4xl md:text-5xl font-black text-black dark:text-white">
+            About Me
+          </h2>
+          <div class="space-y-4 text-lg text-black/70 dark:text-white/70 leading-relaxed">
+            <p>I'm just a regular person — someone who enjoys simple things done well.</p>
+            <p>I enjoy building things. I thrive on challenges that let me learn by doing and solving problems.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-500/20 dark:hover:from-blue-400/20 dark:hover:to-purple-400/20 transition-all duration-300">
+            <div class="text-3xl mb-2">🚀</div>
+            <div class="font-semibold text-black dark:text-white">Fast</div>
+            <div class="text-sm text-black/60 dark:text-white/60">Performance first</div>
+          </div>
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-cyan-500/10 dark:from-green-400/10 dark:to-cyan-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-green-500/20 hover:to-cyan-500/20 dark:hover:from-green-400/20 dark:hover:to-cyan-400/20 transition-all duration-300">
+            <div class="text-3xl mb-2">🎨</div>
+            <div class="font-semibold text-black dark:text-white">Clean</div>
+            <div class="text-sm text-black/60 dark:text-white/60">Simple design</div>
+          </div>
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-500/10 to-red-500/10 dark:from-orange-400/10 dark:to-red-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-orange-500/20 hover:to-red-500/20 dark:hover:from-orange-400/20 dark:hover:to-red-400/20 transition-all duration-300">
+            <div class="text-3xl mb-2">⚡</div>
+            <div class="font-semibold text-black dark:text-white">Modern</div>
+            <div class="text-sm text-black/60 dark:text-white/60">Latest tech</div>
+          </div>
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 to-rose-500/10 dark:from-pink-400/10 dark:to-rose-400/10 backdrop-blur-sm border border-black/5 dark:border-white/5 hover:bg-gradient-to-br hover:from-pink-500/20 hover:to-rose-500/20 dark:hover:from-pink-400/20 dark:hover:to-rose-400/20 transition-all duration-300">
+            <div class="text-3xl mb-2">💡</div>
+            <div class="font-semibold text-black dark:text-white">Smart</div>
+            <div class="text-sm text-black/60 dark:text-white/60">Thoughtful solutions</div>
+          </div>
+        </div>
+</section>
 
-      <!-- Blog Preview Section -->
-      <section>
-        <div class="space-y-4">
-          <div class="flex justify-between">
-            <p class="font-semibold text-black dark:text-white">
-              Recent posts
+      <!-- Recent Blog Posts Section -->
+      <section class="space-y-12 animate-section">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <h2 class="text-4xl md:text-5xl font-black text-black dark:text-white mb-4">
+              Latest Blog Posts
+            </h2>
+            <p class="text-lg text-black/60 dark:text-white/60">
+              Recent thoughts on code, design, and everything in between.
             </p>
-            <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-blue/25 dark:decoration-white/50 hover:decoration-blue dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                All posts
-              </span>
-            </a>
           </div>
-          <ul class="space-y-4">
-            {posts.map((post) => (
-              <li>
-                <ArrowCard entry={post} />
-              </li>
-            ))}
-          </ul>
+          <a href="/blog" class="group inline-flex items-center gap-2 text-lg font-medium text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <span>All posts</span>
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
+          {posts.map((post, index) => (
+            <div class="transition-all duration-300" style={`animation-delay: ${index * 0.1}s`}>
+              <ArrowCard entry={post} pill={true} />
+            </div>
+          ))}
         </div>
       </section>
 
-      <!-- Contact Section -->
-      <section>
-        <div class="text-center">
-          <p class="font-semibold text-black dark:text-white">
-            Let's Connect
-          </p>
-          <p class="mb-4">
-            Reach out to me via email or on social media.
-          </p>
-          <div class="flex flex-col items-center gap-4">
-            {SOCIALS.map(social => (
-              <div class="text-center">
-                <div class="font-medium mb-1">
-                  {social.NAME}
-                </div>
-                <a href={social.HREF} target="_blank" 
-                   class="group underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-                  <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                    {social.TEXT}
-                  </span>
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
+
     </div>
   </div>
+  
+
 </PageLayout>

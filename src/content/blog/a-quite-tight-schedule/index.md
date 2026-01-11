@@ -1,7 +1,7 @@
 ---
 title: "A Quite Tight Schedule"
 date: "2013-12-23"
-summary: "Here's what happens when I had a tight schedule"
+summary: "Teaching from 5:30 AM to 4 PM: surviving a brutal teaching week and sleepless nights"
 categories: 
   - "activity"
 tags: 

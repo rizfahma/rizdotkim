@@ -7,7 +7,7 @@ tags:
   - "prayers"
   - "ramadan"
   - "taraweeh"
-summary: "some about things I do when praying"
+summary: "Ramadan reflections: how my mind wanders during taraweeh prayers and finding focus in spiritual practice"
 ---
 
 ### Mind Wanders

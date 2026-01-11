@@ -5,7 +5,7 @@ categories:
   - "health"
 tags: 
   - "lower back pain"
-summary: "You should also not ignore this pain. Otherwise..."
+summary: "My month-long battle with lower back pain: why ignoring early warning signs can be devastating"
 ---
 
 ### Because someday it probably will haunt again

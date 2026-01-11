@@ -1,7 +1,7 @@
 ---
 title: "Amsterdam, Pertama Kali"
 date: "2015-10-06"
-summary: "Pertama kali menginjakkan kaki di Amsterdam"
+summary: "My chaotic first arrival in Amsterdam: flight diverted to Brussels, passport drama, and relief"
 categories: 
   - "kuliah-di-belanda"
   - "study"

@@ -1,6 +1,6 @@
 ---
 title: "What is Procrastination?"
-summary: "My thought on procrastination"
+summary: "Defining procrastination: the art of forgetting responsibilities while chasing distractions"
 date: "Nov 11 2013"
 tags: 
   - "Procrastination"

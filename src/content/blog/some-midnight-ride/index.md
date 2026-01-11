@@ -6,7 +6,7 @@ categories:
 tags: 
   - "motorcycle"
   - "ride"
-summary: "Needed this to clear my mind"
+summary: "Midnight motorcycle therapy: riding through Jakarta's empty streets to escape the noise in my head"
 ---
 
 #### At least it relaxes my mind. Even only for a very short time

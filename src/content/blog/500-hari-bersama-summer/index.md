@@ -1,6 +1,6 @@
 ---
 title: "500 Hari Bersama Summer"
-summary: "Tulisan saya tentang film 500 Days of Summer"
+summary: "Why 500 Days of Summer isn't a love story: learning that destiny isn't real, only choices are"
 date: "2012-02-09"
 categories: 
   - "film"

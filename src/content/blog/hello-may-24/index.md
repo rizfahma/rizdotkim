@@ -1,7 +1,7 @@
 ---
 title: "Hello May 24"
 date: "2024-05-01"
-summary: "Me talking about May in 2024"
+summary: "May 2024 plans: renewing my passport, getting back to cycling, and seeking community beyond work"
 categories: 
   - "story"
 tags: 

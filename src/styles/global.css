@@ -732,6 +732,257 @@ article img {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
+/* Modern button styles */
+.btn-modern {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: 2px solid transparent;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent, rgba(255,255,255,0.15));
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-modern:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 28px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary-modern {
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary-modern:hover {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark .btn-modern {
+  background: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 8px 32px rgba(0, 0, 0, 0.02);
+}
+
+.dark .btn-modern:hover {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 28px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 12px 40px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary-modern {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary-modern:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-modern:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-primary-modern {
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary-modern:hover {
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.dark .btn-primary-modern {
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  color: #000000;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.dark .btn-primary-modern:hover {
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary-modern {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary-modern:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .btn-secondary-modern {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .btn-secondary-modern:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Glassmorphic hero buttons */
+.btn-hero-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: 2px solid transparent;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px) saturate(1.8);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 16px 48px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-hero-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
+    0 20px 64px rgba(0, 0, 0, 0.08);
+}
+
+.dark .btn-hero-glass {
+  backdrop-filter: blur(16px) saturate(1.8);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 16px 48px rgba(0, 0, 0, 0.02);
+}
+
+.dark .btn-hero-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 20px 64px rgba(0, 0, 0, 0.05);
+}
+
+/* Blog card glassmorphic style */
+.btn-blog-card-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: 2px solid transparent;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px) saturate(1.8);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 16px 48px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-blog-card-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
+    0 20px 64px rgba(0, 0, 0, 0.08);
+}
+
+.dark .btn-blog-card-glass {
+  backdrop-filter: blur(16px) saturate(1.8);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 16px 48px rgba(0, 0, 0, 0.02);
+}
+
+.dark .btn-blog-card-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 20px 64px rgba(0, 0, 0, 0.05);
+}
+
 .btn-primary {
   background-color: rgb(var(--foreground));
   color: rgb(var(--background));
@@ -812,4 +1063,97 @@ article img {
 
 .dark a:hover {
   opacity: 0.8;
+}
+
+/* Modern animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up-delayed {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-delayed {
+  animation: slide-up-delayed 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-section {
+  animation: section-reveal 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* Intersection observer classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Back to top button */
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+.translate-y-10 {
+  transform: translateY(2.5rem);
 }

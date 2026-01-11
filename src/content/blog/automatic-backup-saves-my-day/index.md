@@ -1,7 +1,7 @@
 ---
 title: "Automatic Backup Saves My Day"
 date: "2021-09-06"
-summary: "When auto backup can save my blog for real"
+summary: "The $2 backup service that saved my VPS: why automatic backups are worth every penny"
 categories: 
   - "story"
 tags: 

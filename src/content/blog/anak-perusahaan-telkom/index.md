@@ -1,7 +1,7 @@
 ---
 title: "Mengenal Anak-Anak Perusahaan Telkom (PT Telekomunikasi Indonesia)"
 date: "2018-02-09"
-summary: "Daftar anak perusahaan Telkom"
+summary: "Did you know Telkomsel is owned by Telkom? Exploring the massive Telkom corporate family tree"
 categories: 
   - "kerja-di-telkom"
 tags: 

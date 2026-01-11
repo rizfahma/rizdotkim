@@ -1,7 +1,7 @@
 ---
 title: "Rasanya Mendapat Beasiswa LPDP [Pengalaman Nyata]"
 date: "2017-09-10"
-summary: "Pengalaman mendaftar dan mendapatkan beasiswa LPDP"
+summary: "Complete guide to getting LPDP scholarship: from application to Netherlands with full funding"
 categories: 
   - "beasiswa-lpdp"
 tags: 

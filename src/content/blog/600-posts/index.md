@@ -1,7 +1,7 @@
 ---
 title: "600 Posts"
 date: "2017-05-08"
-summary: "my 600th posts on this blog, but lately I deleted a lot of those posts."
+summary: "600 posts later: why my personal blog remains more valuable than Facebook, Twitter, or Instagram"
 categories: 
   - "activity"
 tags: 

@@ -1,7 +1,7 @@
 ---
 title: "Alhamdulillah Ujian Meja Selesai, Tapi…"
 date: "2013-05-20"
-summary: "Ujian meja sudah selesai, terus???"
+summary: "The relief of completing my thesis defense: ending my student career but with revisions still needed"
 categories: 
   - "story"
 tags: 

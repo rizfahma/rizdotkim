@@ -5,7 +5,7 @@ categories:
   - "Books"
 tags: 
   - "Productivity"
-summary: "If you also like to read. You should read this blogpost. That's what the expert (a.k.a me)  says"
+summary: "The book buying trap: why we accumulate unread books and how to break the cycle of false promises"
 ---
 ### New solution or just Adding More to the piles
 

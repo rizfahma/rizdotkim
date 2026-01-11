@@ -1,7 +1,7 @@
 ---
 title: "1 Buku Sebulan"
 date: "2011-12-14"
-summary: "Sedang berusaha untuk membaca paling tidak 1 buku dalam sebulan"
+summary: "My journey from hating books to collecting them: building a habit of one book per month"
 categories: 
   - "story"
 tags: 

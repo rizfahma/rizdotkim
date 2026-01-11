@@ -6,7 +6,7 @@ categories:
 tags: 
   - "astro"
   - "wordpress"
-summary: "moving from WP?"
+summary: "Should I abandon WordPress after 17 years? Exploring Astro as a faster, simpler alternative for blogging"
 ---
 
 ## Is WordPress still worth to use?

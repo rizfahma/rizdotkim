@@ -1,7 +1,7 @@
 ---
 title: "Ada Apa Denganmu, XL Internet?"
 date: "2012-04-23"
-summary: "My thoughts on XL Internet service"
+summary: "XL Internet's terrible service: paying for 50MB data but getting zero allowance immediately"
 categories: 
   - "handphone"
 tags: 

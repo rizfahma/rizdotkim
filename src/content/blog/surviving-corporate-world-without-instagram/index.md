@@ -8,7 +8,7 @@ tags:
   - "instagram"
   - "meta"
 
-summary: "Why do we have to have IG account? FR"
+summary: "How I thrive professionally without Instagram: challenging corporate assumptions about social media requirements"
 ---
 
 ### I have been talking about it

@@ -6,7 +6,7 @@ categories:
 tags: 
   - "blog"
   - "domain"
-summary: "To use another domain? Why not."
+summary: "Why I abandoned 12 years of SEO: switching from rizqifahma.com to riz.kim and what happened next"
 ---
 
 ### Likely a huge "gamble" to do so

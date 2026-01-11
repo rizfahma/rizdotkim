@@ -1,7 +1,7 @@
 ---
 title: "A Post before Going to Bed"
 date: "2013-12-05"
-summary: "Here's what happens when I planned to write before sleep. You should try it too"
+summary: "Why I started journaling before bed: improving writing skills one 15-minute session at a time"
 categories: 
   - "activity"
 tags: 

@@ -1,7 +1,7 @@
 ---
 title: "Pengalaman Menjadi Asrot (Asisten Sorot) Dadakan Saat Meeting CFO Telkom"
 date: "2018-02-24"
-summary: "Berbicara tentang pengalaman bukan sembarang pengalaman, karena akhirnya mempermalukan diri wkwkw"
+summary: "My disastrous OJT experience as a presentation assistant to Telkom's CFO: nerves, WhatsApp distraction, and public embarrassment"
 categories: 
   - "kerja-di-telkom"
 tags: 

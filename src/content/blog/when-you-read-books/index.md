@@ -7,7 +7,7 @@ tags:
   - "book"
   - "statistics"
 
-summary: "Read it for the sake of yourself"
+summary: "My struggle with reading statistics books and questioning information retention - but choosing to keep learning anyway"
 ---
 
 ### How much of information do you retain?

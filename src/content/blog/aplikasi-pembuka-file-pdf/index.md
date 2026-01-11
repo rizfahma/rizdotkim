@@ -1,7 +1,7 @@
 ---
 title: "Aplikasi Pembuka File PDF"
 date: "2016-06-04"
-summary: "Berbicara mengenai aplikasi yang kira-kira bisa untuk membuka file pdf"
+summary: "Why Google Chrome is my secret weapon for PDF reading: better search features than Adobe Acrobat"
 categories: 
   - "computer"
 tags: 

@@ -1,6 +1,6 @@
 ---
 title: "So It Is 2024 Already"
-summary: "My writing about the new year 2024. The importance of seizing the day, realizing dreams, and make the resolutions work"
+summary: "Why I'm skipping New Year's resolutions in 2024: choosing execution over planning after years of failed promises"
 date: "2024-01-06"
 categories: 
   - "story"

@@ -6,7 +6,7 @@ categories:
 tags: 
   - "procrastination"
   - "productivity"
-summary: "I have to be productive, but is it costly?"
+summary: "The true price of productivity: how I conquered procrastination through coffee shops, iPads, and the 5-4-3-2-1 method"
 ---
 
 ## It’s a never ending effort, by the way.

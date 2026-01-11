@@ -1,7 +1,7 @@
 ---
 title: "Alhamdulillah, Akhirnya Yudisium Juga"
 date: "2013-06-04"
-summary: "Syukurnya sudah yudisium kuliah"
+summary: "Finally graduating: the relief of finishing my bachelor's degree and dreams of studying abroad"
 categories: 
   - "study"
 tags: 

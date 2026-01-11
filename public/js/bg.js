@@ -20,10 +20,35 @@
   }
 
   function initBG() {
-    // Reduce particle count for better performance
-    const particlesSmall = generateParticles(300);
-    const particlesMedium = generateParticles(150);
-    const particlesLarge = generateParticles(75);
+    // Optimize particle count based on device capabilities
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    let particleCount = {
+      small: 300,
+      medium: 150,
+      large: 75
+    };
+    
+    if (isMobile) {
+      particleCount = {
+        small: 100,
+        medium: 50,
+        large: 25
+      };
+    }
+    
+    if (isReducedMotion) {
+      particleCount = {
+        small: 0,
+        medium: 0,
+        large: 0
+      };
+    }
+    
+    const particlesSmall = generateParticles(particleCount.small);
+    const particlesMedium = generateParticles(particleCount.medium);
+    const particlesLarge = generateParticles(particleCount.large);
     const particles1 = document.getElementById('particles1');
     const particles2 = document.getElementById('particles2');
     const particles3 = document.getElementById('particles3');

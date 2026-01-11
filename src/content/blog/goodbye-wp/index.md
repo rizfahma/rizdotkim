@@ -5,7 +5,7 @@ categories:
   - "Blog"
 tags: 
   - "Experience"
-summary: "After multiple years, I think it is the right time to unplug it and move on"
+summary: "Why I'm leaving WordPress after 17 years: from constant downtimes and spam battles to the freedom of static sites"
 ---
 ### A Farewell After 17 Years?
 

@@ -8,7 +8,7 @@ tags:
   - "digitalocean"
   - "lightsail"
   - "linode"
-summary: "I have been thinking about moving it too"
+summary: "Why I abandoned DigitalOcean for AWS: billing nightmares vs the reliable cloud infrastructure I needed"
 ---
 
 I recently moved my blog(s) from DigitalOcean (DO) to AWS (Amazon Web Service). This is the very first time I use AWS service for my blog in my whole life. I use Lightsail product from AWS, because it's more simple to manage compared to Amazon EC2. I know that EC2 is more customizable compared to Lightsail, but at this moment I just don't have the time to do so.

@@ -9,7 +9,7 @@ tags:
   - "keuangan"
   - "push-up"
   - "resolusi"
-summary: "Me resolution circa 2023"
+summary: "My 2023 resolutions: from daily push-ups to investment diversification - tracking progress publicly"
 ---
 
 `[This post is and will stay updated as often as I can]`

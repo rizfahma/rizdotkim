@@ -1,7 +1,7 @@
 ---
 title: "Jumlah Aset Anak-anak Perusahaan Telkom"
 date: "2018-03-06"
-summary: "Kalau mau tau jumlah aset anak perusahaan Telkom di 2018, baca blog ini"
+summary: "Breaking down Telkom's massive empire: how 32 subsidiaries control nearly Rp 200 trillion in assets"
 categories: 
   - "kerja-di-telkom"
 tags: 

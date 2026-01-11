@@ -6,7 +6,7 @@ categories:
 tags: 
   - "medicine"
   - "work"
-summary: "Why do I have to have those meds"
+summary: "How full-time work forced me to embrace medicine: why I can't afford to be sick anymore"
 ---
 
 ## Somehow yes, I should.

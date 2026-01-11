@@ -7,7 +7,7 @@ tags:
   - "netflix"
   - "spotify"
   - "youtube-music"
-summary: "What I subscribe to and which one I unsubbed"
+summary: "Why I canceled Netflix and Spotify: fighting subscription fatigue and switching to YouTube Premium"
 ---
 
 ### Not only just for the increasing price

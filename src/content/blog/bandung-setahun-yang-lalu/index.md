@@ -1,7 +1,7 @@
 ---
 title: "Bandung, Setahun yang Lalu"
 date: "2012-01-29"
-summary: "Sedikit cerita dari pengalaman jalan-jalan di Bandung"
+summary: "My first solo trip to Bandung: attending WordCamp 2011 and crashing classes at ITB as an outsider"
 categories: 
   - "activity"
 tags: 

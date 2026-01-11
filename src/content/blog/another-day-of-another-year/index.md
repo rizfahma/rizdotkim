@@ -1,7 +1,7 @@
 ---
 title: "Another Day of Another Year"
 date: "2022-10-22"
-summary: "Not a birthday thang. Don't read it"
+summary: "Why I don't celebrate birthdays: another year older, another year of challenges I'm still figuring out"
 categories: 
   - "story"
 tags: 

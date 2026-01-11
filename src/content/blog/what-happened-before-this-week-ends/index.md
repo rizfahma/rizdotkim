@@ -5,7 +5,7 @@ categories:
   - "activity"
 tags: 
   - "scooter"
-summary: "a lot"
+summary: "When my scooter's v-belt shattered during rush hour: pushing 3km to the repair shop and discovering unexpected kindness"
 ---
 
 Hi, it's your boy again.  

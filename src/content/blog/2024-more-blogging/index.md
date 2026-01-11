@@ -1,6 +1,6 @@
 ---
 title: "2024: More Blogging (Responding to Matt Mullenweg)"
-summary: "My blog about starting 2024, inspired by Matt Mullenweg WordPress"
+summary: "My commitment to write more in 2024, inspired by Matt Mullenweg's birthday blog and 17 years with WordPress"
 date: "Jan 07 2024"
 categories: 
   - "activity"

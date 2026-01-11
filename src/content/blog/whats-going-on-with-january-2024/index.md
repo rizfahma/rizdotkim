@@ -1,6 +1,6 @@
 ---
 title: "What's Going On With January 2024"
-summary: "this is what happens with me in January 2024. A lot of pain and stuff, hopfully can be fine sooner."
+summary: "January from hell: back pain, fever, and a terrifying eye injury that almost cost me my eyesight"
 date: "Jan 25 2024"
 tags: 
   - health

@@ -5,7 +5,7 @@ categories:
   - "activity"
 tags: 
   - "haircut"
-summary: "me got some haircut aye"
+summary: "The frustrating gamble of finding a new barber: why a bad haircut means weeks of regret and patience"
 ---
 
 ## Can't really do much about it

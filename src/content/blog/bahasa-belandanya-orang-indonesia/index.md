@@ -1,7 +1,7 @@
 ---
 title: "Bahasa Belandanya Orang Indonesia"
 date: "2015-12-25"
-summary: "Just read this, and it's hilarious"
+summary: "When my Indian friend thought Indonesians speak Dutch: the hilarious truth about our shared colonial vocabulary"
 categories: 
   - "kuliah-di-belanda"
 tags: 

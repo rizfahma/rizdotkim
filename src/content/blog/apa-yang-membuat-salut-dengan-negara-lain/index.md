@@ -1,7 +1,7 @@
 ---
 title: "Apa yang Membuat Salut dengan Negara Lain"
 date: "2011-12-16"
-summary: "Tentu saja kalian tahu apa yang bagus dari negara lain"
+summary: "What makes me admire neighboring countries: highways, monorails, and discipline versus Indonesia's challenges"
 categories: 
   - "story"
 tags: 

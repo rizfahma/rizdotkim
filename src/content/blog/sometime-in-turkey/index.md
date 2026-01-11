@@ -7,7 +7,7 @@ tags:
   - "training"
   - "travelling"
 
-summary: "Should have been visited it many years ago"
+summary: "Istanbul impressions: discovering Turkish culture, surprising Bahasa speakers, and confronting 47% inflation"
 ---
 
 ## Not the first time

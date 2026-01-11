@@ -1,7 +1,7 @@
 ---
 title: "10 Tahun rizqifahma.com"
 date: "2021-02-27"
-summary: "Cerita tentang 10 tahun blogging di personal blog ini"
+summary: "A decade of personal blogging: how my website survived Facebook, Instagram, and the social media revolution"
 categories: 
   - "story"
 tags: 

@@ -7,7 +7,7 @@ tags:
   - "loneliness"
   - "snowfall"
   - "stellar"
-summary: "Make me so melancholy"
+summary: "Two instrumental tracks that transport me to unknown roads under rain - discovering peace in melancholy music"
 ---
 
 I have been wanting to share about it for the last couple of months, but haven't had any idea how to describe it.

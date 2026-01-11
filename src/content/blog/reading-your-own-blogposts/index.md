@@ -7,7 +7,7 @@ tags:
   - "blogpost"
   - "feelings"
   - "memory"
-summary: "Is it that cringe?"
+summary: "The awkward journey of reading my decade-old blog posts: from cringe to self-acceptance"
 ---
 
 ## Mixed Feelings

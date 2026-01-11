@@ -1,7 +1,7 @@
 ---
 title: "Apa Resolusi 2016 Saya?"
 date: "2016-01-16"
-summary: "no need to read it"
+summary: "My 2016 resolutions: still thinking about them and why I'm procrastinating"
 categories: 
   - "story"
 tags: 

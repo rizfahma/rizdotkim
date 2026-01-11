@@ -1,7 +1,7 @@
 ---
 title: "Akhirnya Pindah Ke Indonesia"
 date: "2012-07-05"
-summary: "Cerita tentang proses pindah server?"
+summary: "Why I moved my blog from American hosting to Indonesian servers: payment problems and local advantages"
 categories: 
   - "story"
 tags: 
