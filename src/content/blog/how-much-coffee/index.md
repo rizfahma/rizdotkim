@@ -1,5 +1,5 @@
 ---
-title: "How Much Coffe is Too Much?"
+title: "How Much Coffee is Too Much?"
 date: "2026-01-13"
 categories: 
   - "activity"
