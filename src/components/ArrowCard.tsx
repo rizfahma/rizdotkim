@@ -13,13 +13,13 @@ export default function ArrowCard({entry, pill}: Props) {
           href={`/${entry.collection}/${entry.slug}`} 
            class="block h-full p-6 bg-white dark:bg-zinc-900/80 border border-black/5 dark:border-white/10 rounded-2xl backdrop-blur-sm
                   hover:bg-gradient-to-br hover:from-blue-50/95 hover:to-purple-50/95 dark:hover:from-blue-900/35 dark:hover:to-purple-900/35
-                  hover:border-blue-300/30 dark:hover:border-purple-400/30
-                  transition-colors duration-200 overflow-hidden"
+                  hover:border-blue-300/50 dark:hover:border-purple-400/50
+                  transition-colors duration-200 transform-none hover:transform-none
+                  overflow-hidden"
           role="article"
           aria-label={`Read ${entry.data.title}`}
         >
-            {/* Decorative corner accent */}
-            <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/8 dark:to-purple-400/8 rounded-bl-full opacity-0 group-hover:opacity-40 transition-opacity duration-200"></div>
+
             
             <div class="relative h-full flex flex-col">
               {/* Header with meta */}
@@ -60,20 +60,7 @@ export default function ArrowCard({entry, pill}: Props) {
                 </div>
               )}
 
-              {/* Footer with arrow */}
-              <div class="flex items-center justify-between mt-auto">
-                <span class="text-sm font-semibold text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  Continue reading
-                </span>
-                <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-full bg-blue-500/10 dark:bg-blue-400/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 dark:text-blue-400">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </a>
       </article>
