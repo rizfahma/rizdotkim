@@ -5,7 +5,7 @@ categories:
   - "activity"
 tags: 
   - "coffee"
-summary: ""
+summary: "Sharing my love for coffee and how it fits into my daily routine. From brewing black coffee at the office to experimenting with flavors at home."
 ---
 
 > Do you have any limit on your daily coffee intake?
