@@ -23,7 +23,7 @@ My favorite thing to do in the morning, after arriving, clocked in on the app, p
 
 My coffee in this particular office, since I make it myself (with the espresso machine obviously) is just a black coffee. No sugar at all, only added a few water to dilute the coffe a bit more. That's it, and I am ready to check emails, to-do lists, chats, etc on my laptop and phone.
 
-Since I have been "practicing" intermittent fasting (it's more than 270 already in less than a year), I don't have any breakfast before my intermittent fasting done. It's not extreme, sometimes I even just did a 1 hours IF. So, that black coffee is my only thing I have beside water in the morning.
+Since I have been "practicing" intermittent fasting (it's more than 270 already in less than a year), I don't have any breakfast before my intermittent fasting done. It's not extreme, sometimes I even just did a 12 hours IF. So, that black coffee is my only thing I have beside water in the morning.
 
 ## How much coffee again is too much?
 
