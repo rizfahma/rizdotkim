@@ -27,12 +27,12 @@ Since I have been "practicing" intermittent fasting (it's more than 270 already 
 
 ## How much coffee again is too much?
 
-Well, according to FDA, it is roughly 4 cups daily that's enough (400 gr of caffeine). But as a mentioned earlier, I even drank at least 4 cups sometimes.
+Well, according to FDA, it is roughly 4 cups daily that's enough (400 gr of caffeine). But as I mentioned earlier, I even drank at least 4 cups sometimes.
 
 Does it have any effect based on what I feel? 
 In terms of healthy issue, uhm I don't think so (yet). Not in a terribly bad way.
 
-> Yes I feel the "heartbeat" too, sometimes it upsets my stomach too, but surprisingly not as much I worried about.
+> Yes I feel the "heartbeat" too, sometimes it upsets my stomach too, but surprisingly not as much as I worried about.
 
 That's why, when I had some overtime at the office that made me stay until late night, I drank at least 3 cups of coffee. Beside to prevent sleepy feeling, often times is that I felt bored and needed some activity other than chitchatting and staring at the monitor.
 
