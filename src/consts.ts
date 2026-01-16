@@ -75,11 +75,6 @@ export const SOCIALS: Socials = [
     TEXT: "rizfahma",
     HREF: "https://twitter.com/rizfahma",
   },
-  // { 
-  //   NAME: "Github",
-  //   ICON: "github",
-  //   TEXT: "markhorn-dev",
-  //   HREF: "https://github.com/markhorn-dev/astro-sphere"
-  // },
+  
 ]
 

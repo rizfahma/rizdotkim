@@ -10,11 +10,12 @@ import Container from "@components/Container.astro"
   <Container size="md">
     <div class="relative h-full w-full">
       <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
-        <a href="/" class="flex gap-1 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-          <svg class="size-6 fill-current">
-            <use href="/brand.svg#brand"></use>
+        <a href="/" class="flex gap-2 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          <svg class="size-9" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="500" cy="500" r="497.5" fill="black"/>
+            <text x="500" y="750" font-family="Geist, sans-serif" font-size="600" font-weight="bold" text-anchor="middle" fill="white">RF</text>
           </svg>
-          <div>
+          <div class="flex items-center" style="font-family: 'CaskaydiaMono Nerd Font', monospace;">
             {SITE.TITLE}
           </div>
         </a>
