@@ -10,7 +10,7 @@ import MeteorShower from "@components/MeteorShower.astro"
 const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0,5)
+  .slice(0,4)
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
@@ -96,21 +96,13 @@ const posts = (await getCollection("blog"))
 
       <!-- Recent Blog Posts Section -->
       <section class="space-y-12 animate-section">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div>
-            <h2 class="text-4xl md:text-5xl font-black text-black dark:text-white mb-4">
-              Latest Blog Posts
-            </h2>
-            <p class="text-lg text-black/60 dark:text-white/60">
-              Recent thoughts on anything that I wish I could put into words.
-            </p>
-          </div>
-          <a href="/blog" class="group inline-flex items-center gap-2 text-lg font-medium text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            <span>All posts</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
+        <div class="text-center space-y-6">
+          <h2 class="text-4xl md:text-5xl font-black text-black dark:text-white">
+            Latest Blog Posts
+          </h2>
+          <p class="text-lg text-black/60 dark:text-white/60">
+            Recent thoughts on anything that I wish I could put into words.
+          </p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
@@ -119,6 +111,15 @@ const posts = (await getCollection("blog"))
               <ArrowCard entry={post} pill={true} />
             </div>
           ))}
+        </div>
+        
+        <div class="text-center">
+          <a href="/blog" class="btn-blog-card-glass group">
+            <span>All Posts</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </section>
 
