@@ -925,7 +925,96 @@ article img {
     0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
-/* Blog card glassmorphic style */
+/* Supabase-inspired button styles */
+.btn-supabase {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: "Cal Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding: 0.625rem 1.25rem;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-supabase-primary {
+  background: #3ecf8e;
+  color: #ffffff;
+  border-color: #3ecf8e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.btn-supabase-primary:hover {
+  background: #36b57d;
+  border-color: #36b57d;
+}
+
+.btn-supabase-secondary {
+  background: transparent;
+  color: #3ecf8e;
+  border-color: #3ecf8e;
+}
+
+.btn-supabase-secondary:hover {
+  background: #3ecf8e;
+  color: #ffffff;
+}
+
+.btn-supabase-outline {
+  background: transparent;
+  color: #64748b;
+  border-color: #e2e8f0;
+}
+
+.btn-supabase-outline:hover {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+.dark .btn-supabase-outline {
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.dark .btn-supabase-outline:hover {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+/* Supabase-inspired card styles */
+.card-supabase {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-supabase:hover {
+  border-color: #cbd5e1;
+}
+
+.dark .card-supabase {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-color: #334155;
+}
+
+.dark .card-supabase:hover {
+  border-color: #475569;
+}
+
+/* Blog card glassmorphic style (keeping for compatibility) */
 .btn-blog-card-glass {
   display: inline-flex;
   align-items: center;
@@ -1145,4 +1234,78 @@ article img {
 
 .translate-y-10 {
   transform: translateY(2.5rem);
+}
+
+/* Supabase-inspired additional styles */
+.text-supabase-green { color: #3ecf8e; }
+.text-supabase-blue { color: #0891b2; }
+.text-supabase-purple { color: #8b5cf6; }
+.text-supabase-pink { color: #ec4899; }
+.text-supabase-orange { color: #f97316; }
+
+.bg-supabase-green { background-color: #3ecf8e; }
+.bg-supabase-blue { background-color: #0891b2; }
+.bg-supabase-purple { background-color: #8b5cf6; }
+.bg-supabase-pink { background-color: #ec4899; }
+.bg-supabase-orange { background-color: #f97316; }
+
+.border-supabase-green { border-color: #3ecf8e; }
+.border-supabase-blue { border-color: #0891b2; }
+.border-supabase-purple { border-color: #8b5cf6; }
+.border-supabase-pink { border-color: #ec4899; }
+.border-supabase-orange { border-color: #f97316; }
+
+/* Supabase-inspired hover effects */
+.hover-lift {
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Supabase-inspired focus states */
+.focus-ring:focus {
+  outline: 2px solid #3ecf8e;
+  outline-offset: 2px;
+}
+
+/* Supabase-inspired gradient text */
+.gradient-text-supabase {
+  background: linear-gradient(135deg, #3ecf8e, #0891b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Supabase-inspired badge styles */
+.badge-supabase {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+}
+
+.badge-supabase-green {
+  background-color: rgba(62, 207, 142, 0.1);
+  color: #3ecf8e;
+  border-color: rgba(62, 207, 142, 0.2);
+}
+
+.badge-supabase-blue {
+  background-color: rgba(8, 145, 178, 0.1);
+  color: #0891b2;
+  border-color: rgba(8, 145, 178, 0.2);
+}
+
+.badge-supabase-purple {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.2);
 }

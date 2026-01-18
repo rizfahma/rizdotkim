@@ -63,14 +63,14 @@ const posts = (await getCollection("blog"))
       </div>
       
       <div class="flex flex-wrap justify-center gap-4 mt-16 animate-slide-up-delayed">
-        <a href="/blog" class="btn-blog-card-glass group">
-          <span>Read my blog</span>
+        <a href="/blog" class="btn-supabase btn-supabase-primary group">
+          <span>Read my Blog</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
         </a>
-        <a href="/about" class="btn-blog-card-glass group">
-          <span>More Info</span>
+        <a href="/about" class="btn-supabase btn-supabase-secondary group">
+          <span>More</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
@@ -105,7 +105,7 @@ const posts = (await getCollection("blog"))
           </p>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 items-stretch max-w-4xl mx-auto">
           {posts.map((post, index) => (
             <div class="transform-none hover:transform-none">
               <ArrowCard entry={post} pill={true} />
@@ -114,7 +114,7 @@ const posts = (await getCollection("blog"))
         </div>
         
         <div class="text-center">
-          <a href="/blog" class="btn-blog-card-glass group">
+          <a href="/blog" class="btn-supabase btn-supabase-outline group">
             <span>All Posts</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

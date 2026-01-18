@@ -49,18 +49,4 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', requestTick);
-
-  // Enhanced hover states for cards
-  const cards = document.querySelectorAll('[class*="group"]');
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-4px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      setTimeout(() => {
-        card.style.transform = 'translateY(0) scale(1)';
-      }, 100);
-    });
-  });
 });
