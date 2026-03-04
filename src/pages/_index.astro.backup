@@ -86,7 +86,7 @@ const stack = [
       </p>
       <div class="flex flex-wrap justify-center gap-3 pt-8">
         <a href="/blog" class="btn btn-primary group">
-          <span>Read my blog</span>
+          <span>Read my Blog</span>
           <span
             aria-hidden="true"
             class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-current text-[0.65rem] transition-transform duration-200 group-hover:translate-x-1"

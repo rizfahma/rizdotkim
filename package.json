@@ -5,13 +5,16 @@
   "engines": {
     "node": ">=18.20.8"
   },
+  "overrides": {
+    "rollup": ">=4.59.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "dev:network": "astro dev --host",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "preview:network": "astro dev --host",
+    "preview_network": "astro dev --host",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
