@@ -59,6 +59,15 @@ export default {
       });
     }
 
+    if (path === '/api/debug') {
+      return new Response(JSON.stringify({ 
+        adminMessages: adminMessages,
+        clientCount: clients.size 
+      }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     return new Response('Not Found', { status: 404 });
   },
 };
@@ -323,18 +332,22 @@ async function handlePollMessages(request: Request, env: Env): Promise<Response>
   
   const newMessages = adminMessages.filter(m => m.timestamp > since && !m.delivered);
   
-  for (const msg of newMessages) {
-    msg.delivered = true;
-  }
+  const messagesToReturn = newMessages.map(m => ({
+    id: m.id,
+    text: m.text,
+    timestamp: m.timestamp,
+    from: 'admin',
+    name: 'You'
+  }));
+  
+  setTimeout(() => {
+    for (const msg of newMessages) {
+      msg.delivered = true;
+    }
+  }, 1000);
   
   return new Response(JSON.stringify({ 
-    messages: newMessages.map(m => ({
-      id: m.id,
-      text: m.text,
-      timestamp: m.timestamp,
-      from: 'admin',
-      name: 'You'
-    }))
+    messages: messagesToReturn
   }), {
     headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
   });

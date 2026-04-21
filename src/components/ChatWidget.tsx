@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, Show, For } from 'solid-js';
+import { createSignal, onMount, onCleanup, Show, For, createEffect } from 'solid-js';
 
 interface Message {
   id: string;
@@ -65,7 +65,13 @@ export default function ChatWidget() {
     typingInterval = window.setInterval(() => {
       checkTyping();
       pollForAdminMessages();
-    }, 2000);
+    }, 1000);
+
+    createEffect(() => {
+      if (isOpen() && !socket) {
+        connectWebSocket();
+      }
+    });
   });
 
   onCleanup(() => {
