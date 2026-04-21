@@ -6,6 +6,7 @@ const rateLimitMap = new Map<string,{ count: number; resetTime: number }>();
 const lastTypingUpdate = new Map<string, number>();
 const adminMessages: Array<{id: string, text: string, timestamp: number, delivered: boolean}> = [];
 const visitorInfo: Map<string, {username?: string, phone?: string, name: string}> = new Map();
+const visitorMessages: Map<string, Array<{id: string, from: string, name: string, text: string, timestamp: number}>> = new Map();
 
 const ALLOWED_ORIGINS = ['https://riz.kim', 'https://fahma.pages.dev', 'http://localhost:4321'];
 
@@ -229,8 +230,12 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
     const messageId = update.message.message_id;
     const from = update.message.from;
 
-    if (chatId === env.ADMIN_CHAT_ID) {
-      console.log('Admin message received:', { text, messageId });
+    const adminChatId = String(env.ADMIN_CHAT_ID);
+    const isAdmin = String(chatId) === adminChatId;
+    console.log('DEBUG - chatId:', chatId, 'adminChatId:', adminChatId, 'match:', isAdmin);
+    
+    if (isAdmin) {
+      console.log('Admin message received:', { text, messageId, chatId: String(chatId), adminId: env.ADMIN_CHAT_ID });
       
       if (text.startsWith('/start')) {
         return new Response(JSON.stringify({ ok: true, message: 'Just send any message to reply!' }), {
@@ -291,7 +296,7 @@ async function handlePollMessages(request: Request, env: Env): Promise<Response>
   const since = parseInt(url.searchParams.get('since') || '0');
   const origin = request.headers.get('Origin') || '';
   
-  const newMessages = adminMessages.filter(m => m.timestamp > since && !m.delivered);
+  const newMessages = adminMessages.filter(m => m.timestamp > since);
   
   const messagesToReturn = newMessages.map(m => ({
     id: m.id,
@@ -300,12 +305,6 @@ async function handlePollMessages(request: Request, env: Env): Promise<Response>
     from: 'admin',
     name: 'You'
   }));
-  
-  setTimeout(() => {
-    for (const msg of newMessages) {
-      msg.delivered = true;
-    }
-  }, 1000);
   
   return new Response(JSON.stringify({ 
     messages: messagesToReturn
