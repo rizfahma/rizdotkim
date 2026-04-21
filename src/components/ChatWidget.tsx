@@ -21,7 +21,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = createSignal<Message[]>([]);
   const [error, setError] = createSignal<string | null>(null);
   const [isSending, setIsSending] = createSignal(false);
-  const [showNameInput, setShowNameInput] = createSignal(true);
+  const [showNameInput, setShowNameInput] = createSignal(false);
   const [showContactInput, setShowContactInput] = createSignal(true);
 
   let socket: WebSocket | null = null;
@@ -680,7 +680,7 @@ export default function ChatWidget() {
               />
             </Show>
 
-            <Show when={showContactInput() && !showNameInput()}>
+            <Show when={showContactInput()}>
               <div class="contact-inputs">
                 <input
                   type="text"

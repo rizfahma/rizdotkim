@@ -216,24 +216,47 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
       const from = update.message.from;
 
       if (chatId === env.ADMIN_CHAT_ID) {
+        console.log('Admin message received:', { text, messageId });
+        
         if (text.startsWith('/r ')) {
-          const parts = text.slice(3).split(' ', 2);
-          const targetId = parts[0];
-          const replyText = parts.slice(1).join(' ');
+          const remaining = text.slice(3).trim();
+          const spaceIdx = remaining.indexOf(' ');
+          let targetId: string;
+          let replyText: string;
           
-          if (targetId && replyText) {
+          if (spaceIdx === -1) {
+            targetId = remaining;
+            replyText = '';
+          } else {
+            targetId = remaining.slice(0, spaceIdx);
+            replyText = remaining.slice(spaceIdx + 1);
+          }
+          
+          console.log('Reply command:', { targetId, replyText });
+          
+          if (targetId) {
+            const replyMsg = {
+              id: `reply_${Date.now()}`,
+              text: sanitizeText(replyText || 'Reply sent', 500),
+              timestamp: Date.now(),
+              delivered: false
+            };
+            adminMessages.push(replyMsg);
+            
             for (const [, socket] of clients) {
               if (socket.readyState === WebSocket.OPEN) {
-                socket.send(JSON.stringify({
+                const msgPayload = {
                   type: 'message',
                   from: 'admin',
                   name: 'You',
-                  text: replyText,
-                  timestamp: Date.now(),
-                }));
+                  text: replyMsg.text,
+                  timestamp: replyMsg.timestamp,
+                };
+                console.log('Sending via WebSocket:', msgPayload);
+                socket.send(JSON.stringify(msgPayload));
               }
             }
-            return new Response(JSON.stringify({ ok: true, reply_sent: true }), {
+            return new Response(JSON.stringify({ ok: true, reply_sent: true, targetId }), {
               headers: { 'Content-Type': 'application/json' },
             });
           }
