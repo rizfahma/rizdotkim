@@ -4,15 +4,32 @@ import { sendTelegramMessage,sendTelegramAction,sanitizeText,sanitizeName,isRate
 const clients = new Map<string, WebSocket>();
 const rateLimitMap = new Map<string,{ count: number; resetTime: number }>();
 const lastTypingUpdate = new Map<string, number>();
+const adminMessages: Array<{id: string, text: string, timestamp: number, delivered: boolean}> = [];
+
+const ALLOWED_ORIGINS = ['https://riz.kim', 'https://fahma.pages.dev', 'http://localhost:4321'];
+
+function corsHeaders(origin: string): Record<string, string> {
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : '*';
+  return {
+    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+}
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const path = url.pathname;
     const clientIp = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const origin = request.headers.get('Origin') || '';
 
     if (path === '/api/send' && request.method === 'POST') {
       return handleSendMessage(request, env, clientIp);
+    }
+
+    if (path === '/api/send' && request.method === 'OPTIONS') {
+      return new Response(null, { headers: corsHeaders(origin) });
     }
 
     if (path === '/api/stream') {
@@ -31,9 +48,13 @@ export default {
       return handleGetMessages(request, env);
     }
 
+    if (path === '/api/poll') {
+      return handlePollMessages(request, env);
+    }
+
     if (path === '/api/health') {
       return new Response(JSON.stringify({ status: 'ok', clients: clients.size }), {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
       });
     }
 
@@ -42,10 +63,13 @@ export default {
 };
 
 async function handleSendMessage(request: Request, env: Env, clientIp: string): Promise<Response> {
+  const origin = request.headers.get('Origin') || '';
+  const cors = corsHeaders(origin);
+
   if (isRateLimited(clientIp, rateLimitMap, 10, 60000)) {
     return new Response(JSON.stringify({ error: 'Rate limited. Try again later.' }), {
       status: 429,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', ...cors },
     });
   }
 
@@ -57,7 +81,7 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
     if (!text) {
       return new Response(JSON.stringify({ error: 'Message cannot be empty' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...cors },
       });
     }
 
@@ -66,7 +90,7 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
       console.log('New visitor message:', { name, text });
       return new Response(JSON.stringify({ error: 'Bot not configured yet' }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...cors },
       });
     }
 
@@ -76,7 +100,7 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
     if (!success) {
       return new Response(JSON.stringify({ error: 'Failed to send message' }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...cors },
       });
     }
 
@@ -93,13 +117,13 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
     }
 
     return new Response(JSON.stringify({ success: true, name }), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', ...cors },
     });
   } catch (error) {
     console.error('Error handling send message:', error);
     return new Response(JSON.stringify({ error: 'Invalid request' }), {
       status: 400,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', ...cors },
     });
   }
 }
@@ -181,6 +205,13 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
 
       if (chatId === env.ADMIN_CHAT_ID) {
         lastTypingUpdate.set(chatId, Date.now());
+        const msgObj = {
+          id: `msg_${messageId}`,
+          text: sanitizeText(text, 500),
+          timestamp: Date.now(),
+          delivered: false
+        };
+        adminMessages.push(msgObj);
 
         for (const [, socket] of clients) {
           if (socket.readyState === WebSocket.OPEN) {
@@ -188,8 +219,8 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
               type: 'message',
               from: 'admin',
               name: 'You',
-              text: sanitizeText(text, 500),
-              timestamp: Date.now(),
+              text: msgObj.text,
+              timestamp: msgObj.timestamp,
               messageId,
             }));
           }
@@ -210,7 +241,31 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
 }
 
 async function handleGetMessages(request: Request, env: Env): Promise<Response> {
-  return new Response(JSON.stringify({ messages: [] }), {
+  return new Response(JSON.stringify({ messages: adminMessages.filter(m => !m.delivered) }), {
     headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+async function handlePollMessages(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const since = parseInt(url.searchParams.get('since') || '0');
+  const origin = request.headers.get('Origin') || '';
+  
+  const newMessages = adminMessages.filter(m => m.timestamp > since && !m.delivered);
+  
+  for (const msg of newMessages) {
+    msg.delivered = true;
+  }
+  
+  return new Response(JSON.stringify({ 
+    messages: newMessages.map(m => ({
+      id: m.id,
+      text: m.text,
+      timestamp: m.timestamp,
+      from: 'admin',
+      name: 'You'
+    }))
+  }), {
+    headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
   });
 }

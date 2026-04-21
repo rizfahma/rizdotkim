@@ -11,7 +11,7 @@ interface Message {
 const WORKER_URL = 'https://chat-relay.rix888.workers.dev';
 
 export default function ChatWidget() {
-  const [isOpen, setIsOpen] = createSignal(true);
+  const [isOpen, setIsOpen] = createSignal(false);
   const [isConnected, setIsConnected] = createSignal(false);
   const [isTryingConnect, setIsTryingConnect] = createSignal(true);
   const [nameInput, setNameInput] = createSignal('');
@@ -48,7 +48,10 @@ export default function ChatWidget() {
     }
 
     connectWebSocket();
-    typingInterval = window.setInterval(checkTyping, 3000);
+    typingInterval = window.setInterval(() => {
+      checkTyping();
+      pollForAdminMessages();
+    }, 2000);
   });
 
   onCleanup(() => {
@@ -154,6 +157,41 @@ export default function ChatWidget() {
       const data = await resp.json();
     } catch (e) {
       console.error('Typing check failed:', e);
+    }
+  }
+
+  async function pollForAdminMessages() {
+    if (!isOpen()) return;
+
+    try {
+      const lastTs = messages().slice(-1)[0]?.timestamp || 0;
+      const resp = await fetch(`${WORKER_URL}/api/poll?since=${lastTs}`);
+      if (!resp.ok) return;
+      
+      const data = await resp.json();
+      if (data.messages && Array.isArray(data.messages)) {
+        for (const msg of data.messages) {
+          const newMsg: Message = {
+            id: msg.id || crypto.randomUUID(),
+            from: 'admin',
+            name: msg.name,
+            text: msg.text,
+            timestamp: msg.timestamp,
+          };
+          setMessages((prev) => {
+            const exists = prev.some(m => m.id === newMsg.id);
+            if (exists) return prev;
+            const updated = [...prev, newMsg];
+            saveMessages(updated);
+            return updated;
+          });
+        }
+        if (data.messages.length > 0) {
+          scrollToBottom();
+        }
+      }
+    } catch (e) {
+      console.error('Poll failed:', e);
     }
   }
 
