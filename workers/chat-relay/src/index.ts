@@ -5,6 +5,7 @@ const clients = new Map<string, WebSocket>();
 const rateLimitMap = new Map<string,{ count: number; resetTime: number }>();
 const lastTypingUpdate = new Map<string, number>();
 const adminMessages: Array<{id: string, text: string, timestamp: number, delivered: boolean}> = [];
+const visitorInfo: Map<string, {username?: string, phone?: string, name: string}> = new Map();
 
 const ALLOWED_ORIGINS = ['https://riz.kim', 'https://fahma.pages.dev', 'http://localhost:4321'];
 
@@ -94,7 +95,10 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
       });
     }
 
-    const messageText = `<b>${name}</b>:\n${text}`;
+    const visitorId = `web_${Date.now()}`;
+    visitorInfo.set(visitorId, { name });
+    
+    const messageText = `<b>👤 ${name}</b>\n📝 ${text}\n\n<em>Reply with /r ${visitorId} &lt;your message&gt; to reply</em>`;
     const success = await sendTelegramMessage(env, adminChatId, messageText);
 
     if (!success) {
@@ -202,8 +206,38 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
       const chatId = update.message.chat.id.toString();
       const text = update.message.text || '';
       const messageId = update.message.message_id;
+      const from = update.message.from;
 
       if (chatId === env.ADMIN_CHAT_ID) {
+        if (text.startsWith('/r ')) {
+          const parts = text.slice(3).split(' ', 2);
+          const targetId = parts[0];
+          const replyText = parts.slice(1).join(' ');
+          
+          if (targetId && replyText) {
+            for (const [, socket] of clients) {
+              if (socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({
+                  type: 'message',
+                  from: 'admin',
+                  name: 'You',
+                  text: replyText,
+                  timestamp: Date.now(),
+                }));
+              }
+            }
+            return new Response(JSON.stringify({ ok: true, reply_sent: true }), {
+              headers: { 'Content-Type': 'application/json' },
+            });
+          }
+        }
+        
+        if (text.startsWith('/start')) {
+          return new Response(JSON.stringify({ ok: true, message: 'Welcome! Use /r [visitor_id] [message] to reply to web visitors.' }), {
+            headers: { 'Content-Type': 'application/json' },
+          });
+        }
+
         lastTypingUpdate.set(chatId, Date.now());
         const msgObj = {
           id: `msg_${messageId}`,
@@ -225,6 +259,12 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
             }));
           }
         }
+      } else {
+        const username = from?.username;
+        const phone = from?.phone_number || update.message.contact?.phone_number;
+        const visitorName = from?.first_name || 'Visitor';
+        
+        console.log('New visitor:', { chatId, username, phone, name: visitorName });
       }
     }
 

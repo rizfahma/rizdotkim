@@ -134,7 +134,7 @@ export default function ChatWidget() {
       socket.onclose = () => {
         setIsConnected(false);
         setIsTryingConnect(false);
-        setTimeout(connectWebSocket, 3000);
+        setTimeout(connectWebSocket, 5000);
       };
 
       socket.onerror = () => {
@@ -142,9 +142,8 @@ export default function ChatWidget() {
         setIsTryingConnect(false);
       };
     } catch (e) {
-      setError('Connection failed');
+      console.error('WebSocket error:', e);
       setIsTryingConnect(false);
-      setTimeout(connectWebSocket, 3000);
     }
   }
 

@@ -25,13 +25,21 @@ export interface TelegramUpdate {
       id: number;
       is_bot: boolean;
       first_name?: string;
+      last_name?: string;
       username?: string;
+      phone_number?: string;
     };
     chat: {
       id: number;
       type: string;
+      username?: string;
+      first_name?: string;
     };
     text?: string;
+    contact?: {
+      phone_number?: string;
+      first_name?: string;
+    };
   };
 }
 
