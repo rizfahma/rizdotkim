@@ -1,6 +1,6 @@
 import { createSignal, Show } from 'solid-js';
 
-const TELEGRAM_BOT_URL = 'https://t.me/rizkim_bot';
+const TELEGRAM_BOT_URL = 'https://t.me/rizdotkimbot';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = createSignal(false);
