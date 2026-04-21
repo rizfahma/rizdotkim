@@ -548,5 +548,3 @@ async function handleConversation(request: Request, env: Env): Promise<Response>
 
   return new Response('Method not allowed', { status: 405 });
 }
-  });
-}
