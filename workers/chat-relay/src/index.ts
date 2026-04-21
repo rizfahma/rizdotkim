@@ -114,7 +114,7 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
     if (telegram) contactParts.push(`📨 @${telegram.replace('@', '')}`);
     const contactInfo = contactParts.length > 0 ? `\n${contactParts.join(' | ')}` : '';
     
-    const messageText = `<b>👤 ${name}</b>${contactInfo}\n📝 ${text}\n\n<em>Reply: /r ${visitorId} &lt;message&gt;</em>`;
+    const messageText = `<b>👤 ${name}</b>${contactInfo}\n📝 ${text}\n\n<em>💬 Just reply with any message to send to the visitor!</em>`;
     const success = await sendTelegramMessage(env, adminChatId, messageText);
 
     if (!success) {
@@ -218,94 +218,55 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
   try {
     const update = await request.json() as TelegramUpdate;
 
-    if (update.message && update.message.chat) {
-      const chatId = update.message.chat.id.toString();
-      const text = update.message.text || '';
-      const messageId = update.message.message_id;
-      const from = update.message.from;
-
-      if (chatId === env.ADMIN_CHAT_ID) {
-        console.log('Admin message received:', { text, messageId });
-        
-        if (text.startsWith('/r ')) {
-          const remaining = text.slice(3).trim();
-          const spaceIdx = remaining.indexOf(' ');
-          let targetId: string;
-          let replyText: string;
-          
-          if (spaceIdx === -1) {
-            targetId = remaining;
-            replyText = '';
-          } else {
-            targetId = remaining.slice(0, spaceIdx);
-            replyText = remaining.slice(spaceIdx + 1);
-          }
-          
-          console.log('Reply command:', { targetId, replyText });
-          
-          if (targetId) {
-            const replyMsg = {
-              id: `reply_${Date.now()}`,
-              text: sanitizeText(replyText || 'Reply sent', 500),
-              timestamp: Date.now(),
-              delivered: false
-            };
-            adminMessages.push(replyMsg);
-            
-            for (const [, socket] of clients) {
-              if (socket.readyState === WebSocket.OPEN) {
-                const msgPayload = {
-                  type: 'message',
-                  from: 'admin',
-                  name: 'You',
-                  text: replyMsg.text,
-                  timestamp: replyMsg.timestamp,
-                };
-                console.log('Sending via WebSocket:', msgPayload);
-                socket.send(JSON.stringify(msgPayload));
-              }
-            }
-            return new Response(JSON.stringify({ ok: true, reply_sent: true, targetId }), {
-              headers: { 'Content-Type': 'application/json' },
-            });
-          }
-        }
-        
-        if (text.startsWith('/start')) {
-          return new Response(JSON.stringify({ ok: true, message: 'Welcome! Use /r [visitor_id] [message] to reply to web visitors.' }), {
-            headers: { 'Content-Type': 'application/json' },
-          });
-        }
-
-        lastTypingUpdate.set(chatId, Date.now());
-        const msgObj = {
-          id: `msg_${messageId}`,
-          text: sanitizeText(text, 500),
-          timestamp: Date.now(),
-          delivered: false
-        };
-        adminMessages.push(msgObj);
-
-        for (const [, socket] of clients) {
-          if (socket.readyState === WebSocket.OPEN) {
-            socket.send(JSON.stringify({
-              type: 'message',
-              from: 'admin',
-              name: 'You',
-              text: msgObj.text,
-              timestamp: msgObj.timestamp,
-              messageId,
-            }));
-          }
-        }
-      } else {
-        const username = from?.username;
-        const phone = from?.phone_number || update.message.contact?.phone_number;
-        const visitorName = from?.first_name || 'Visitor';
-        
-        console.log('New visitor:', { chatId, username, phone, name: visitorName });
-      }
+    if (!update.message || !update.message.chat) {
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
+
+    const chatId = update.message.chat.id.toString();
+    const text = update.message.text || '';
+    const messageId = update.message.message_id;
+    const from = update.message.from;
+
+    if (chatId === env.ADMIN_CHAT_ID) {
+      console.log('Admin message received:', { text, messageId });
+      
+      if (text.startsWith('/start')) {
+        return new Response(JSON.stringify({ ok: true, message: 'Just send any message to reply!' }), {
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+
+      const replyMsg = {
+        id: `reply_${Date.now()}`,
+        text: sanitizeText(text, 500),
+        timestamp: Date.now(),
+        delivered: false
+      };
+      adminMessages.push(replyMsg);
+      
+      for (const [, socket] of clients) {
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.send(JSON.stringify({
+            type: 'message',
+            from: 'admin',
+            name: 'You',
+            text: replyMsg.text,
+            timestamp: replyMsg.timestamp,
+          }));
+        }
+      }
+      return new Response(JSON.stringify({ ok: true, reply_sent: true }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const username = from?.username;
+    const phone = from?.phone_number;
+    const visitorName = from?.first_name || 'Visitor';
+    
+    console.log('New visitor:', { chatId, username, phone, name: visitorName });
 
     return new Response(JSON.stringify({ ok: true }), {
       headers: { 'Content-Type': 'application/json' },
