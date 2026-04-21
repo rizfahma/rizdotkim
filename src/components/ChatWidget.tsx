@@ -8,6 +8,12 @@ interface Message {
   timestamp: number;
 }
 
+interface Presence {
+  state: 'online' | 'away' | 'offline';
+  updated_at: number;
+  source: 'manual' | 'auto';
+}
+
 const WORKER_URL = 'https://chat-relay.rix888.workers.dev';
 
 export default function ChatWidget() {
@@ -32,17 +38,25 @@ export default function ChatWidget() {
   const NAME_KEY = 'rizkim_chat_name';
   const PHONE_KEY = 'rizkim_chat_phone';
   const TELEGRAM_KEY = 'rizkim_chat_telegram';
+  const CONVERSATION_KEY = 'rizkim_chat_conversation_id';
 
-  onMount(() => {
+  const [conversationId, setConversationId] = createSignal<string | null>(localStorage.getItem(CONVERSATION_KEY));
+  const [presence, setPresence] = createSignal<Presence>({ state: 'offline', updated_at: 0, source: 'auto' });
+
+  onMount(async () => {
     const savedName = localStorage.getItem(NAME_KEY);
     const savedPhone = localStorage.getItem(PHONE_KEY);
     const savedTelegram = localStorage.getItem(TELEGRAM_KEY);
+    const savedConvId = localStorage.getItem(CONVERSATION_KEY);
     
     if (savedName) {
       setNameInput(savedName);
     }
     if (savedPhone) setPhoneInput(savedPhone);
     if (savedTelegram) setTelegramInput(savedTelegram);
+    if (savedConvId) {
+      setConversationId(savedConvId);
+    }
     if (savedName && savedPhone && savedTelegram) {
       setShowContactInput(false);
     }
@@ -62,10 +76,13 @@ export default function ChatWidget() {
     if (isOpen()) {
       connectWebSocket();
     }
+    
+    fetchPresence();
     typingInterval = window.setInterval(() => {
       checkTyping();
       pollForAdminMessages();
-    }, 1000);
+      fetchPresence();
+    }, 5000);
 
     createEffect(() => {
       if (isOpen() && !socket) {
@@ -73,6 +90,16 @@ export default function ChatWidget() {
       }
     });
   });
+
+  async function fetchPresence() {
+    try {
+      const resp = await fetch(`${WORKER_URL}/api/presence`);
+      const data = await resp.json();
+      setPresence(data);
+    } catch (e) {
+      console.error('Failed to fetch presence:', e);
+    }
+  }
 
   onCleanup(() => {
     if (socket) {
@@ -117,7 +144,11 @@ export default function ChatWidget() {
     setIsTryingConnect(true);
 
     try {
-      socket = new WebSocket(`${WORKER_URL.replace('https', 'wss')}/api/stream`);
+      const convId = conversationId();
+      const wsUrl = convId 
+        ? `${WORKER_URL.replace('https', 'wss')}/api/stream?conversation_id=${convId}`
+        : `${WORKER_URL.replace('https', 'wss')}/api/stream`;
+      socket = new WebSocket(wsUrl);
 
       socket.onopen = () => {
         setIsConnected(true);
@@ -182,9 +213,12 @@ export default function ChatWidget() {
   async function pollForAdminMessages() {
     if (!isOpen()) return;
 
+    const convId = conversationId();
+    if (!convId) return;
+
     try {
       const lastTs = messages().slice(-1)[0]?.timestamp || 0;
-      const resp = await fetch(`${WORKER_URL}/api/poll?since=${lastTs}`);
+      const resp = await fetch(`${WORKER_URL}/api/poll?since=${lastTs}&conversation_id=${convId}`);
       if (!resp.ok) return;
       
       const data = await resp.json();
@@ -279,6 +313,7 @@ export default function ChatWidget() {
     const contactStr = contactInfo.length > 0 ? `\n${contactInfo.join(' | ')}` : '';
 
     try {
+      const currentConvId = conversationId();
       const resp = await fetch(`${WORKER_URL}/api/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -287,6 +322,7 @@ export default function ChatWidget() {
           phone: phone || undefined,
           telegram: telegram || undefined,
           text: sanitize(text) + contactStr,
+          conversation_id: currentConvId || undefined,
         }),
       });
 
@@ -294,6 +330,11 @@ export default function ChatWidget() {
 
       if (!resp.ok || data.error) {
         throw new Error(data.error || 'Failed to send');
+      }
+
+      if (data.conversation_id && !currentConvId) {
+        setConversationId(data.conversation_id);
+        localStorage.setItem(CONVERSATION_KEY, data.conversation_id);
       }
 
       const newMsg: Message = {
@@ -415,8 +456,13 @@ export default function ChatWidget() {
           background: #ef4444;
         }
 
-        .status-dot.connected {
+        .status-dot.online {
           background: #22c55e;
+        }
+
+        .status-dot.away {
+          background: #eab308;
+          animation: pulse 1s infinite;
         }
 
         .status-dot.connecting {
@@ -619,13 +665,20 @@ export default function ChatWidget() {
         @media (max-width: 480px) {
           .chat-window {
             width: calc(100vw - 24px);
-            height: calc(100vh - 120px);
+            height: 65dvh;
             left: 0;
+            bottom: 80px;
+            border-radius: 16px 16px 0 0;
           }
 
           .chat-widget {
             bottom: 16px;
             left: 16px;
+          }
+
+          .chat-bubble {
+            width: 48px;
+            height: 48px;
           }
         }
       `}</style>
@@ -634,9 +687,9 @@ export default function ChatWidget() {
         <div class="chat-window">
           <div class="chat-header">
             <div class="chat-header-left">
-              <div class={`status-dot ${isConnected() ? 'connected' : isTryingConnect() ? 'connecting' : ''}`} />
+              <div class={`status-dot ${presence().state}`} />
               <span class="status-text">
-                {isConnected() ? 'Connected' : isTryingConnect() ? 'Connecting...' : 'Offline'}
+                {presence().state === 'online' ? 'Online' : presence().state === 'away' ? 'Away' : 'Offline'}
               </span>
             </div>
             <span class="chat-title">Chat</span>

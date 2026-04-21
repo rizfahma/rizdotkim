@@ -5,7 +5,7 @@ export async function sendTelegramMessage(
   chatId: string,
   text: string,
   replyToMessageId?: number
-): Promise<boolean> {
+): Promise<{ ok: boolean; message_id?: number }> {
   const payload: OutgoingMessage = {
     name: env.ADMIN_CHAT_ID || 'Admin',
     text,
@@ -30,11 +30,11 @@ export async function sendTelegramMessage(
       }
     );
 
-    const result = await response.json() as { ok: boolean };
-    return result.ok;
+    const result = await response.json() as { ok: boolean; result?: { message_id: number } };
+    return { ok: result.ok, message_id: result.result?.message_id };
   } catch (error) {
     console.error('Failed to send Telegram message:', error);
-    return false;
+    return { ok: false };
   }
 }
 
