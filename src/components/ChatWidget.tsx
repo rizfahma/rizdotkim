@@ -40,11 +40,10 @@ export default function ChatWidget() {
     
     if (savedName) {
       setNameInput(savedName);
-      setShowNameInput(false);
     }
     if (savedPhone) setPhoneInput(savedPhone);
     if (savedTelegram) setTelegramInput(savedTelegram);
-    if (savedName && (savedPhone || savedTelegram)) {
+    if (savedName && savedPhone && savedTelegram) {
       setShowContactInput(false);
     }
 
@@ -226,7 +225,7 @@ export default function ChatWidget() {
     const telegram = telegramInput().trim();
     const text = messageInput().trim();
 
-    if (!name && showNameInput()) {
+    if (!name) {
       setError('Please enter your name');
       return;
     }
@@ -251,7 +250,7 @@ export default function ChatWidget() {
       return;
     }
 
-    if (showNameInput()) {
+    if (name) {
       localStorage.setItem(NAME_KEY, name);
       setShowNameInput(false);
     }
@@ -261,7 +260,7 @@ export default function ChatWidget() {
     if (telegram) {
       localStorage.setItem(TELEGRAM_KEY, telegram);
     }
-    if (phone || telegram) {
+    if (name && (phone || telegram)) {
       setShowContactInput(false);
     }
 
@@ -278,7 +277,7 @@ export default function ChatWidget() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: showNameInput() ? name : localStorage.getItem(NAME_KEY) || 'Anonymous',
+          name: name || localStorage.getItem(NAME_KEY) || 'Anonymous',
           phone: phone || undefined,
           telegram: telegram || undefined,
           text: sanitize(text) + contactStr,
@@ -669,16 +668,14 @@ export default function ChatWidget() {
               <div class="chat-error">{error()}</div>
             </Show>
 
-            <Show when={showNameInput()}>
-              <input
-                type="text"
-                class="visitor-name-input"
-                placeholder="Your name..."
-                value={nameInput()}
-                onInput={(e) => setNameInput(e.currentTarget.value)}
-                maxLength={50}
-              />
-            </Show>
+            <input
+              type="text"
+              class="visitor-name-input"
+              placeholder="Your name (required)"
+              value={nameInput()}
+              onInput={(e) => setNameInput(e.currentTarget.value)}
+              maxLength={50}
+            />
 
             <Show when={showContactInput()}>
               <div class="contact-inputs">
