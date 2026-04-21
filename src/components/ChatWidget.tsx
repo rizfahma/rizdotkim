@@ -11,7 +11,7 @@ interface Message {
 const WORKER_URL = 'https://chat-relay.rix888.workers.dev';
 
 export default function ChatWidget() {
-  const [isOpen, setIsOpen] = createSignal(false);
+  const [isOpen, setIsOpen] = createSignal(true);
   const [isConnected, setIsConnected] = createSignal(false);
   const [isTryingConnect, setIsTryingConnect] = createSignal(true);
   const [nameInput, setNameInput] = createSignal('');
@@ -59,6 +59,18 @@ export default function ChatWidget() {
       clearInterval(typingInterval);
     }
   });
+
+  function clearChatHistory() {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(NAME_KEY);
+    setMessages([]);
+    setNameInput('');
+    setShowNameInput(true);
+  }
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('beforeunload', clearChatHistory);
+  }
 
   function saveMessages(msgs: Message[]) {
     const toSave = msgs.slice(-50);
@@ -234,7 +246,7 @@ export default function ChatWidget() {
         .chat-widget {
           position: fixed;
           bottom: 24px;
-          right: 24px;
+          left: 24px;
           z-index: 9999;
           font-family: system-ui, -apple-system, sans-serif;
         }
@@ -243,44 +255,40 @@ export default function ChatWidget() {
           width: 56px;
           height: 56px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.15);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: #1a1a2e;
+          border: 1px solid #333;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
         }
 
         .chat-bubble:hover {
           transform: scale(1.05);
-          background: rgba(255, 255, 255, 0.25);
+          background: #252540;
         }
 
         .chat-bubble svg {
           width: 24px;
           height: 24px;
-          fill: white;
+          fill: #e0e0e0;
         }
 
         .chat-window {
           position: absolute;
           bottom: 72px;
-          right: 0;
+          left: 0;
           width: 360px;
           height: 480px;
-          background: rgba(15, 15, 25, 0.85);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: #0f0f1a;
+          border: 1px solid #2a2a40;
           border-radius: 16px;
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
           animation: slideUp 0.3s ease;
         }
 
@@ -300,8 +308,8 @@ export default function ChatWidget() {
           align-items: center;
           justify-content: space-between;
           padding: 12px 16px;
-          background: rgba(255, 255, 255, 0.05);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          background: #1a1a2e;
+          border-bottom: 1px solid #2a2a40;
         }
 
         .chat-header-left {
@@ -332,12 +340,12 @@ export default function ChatWidget() {
         }
 
         .status-text {
-          color: rgba(255, 255, 255, 0.7);
+          color: #888;
           font-size: 13px;
         }
 
         .chat-title {
-          color: white;
+          color: #e0e0e0;
           font-weight: 600;
           font-size: 14px;
         }
@@ -345,14 +353,14 @@ export default function ChatWidget() {
         .close-btn {
           background: none;
           border: none;
-          color: rgba(255, 255, 255, 0.5);
+          color: #666;
           cursor: pointer;
           padding: 4px;
           display: flex;
         }
 
         .close-btn:hover {
-          color: white;
+          color: #e0e0e0;
         }
 
         .chat-messages {
@@ -362,6 +370,7 @@ export default function ChatWidget() {
           display: flex;
           flex-direction: column;
           gap: 8px;
+          background: #0f0f1a;
         }
 
         .chat-messages::-webkit-scrollbar {
@@ -369,7 +378,7 @@ export default function ChatWidget() {
         }
 
         .chat-messages::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.2);
+          background: #333;
           border-radius: 2px;
         }
 
@@ -383,15 +392,15 @@ export default function ChatWidget() {
 
         .message.visitor {
           align-self: flex-end;
-          background: rgba(99, 102, 241, 0.8);
+          background: #3b82f6;
           color: white;
           border-bottom-right-radius: 4px;
         }
 
         .message.admin {
           align-self: flex-start;
-          background: rgba(255, 255, 255, 0.1);
-          color: rgba(255, 255, 255, 0.9);
+          background: #1e1e30;
+          color: #e0e0e0;
           border-bottom-left-radius: 4px;
         }
 
@@ -410,8 +419,8 @@ export default function ChatWidget() {
 
         .chat-input {
           padding: 12px;
-          background: rgba(255, 255, 255, 0.05);
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          background: #1a1a2e;
+          border-top: 1px solid #2a2a40;
         }
 
         .chat-input-row {
@@ -422,48 +431,48 @@ export default function ChatWidget() {
 
         .visitor-name-input {
           width: 100%;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: #0f0f1a;
+          border: 1px solid #333;
           border-radius: 8px;
           padding: 10px 12px;
-          color: white;
+          color: #e0e0e0;
           font-size: 14px;
           margin-bottom: 8px;
         }
 
         .visitor-name-input::placeholder {
-          color: rgba(255, 255, 255, 0.4);
+          color: #555;
         }
 
         .visitor-name-input:focus {
           outline: none;
-          border-color: rgba(99, 102, 241, 0.8);
+          border-color: #3b82f6;
         }
 
         .message-input {
           flex: 1;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: #0f0f1a;
+          border: 1px solid #333;
           border-radius: 24px;
           padding: 10px 16px;
-          color: white;
+          color: #e0e0e0;
           font-size: 14px;
         }
 
         .message-input::placeholder {
-          color: rgba(255, 255, 255, 0.4);
+          color: #555;
         }
 
         .message-input:focus {
           outline: none;
-          border-color: rgba(99, 102, 241, 0.8);
+          border-color: #3b82f6;
         }
 
         .send-btn {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: rgba(99, 102, 241, 0.8);
+          background: #3b82f6;
           border: none;
           cursor: pointer;
           display: flex;
@@ -473,7 +482,7 @@ export default function ChatWidget() {
         }
 
         .send-btn:hover:not(:disabled) {
-          background: rgba(99, 102, 241, 1);
+          background: #2563eb;
           transform: scale(1.05);
         }
 
@@ -497,9 +506,10 @@ export default function ChatWidget() {
         .no-messages {
           flex: 1;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
-          color: rgba(255, 255, 255, 0.4);
+          color: #666;
           font-size: 14px;
           text-align: center;
           padding: 24px;
@@ -509,12 +519,12 @@ export default function ChatWidget() {
           .chat-window {
             width: calc(100vw - 24px);
             height: calc(100vh - 120px);
-            right: 0;
+            left: 0;
           }
 
           .chat-widget {
             bottom: 16px;
-            right: 16px;
+            left: 16px;
           }
         }
       `}</style>
