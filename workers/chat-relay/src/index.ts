@@ -75,9 +75,11 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
   }
 
   try {
-    const body = await request.json() as { name: string; text: string };
+    const body = await request.json() as { name: string; text: string; phone?: string; telegram?: string };
     const name = sanitizeName(body.name || 'Anonymous');
     const text = sanitizeText(body.text, 500);
+    const phone = body.phone || '';
+    const telegram = body.telegram || '';
 
     if (!text) {
       return new Response(JSON.stringify({ error: 'Message cannot be empty' }), {
@@ -88,7 +90,7 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
 
     const adminChatId = env.ADMIN_CHAT_ID;
     if (!adminChatId) {
-      console.log('New visitor message:', { name, text });
+      console.log('New visitor message:', { name, phone, telegram, text });
       return new Response(JSON.stringify({ error: 'Bot not configured yet' }), {
         status: 500,
         headers: { 'Content-Type': 'application/json', ...cors },
@@ -96,9 +98,14 @@ async function handleSendMessage(request: Request, env: Env, clientIp: string): 
     }
 
     const visitorId = `web_${Date.now()}`;
-    visitorInfo.set(visitorId, { name });
+    visitorInfo.set(visitorId, { name, phone, telegram });
     
-    const messageText = `<b>👤 ${name}</b>\n📝 ${text}\n\n<em>Reply with /r ${visitorId} &lt;your message&gt; to reply</em>`;
+    const contactParts = [];
+    if (phone) contactParts.push(`📱 ${phone}`);
+    if (telegram) contactParts.push(`📨 @${telegram.replace('@', '')}`);
+    const contactInfo = contactParts.length > 0 ? `\n${contactParts.join(' | ')}` : '';
+    
+    const messageText = `<b>👤 ${name}</b>${contactInfo}\n📝 ${text}\n\n<em>Reply: /r ${visitorId} &lt;message&gt;</em>`;
     const success = await sendTelegramMessage(env, adminChatId, messageText);
 
     if (!success) {

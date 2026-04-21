@@ -15,11 +15,14 @@ export default function ChatWidget() {
   const [isConnected, setIsConnected] = createSignal(false);
   const [isTryingConnect, setIsTryingConnect] = createSignal(true);
   const [nameInput, setNameInput] = createSignal('');
+  const [phoneInput, setPhoneInput] = createSignal('');
+  const [telegramInput, setTelegramInput] = createSignal('');
   const [messageInput, setMessageInput] = createSignal('');
   const [messages, setMessages] = createSignal<Message[]>([]);
   const [error, setError] = createSignal<string | null>(null);
   const [isSending, setIsSending] = createSignal(false);
   const [showNameInput, setShowNameInput] = createSignal(true);
+  const [showContactInput, setShowContactInput] = createSignal(true);
 
   let socket: WebSocket | null = null;
   let messagesEndRef: HTMLDivElement | undefined;
@@ -27,12 +30,22 @@ export default function ChatWidget() {
 
   const STORAGE_KEY = 'rizkim_chat_messages';
   const NAME_KEY = 'rizkim_chat_name';
+  const PHONE_KEY = 'rizkim_chat_phone';
+  const TELEGRAM_KEY = 'rizkim_chat_telegram';
 
   onMount(() => {
     const savedName = localStorage.getItem(NAME_KEY);
+    const savedPhone = localStorage.getItem(PHONE_KEY);
+    const savedTelegram = localStorage.getItem(TELEGRAM_KEY);
+    
     if (savedName) {
       setNameInput(savedName);
       setShowNameInput(false);
+    }
+    if (savedPhone) setPhoneInput(savedPhone);
+    if (savedTelegram) setTelegramInput(savedTelegram);
+    if (savedName && (savedPhone || savedTelegram)) {
+      setShowContactInput(false);
     }
 
     const savedMessages = localStorage.getItem(STORAGE_KEY);
@@ -47,7 +60,9 @@ export default function ChatWidget() {
       }
     }
 
-    connectWebSocket();
+    if (isOpen()) {
+      connectWebSocket();
+    }
     typingInterval = window.setInterval(() => {
       checkTyping();
       pollForAdminMessages();
@@ -200,8 +215,15 @@ export default function ChatWidget() {
     }, 100);
   }
 
+  function validateContact(contact: string): boolean {
+    if (!contact) return true;
+    return /^[a-zA-Z0-9@_+.-]{3,50}$/.test(contact);
+  }
+
   async function sendMessage() {
     const name = nameInput().trim();
+    const phone = phoneInput().trim();
+    const telegram = telegramInput().trim();
     const text = messageInput().trim();
 
     if (!name && showNameInput()) {
@@ -214,6 +236,16 @@ export default function ChatWidget() {
       return;
     }
 
+    if (phone && !/^[0-9+]{5,20}$/.test(phone)) {
+      setError('Invalid phone number format');
+      return;
+    }
+
+    if (telegram && !validateContact(telegram)) {
+      setError('Invalid Telegram handle (e.g., @username)');
+      return;
+    }
+
     if (!text) {
       setError('Please enter a message');
       return;
@@ -223,9 +255,23 @@ export default function ChatWidget() {
       localStorage.setItem(NAME_KEY, name);
       setShowNameInput(false);
     }
+    if (phone) {
+      localStorage.setItem(PHONE_KEY, phone);
+    }
+    if (telegram) {
+      localStorage.setItem(TELEGRAM_KEY, telegram);
+    }
+    if (phone || telegram) {
+      setShowContactInput(false);
+    }
 
     setError(null);
     setIsSending(true);
+
+    const contactInfo = [];
+    if (phone) contactInfo.push(`📱 ${phone}`);
+    if (telegram) contactInfo.push(`📨 @${telegram.replace('@', '')}`);
+    const contactStr = contactInfo.length > 0 ? `\n${contactInfo.join(' | ')}` : '';
 
     try {
       const resp = await fetch(`${WORKER_URL}/api/send`, {
@@ -233,7 +279,9 @@ export default function ChatWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: showNameInput() ? name : localStorage.getItem(NAME_KEY) || 'Anonymous',
-          text: sanitize(text),
+          phone: phone || undefined,
+          telegram: telegram || undefined,
+          text: sanitize(text) + contactStr,
         }),
       });
 
@@ -486,6 +534,17 @@ export default function ChatWidget() {
           border-color: #3b82f6;
         }
 
+        .contact-inputs {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          margin-bottom: 8px;
+        }
+
+        .contact-inputs .visitor-name-input {
+          margin-bottom: 0;
+        }
+
         .message-input {
           flex: 1;
           background: #0f0f1a;
@@ -619,6 +678,27 @@ export default function ChatWidget() {
                 onInput={(e) => setNameInput(e.currentTarget.value)}
                 maxLength={50}
               />
+            </Show>
+
+            <Show when={showContactInput() && !showNameInput()}>
+              <div class="contact-inputs">
+                <input
+                  type="text"
+                  class="visitor-name-input"
+                  placeholder="Phone (optional) +1234567890"
+                  value={phoneInput()}
+                  onInput={(e) => setPhoneInput(e.currentTarget.value)}
+                  maxLength={20}
+                />
+                <input
+                  type="text"
+                  class="visitor-name-input"
+                  placeholder="Telegram (optional) @username"
+                  value={telegramInput()}
+                  onInput={(e) => setTelegramInput(e.currentTarget.value)}
+                  maxLength={50}
+                />
+              </div>
             </Show>
 
             <div class="chat-input-row">

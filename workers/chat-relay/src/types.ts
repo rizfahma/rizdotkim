@@ -15,6 +15,8 @@ export interface ChatMessage {
 export interface SendMessageRequest {
   name: string;
   text: string;
+  phone?: string;
+  telegram?: string;
 }
 
 export interface TelegramUpdate {
