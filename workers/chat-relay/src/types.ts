@@ -24,6 +24,7 @@ export interface TelegramUpdate {
   update_id: number;
   message?: {
     message_id: number;
+    reply_to_message_id?: number;
     from?: {
       id: number;
       is_bot: boolean;
