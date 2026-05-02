@@ -48,9 +48,13 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <!-- RSS Feed -->
 <link rel="alternate" type="application/rss+xml" title={title} href={`${Astro.site}rss.xml`}/>
 
+<!-- Google Fonts - Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <!-- Preload Critical Fonts -->
-<link rel="preload" href="/fonts/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/Geist-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- DNS Prefetch for External Resources -->
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
