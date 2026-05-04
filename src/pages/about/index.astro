@@ -31,19 +31,18 @@ function formatWorkDate(input: Date | string) {
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <TopLayout>
     <section class="animate prose dark:prose-invert mb-16 max-w-4xl">
-      <div class="relative backdrop-blur-sm bg-white/10 dark:bg-black/20 rounded-2xl p-8 md:p-10 border border-white/20 dark:border-white/10">
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl"></div>
+      <div class="relative backdrop-blur-sm bg-white/5 dark:bg-black/10 rounded-2xl p-8 md:p-10 border border-black/10 dark:border-white/10">
         <div class="relative z-10">
-          <p class="text-center font-semibold text-xl md:text-2xl italic text-black/90 dark:text-white/90 leading-relaxed">
+          <p class="text-center font-bold text-xl md:text-2xl text-black dark:text-white leading-relaxed">
             "I read, I write, I swim, but I don't smoke."
           </p>
         </div>
       </div>
-      <p class="text-lg md:text-xl font-medium text-black/80 dark:text-white/80 mt-8 text-center">
+      <!-- <p class="text-lg md:text-xl font-semibold text-black/80 dark:text-white/80 mt-8 text-center">
         Here's a summary of my professional journey so far:
-      </p>
+      </p> -->
     </section>
-    <div class="animate page-heading text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-black via-gray-800 to-black dark:from-white dark:via-gray-200 dark:to-white bg-clip-text text-transparent">
+    <div class="animate page-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-black dark:text-white">
       {WORK.TITLE}
     </div>
   </TopLayout>
@@ -52,13 +51,7 @@ function formatWorkDate(input: Date | string) {
     <div class="space-y-8 md:space-y-12">
       { 
         work.map((entry, index) => (
-          <div class="work-card animate group relative border-0 rounded-2xl p-8 md:p-10 backdrop-blur-xl bg-white/30 dark:bg-black/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden" style={`animation-delay: ${index * 0.1}s`}>
-            <!-- Background gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            <!-- Decorative corner element -->
-            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-bl-2xl"></div>
-            
+          <div class="work-card animate group relative border-0 rounded-2xl p-8 md:p-10 bg-white/50 dark:bg-black/40 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden border border-black/10 dark:border-white/10" style={`animation-delay: ${index * 0.1}s`}>
             <!-- Content wrapper -->
             <div class="relative z-10">
               <!-- Timeline -->
@@ -66,18 +59,18 @@ function formatWorkDate(input: Date | string) {
                 <svg class="w-4 h-4 mr-2 text-black/60 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <span class="text-sm md:text-base font-medium text-black/70 dark:text-white/70">
+                <span class="text-sm md:text-base font-semibold text-black/70 dark:text-white/70">
                   {formatWorkDate(entry.data.dateStart)} — {formatWorkDate(entry.data.dateEnd)}
                 </span>
               </div>
               
               <!-- Company name -->
-              <div class="text-2xl md:text-3xl font-bold text-black dark:text-white mb-3 tracking-tight">
+              <div class="text-2xl md:text-3xl font-extrabold text-black dark:text-white mb-3 tracking-tight">
                 {entry.data.company}
               </div>
               
               <!-- Role -->
-              <div class="text-lg md:text-xl font-semibold text-black/80 dark:text-white/80 mb-6 flex items-center">
+              <div class="text-lg md:text-xl font-bold text-black/80 dark:text-white/80 mb-6 flex items-center">
                 <svg class="w-5 h-5 mr-2 text-black/50 dark:text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
@@ -165,13 +158,14 @@ function formatWorkDate(input: Date | string) {
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
   
-  /* Prose improvements for work entries */
+   /* Prose improvements for work entries */
   .work-entry.prose {
     color: inherit;
+    font-weight: 400;
   }
   
   .work-entry.prose h3 {
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 2rem;
     margin-bottom: 1rem;
     color: rgb(23 23 23);
@@ -182,7 +176,7 @@ function formatWorkDate(input: Date | string) {
   }
   
   .work-entry.prose strong {
-    font-weight: 600;
+    font-weight: 700;
     color: rgb(23 23 23);
   }
   
@@ -190,18 +184,21 @@ function formatWorkDate(input: Date | string) {
     color: rgb(255 255 255);
   }
   
-  /* Add subtle glow effect on hover */
+  /* Stronger border for work cards */
+  .work-card {
+    animation: slideUpFade 0.8s ease-out forwards;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  
+  .dark .work-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
   .work-card:hover {
-    box-shadow: 
-      0 25px 50px -12px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(0, 0, 0, 0.05),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
   }
   
   .dark .work-card:hover {
-    box-shadow: 
-      0 25px 50px -12px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
   }
 </style>
