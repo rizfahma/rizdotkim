@@ -1,7 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions"
-
-interface Props {
+import type { Props } from "./BaseHead.astro"
   title: string
   description: string
   image?: string
@@ -63,16 +61,3 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <script is:inline src="/js/theme.js"></script>
 <script is:inline src="/js/scroll.js"></script>
 <script defer src="/js/animate.js"></script>
-
-<!-- <ViewTransitions  /> -->
-
-<script>
-  import type { TransitionBeforeSwapEvent } from "astro:transitions/client"
-  document.addEventListener("astro:before-swap", (e) =>
-    [
-      ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        "link[as=\"font\"]"
-      ),
-    ].forEach((link) => link.remove())
-  )
-</script>

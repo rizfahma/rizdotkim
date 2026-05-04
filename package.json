@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "engines": {
-    "node": ">=18.20.8"
+    "node": ">=20.10.0"
   },
   "overrides": {
     "rollup": ">=4.59.0",
