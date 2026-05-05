@@ -111,14 +111,13 @@ export default function Blog({ data }: Props) {
                  "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
                  "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
                  "disabled:opacity-30 disabled:cursor-not-allowed",
-                 "flex items-center gap-1"
+                 "flex items-center justify-center"
                )}
                title="First page"
              >
                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M18 19l-7-7 7-7"/>
                </svg>
-               First
              </button>
 
              <button
@@ -128,14 +127,13 @@ export default function Blog({ data }: Props) {
                  "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
                  "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
                  "disabled:opacity-30 disabled:cursor-not-allowed",
-                 "flex items-center gap-1"
+                 "flex items-center justify-center"
                )}
                title="Previous page"
              >
                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                </svg>
-               Previous
              </button>
             
             <div class="hidden sm:flex items-center gap-1">
@@ -185,11 +183,10 @@ export default function Blog({ data }: Props) {
                  "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
                  "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
                  "disabled:opacity-30 disabled:cursor-not-allowed",
-                 "flex items-center gap-1"
+                 "flex items-center justify-center"
                )}
                title="Next page"
              >
-               Next
                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                </svg>
@@ -202,11 +199,10 @@ export default function Blog({ data }: Props) {
                  "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
                  "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
                  "disabled:opacity-30 disabled:cursor-not-allowed",
-                 "flex items-center gap-1"
+                 "flex items-center justify-center"
                )}
                title="Last page"
              >
-               Last
                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
                </svg>
