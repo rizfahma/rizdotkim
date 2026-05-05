@@ -105,21 +105,38 @@ export default function Blog({ data }: Props) {
           
           <div class="flex items-center gap-2 flex-wrap justify-center">
             <button
-              onClick={() => goToPage(1)}
-              disabled={currentPage() === 1}
-              class={cn(
-                "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
-                "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
-                "disabled:opacity-30 disabled:cursor-not-allowed",
-                "flex items-center gap-1"
-              )}
-              title="First page"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M18 19l-7-7 7-7"/>
-              </svg>
-              First
-            </button>
+               onClick={() => goToPage(1)}
+               disabled={currentPage() === 1}
+               class={cn(
+                 "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
+                 "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
+                 "disabled:opacity-30 disabled:cursor-not-allowed",
+                 "flex items-center gap-1"
+               )}
+               title="First page"
+             >
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M18 19l-7-7 7-7"/>
+               </svg>
+               First
+             </button>
+
+             <button
+               onClick={() => goToPage(currentPage() - 1)}
+               disabled={currentPage() === 1}
+               class={cn(
+                 "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
+                 "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
+                 "disabled:opacity-30 disabled:cursor-not-allowed",
+                 "flex items-center gap-1"
+               )}
+               title="Previous page"
+             >
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+               </svg>
+               Previous
+             </button>
             
             <div class="hidden sm:flex items-center gap-1">
               <For each={pageNumbers()}>
@@ -161,22 +178,39 @@ export default function Blog({ data }: Props) {
               <span class="text-sm text-black/60 dark:text-white/60">/ {totalPages}</span>
             </div>
             
-            <button
-              onClick={() => goToPage(totalPages)}
-              disabled={currentPage() === totalPages}
-              class={cn(
-                "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
-                "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
-                "disabled:opacity-30 disabled:cursor-not-allowed",
-                "flex items-center gap-1"
-              )}
-              title="Last page"
-            >
-              Last
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
-              </svg>
-            </button>
+             <button
+               onClick={() => goToPage(currentPage() + 1)}
+               disabled={currentPage() === totalPages}
+               class={cn(
+                 "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
+                 "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
+                 "disabled:opacity-30 disabled:cursor-not-allowed",
+                 "flex items-center gap-1"
+               )}
+               title="Next page"
+             >
+               Next
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+               </svg>
+             </button>
+
+             <button
+               onClick={() => goToPage(totalPages)}
+               disabled={currentPage() === totalPages}
+               class={cn(
+                 "px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium",
+                 "bg-black/5 dark:bg-white/10 hover:bg-black/10 hover:dark:bg-white/15",
+                 "disabled:opacity-30 disabled:cursor-not-allowed",
+                 "flex items-center gap-1"
+               )}
+               title="Last page"
+             >
+               Last
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
+               </svg>
+             </button>
           </div>
 
           <div class="flex items-center gap-2 text-sm">
