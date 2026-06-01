@@ -18,7 +18,7 @@ If you have no idea about what mullet is, this probably summarize it well:
 
 Woah, I just googled that, and it seems a little bit more than I actually thought. It was not just a haircut, it shows some kind of expression. Even though I don't think of my self as a rebel who causes troubles anywhere.
 
-The late David Bowie used to have mullet too apparently in the past. Currently I often see people have this haircut too, I think one of the prominent public figure who has this style is Theo Vonn, the podcaster, comedian from The US.
+The late David Bowie used to have mullet too apparently in the past. Lately I often see people have this haircut too, I think one of the prominent public figure who has this style is Theo Vonn, the podcaster, comedian from The US.
 
 Several motogp riders (sport / entertainment I regularly follow) have mullet hairstyle too, like Marc Marquez, Bezzecchi, Pedro Acosta. I think Maverick Viñales also used to have this style too.
 
@@ -32,7 +32,7 @@ Anyway as I previously mentioned above, I have considered of having a mullet for
 
 Yeah I know people are having this style for longer already, you can see it anywhere in Jakarta too. But for me, mullet is not that kind of hairstyle you should just ask to have from a barbershop without thinking about the "consequence", as it could "raise concern" from your surroundings. Well, they have eyes, and they also can see your hairstyle, especially if you work in an established corporate not in some kind of wild west type of shi.
 
-Mullet cut is like a gambling for your look, that the mitigation if you get it wrong is that you have to cut your top and back hair to compensate the errors.
+Mullet cut is like a gambling for your look, that the mitigation if you get it wrong is that you have to cut your top and rear hair to compensate the errors.
 
 If you get it wrong, well -don't get me wrong, people could judge your look like a what? A Thug! Or other that doesn't sound pleasing. Hahaha...
 
