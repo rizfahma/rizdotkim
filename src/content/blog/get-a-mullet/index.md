@@ -74,13 +74,13 @@ But as Dominic Torretto (Vin Diesel) said in one of the Fast & Furious movies sa
 
 So, I booked my flight, just 2 days beforehand. The ticket was quite pricey, but hey, family comes first. I didn't visit my parents in Eid Mubarak day a few months ago, so yeah why not I enjoy this Eid Al Adha among my big family there.
 
-Oh anyway, so far my sister haven't said anything about my new haircut yet. So I kinda expect that something about this would come out from my parents.
+Oh anyway, so far my sister hasn't said anything about my new haircut yet. So I kinda expect that something about this would come out from my parents.
 
 When I arrived and during about a week there, surprisingly there.is.no.comment.at all. from my parents.
 
-Why do I expected comments from them, especially my Mom, was that she has always have tons of comments of my haircut. LoL.
+Why do I expected comments from them, especially my Mom, was that she has always had tons of comments about my haircut. LoL.
 
-I remember when I was still in school, Junior, Senior High School, even when I got in college, like almost everytime after I had a haircut, she was always told me to return and have it cut shorter. Like it should be like "buzz cut", or just have it completely shaved rounded. Uhm... Mother's preference.
+I remember when I was still in school, Junior, Senior High School, even when I got in college, like almost everytime after I had a haircut, she had always told me to return and have it cut shorter. Like it should be like "buzz cut", or just have it completely shaved rounded. Uhm... Mother's preference.
 
 Might also be due to when I was still in junior and senior high school, the schools were super discipline about haircut regulation. I never made it longer, otherwise the teacher would cut my hair in school with scissors, and boy oh boy oh girl... That's a huge L, you suddenly lose your rizz. I mean, your hair would be messed up, even new haircut could barely fix anything. Some teenagers would probably cry inside.
 
@@ -88,7 +88,7 @@ I was punished several times too for that violation of having quite a longer hai
 
 One time I was punished in front of many students, just like a few steps from the entrance gate of the school. Some of them were the girls. Like, oh damn... Even worse, this teacher cut my hair in the middle with scissors, and freaking deeply too! I just had a haircut a few days ago, I thought it wouldn't violate anything. But apparently that teacher had the opposite opinion / judgement. I hated it. I mean, the haircut I had yesterday was not of some kind of punk style, it was neat, and not that long tho. Well, at that time, my top hair was never more than probably 5cm. I suffered "humiliation" for that punishment. LoL.
 
-But when I was in university, I often have my hair grew long, way longer compared when I was in school.
+But when I was in university, I often have my hair grew long, way longer compared to when I was in school.
 
 ## Fast forward
 
@@ -108,7 +108,7 @@ Many many years ago, after finishing my Bachelor degree, before I continued to P
 
 Heavily influenced and inspired by the great SKRILLEX (an EDM music producer, DJ, who I have been a fan of for many years), had this sidecut for many many years, made me have it too. I only had my left side hair cut, and let the rest grow wildly. I live in a small town at that time, and the barber several times ensured if it really was the style I picked. I said, "Undoubtedly".
 
-Honestly that was a little bit crazy, I have no idea where that confidence or madness came, but shi just fire at that time.
+Honestly that was a little bit crazy, I have no idea where that confidence or madness came, but shi was just fire at that time.
 
 One time when I strolled around, some random school student looked confused at me. She asked, "are you a Lesbian?" to me.
 
