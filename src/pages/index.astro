@@ -1,162 +1,225 @@
 ---
-
 import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
 import { SITE } from "@consts"
-import TwinklingStars from "@components/TwinklingStars.astro"
-import MeteorShower from "@components/MeteorShower.astro"
 
 const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0,4)
+  .slice(0, 4)
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
-  <!-- Background elements -->
-  <!-- Light Mode: Modern Gradient + Particles -->
-  <div class='absolute inset-0 block dark:hidden'>
-    <div class='fixed inset-0 bg-gradient-to-br from-blue-50/30 via-white to-purple-50/20'></div>
-    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08)_0%,transparent_40%)]'></div>
-    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.06)_0%,transparent_40%)]'></div>
-    <div id='particles' class='fixed inset-0'></div>
-  </div>
-
-  <!-- Dark Theme: Modern Gradient Background -->
-  <div class='absolute inset-0 hidden dark:block'>
-    <div class='fixed inset-0 bg-gradient-to-br from-zinc-900 via-slate-900/95 to-zinc-900/90'></div>
-    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15)_0%,transparent_50%)]'></div>
-    <div class='fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.12)_0%,transparent_50%)]'></div>
-  </div>
-
-  <!-- Dark Theme: Twinkling Stars / Metors -->
-  <div id="galaxy" class="fixed inset-0">
-    <div class="hidden dark:block">
-      <TwinklingStars/>
-      <MeteorShower/>
-    </div>
-  </div>
-
-  <script is:inline src="/js/bg.js"></script>
-  <script is:inline src="/js/scroll-animations.js" defer></script>
+  <div class="fixed inset-0 gradient-bg pointer-events-none"></div>
   
-  <!-- Hero Section -->
-  <section class="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20">
-    <div class="mx-auto max-w-4xl text-center px-6">
-      <div class="space-y-6 animate-fade-in">
-        <div class="text-6xl sm:text-8xl" style="font-family: 'Inter', sans-serif; font-weight: 600;">
-          👋
+  <div class="fixed inset-0 pointer-events-none overflow-hidden">
+    <div class="glow-orb glow-orb-blue w-[28rem] h-[28rem] -top-48 -right-48 animate-pulse-slow"></div>
+    <div class="glow-orb glow-orb-blue w-96 h-96 top-1/2 -left-48 animate-pulse-slow" style="animation-delay: 3s"></div>
+    <div class="glow-orb glow-orb-blue w-80 h-80 bottom-0 right-1/4 animate-pulse-slow" style="animation-delay: 5s"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[88vh] flex items-center justify-center px-6 pt-20 pb-16">
+    <div class="mx-auto max-w-6xl w-full relative z-10">
+
+      <!-- Top decorative row -->
+      <div class="flex items-center justify-between text-[0.6875rem] uppercase tracking-[0.2em] text-slate-400 mb-12 animate-fade-in-up">
+        <div class="flex items-center gap-3">
+          <span class="inline-block w-8 h-px bg-slate-400"></span>
+          <span>vol. 01 — est. 2024</span>
         </div>
-        <h1 class="text-6xl sm:text-8xl font-bold text-black dark:text-white" style="font-family: 'Inter', sans-serif;">
-          Hi there!
-        </h1>
-        <h2 class="text-2xl sm:text-3xl font-medium text-black/80 dark:text-white/80 mt-2">
-          Welcome to my online presence
-        </h2>
+        <div class="hidden sm:flex items-center gap-2">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>writing in progress</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span>personal archive</span>
+          <span class="inline-block w-8 h-px bg-slate-400"></span>
+        </div>
       </div>
-      
-      <div class="mt-6 max-w-3xl mx-auto animate-slide-up">
-        <p class="text-lg sm:text-xl text-black/70 dark:text-white/70 leading-relaxed font-normal">
-          I write here occasionally
-        </p>
+
+      <!-- Decorative oversized punctuation -->
+      <div aria-hidden="true" class="absolute -top-4 left-2 sm:left-8 text-[10rem] sm:text-[14rem] font-display text-blue-500/10 leading-none select-none pointer-events-none font-bold">“</div>
+      <div aria-hidden="true" class="absolute top-1/3 -right-4 sm:right-4 text-[10rem] sm:text-[14rem] font-display text-blue-500/10 leading-none select-none pointer-events-none font-bold">”</div>
+
+      <!-- Main hero content -->
+      <div class="grid grid-cols-12 gap-6 items-end">
+
+        <!-- Left: name and intro -->
+        <div class="col-span-12 md:col-span-8 space-y-8 animate-fade-in-up" style="animation-delay: 0.1s">
+          <div class="space-y-1">
+            <div class="text-xs sm:text-sm uppercase tracking-[0.3em] text-blue-600 font-medium">
+              a small corner of the internet
+            </div>
+          </div>
+
+          <h1 class="font-display font-bold leading-[0.9] tracking-tighter text-slate-900">
+            <span class="block text-xl sm:text-2xl md:text-3xl font-light text-slate-500 mb-3 font-sans tracking-wide">
+              hello, i'm
+            </span>
+            <span class="block text-[clamp(4rem,14vw,10rem)] text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-blue-700 to-blue-500 font-display" style="font-variation-settings: 'wdth' 75;">
+              Rizqi
+            </span>
+            <span class="block text-3xl sm:text-4xl md:text-5xl font-light text-slate-700 italic mt-1 font-sans">
+              — a regular person.
+            </span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed">
+            I write here occasionally about <em class="text-slate-900 font-medium not-italic underline decoration-blue-400 decoration-2 underline-offset-4">code</em>,
+            <em class="text-slate-900 font-medium not-italic underline decoration-blue-400 decoration-2 underline-offset-4">ideas</em>, and
+            everything else that crosses my mind.
+          </p>
+
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="/blog" class="btn btn-primary btn-lg">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              <span>Read the blog</span>
+              <span class="opacity-70 font-mono text-xs">→</span>
+            </a>
+            <a href="/about" class="btn btn-lg">
+              <span>About me</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: editorial sidebar -->
+        <aside class="col-span-12 md:col-span-4 md:pl-8 md:border-l border-slate-200 animate-fade-in-up" style="animation-delay: 0.3s">
+          <div class="space-y-6 text-sm">
+            <div>
+              <div class="text-[0.625rem] uppercase tracking-[0.25em] text-slate-400 mb-2">now</div>
+              <p class="text-slate-700 leading-relaxed">
+                Tinkering with <span class="font-mono text-blue-600">Astro</span>,
+                writing short notes, and reading more than I should.
+              </p>
+            </div>
+            <div>
+              <div class="text-[0.625rem] uppercase tracking-[0.25em] text-slate-400 mb-2">interests</div>
+              <ul class="space-y-1 text-slate-700 font-mono text-xs">
+                <li>· web & design systems</li>
+                <li>· small useful tools</li>
+                <li>· quiet internet spaces</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-[0.625rem] uppercase tracking-[0.25em] text-slate-400 mb-2">elsewhere</div>
+              <div class="flex flex-col gap-1 text-slate-600">
+                <a href="https://twitter.com/rizfahma" target="_blank" rel="noopener" class="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5">
+                  <span class="text-slate-400">→</span> twitter
+                </a>
+                <a href="https://www.linkedin.com/in/rizqifahma/" target="_blank" rel="noopener" class="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5">
+                  <span class="text-slate-400">→</span> linkedin
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
-      
-      <div class="flex flex-wrap justify-center gap-4 mt-12 animate-slide-up-delayed">
-        <a href="/blog" class="btn-supabase btn-supabase-primary group">
-          <span>Blog</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9l7 7v9a2 2 0 0 1-2 2z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3v6h6"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6M9 16h6"/>
-          </svg>
-        </a>
-        <a href="/about" class="btn-supabase btn-supabase-secondary group">
-          <span>Or Something?</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8"/>
-          </svg>
-        </a>
+
+      <!-- Bottom indicator -->
+      <div class="mt-16 flex items-center justify-center gap-3 text-slate-400 animate-fade-in-up" style="animation-delay: 0.5s">
+        <div class="h-px w-16 bg-gradient-to-r from-transparent to-slate-300"></div>
+        <span class="text-[0.625rem] uppercase tracking-[0.3em]">scroll to read</span>
+        <svg class="size-3.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        <div class="h-px w-16 bg-gradient-to-l from-transparent to-slate-300"></div>
       </div>
     </div>
   </section>
 
-  <div class="relative bg-gradient-to-b from-transparent via-white/30 dark:via-zinc-900/30 to-transparent">
-    <div class="mx-auto max-w-6xl px-6 py-20 space-y-24">
+  <div class="relative z-10 px-6 py-20 space-y-28">
 
-      <!-- About Section -->
-      <section class="animate-section">
-        <div class="text-center max-w-3xl mx-auto space-y-8">
-          <h2 class="text-4xl md:text-5xl font-black text-black dark:text-white">
-            About Me
-          </h2>
-          <div class="space-y-6 text-lg text-black/70 dark:text-white/70 leading-relaxed">
-            <p>I'm just a regular person — someone who enjoys simple things done well. I enjoy building things. I thrive on challenges that let me learn by doing and solving problems.</p>
+    <!-- ABOUT — editorial spread -->
+    <section class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-12 gap-6 items-start">
+        <div class="col-span-12 md:col-span-3">
+          <div class="sticky top-24">
+            <div class="text-[0.625rem] uppercase tracking-[0.3em] text-slate-400 mb-3">§ 01</div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-slate-900 font-display leading-[1.05]">
+              Building<br/>things<br/>that<br/>
+              <em class="font-display italic text-blue-600 font-normal">matter.</em>
+            </h2>
           </div>
         </div>
-</section>
-
-      <!-- Recent Blog Posts Section -->
-      <section class="space-y-12 animate-section">
-        <div class="text-center space-y-6">
-          <h2 class="text-4xl md:text-5xl font-black text-black dark:text-white">
-            Latest Blog Posts
-          </h2>
-          <p class="text-lg text-black/60 dark:text-white/60">
-            Recent thoughts on anything that I wish I could put into words.
+        <div class="col-span-12 md:col-span-7 md:col-start-5 space-y-6 text-slate-600 text-lg leading-relaxed">
+          <p class="text-2xl text-slate-900 font-light leading-snug">
+            I'm just a regular person — someone who enjoys simple things done well.
+          </p>
+          <p>
+            I enjoy <span class="text-slate-900 font-medium">building things</span>. I thrive on challenges that let me learn by doing and solving problems — the kind where you don't know the answer yet, and that's the whole point.
+          </p>
+          <p>
+            This site is a small archive. A place to put words, half-finished ideas, and the occasional thing I made. Nothing fancy. Just a record.
           </p>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 items-stretch max-w-4xl mx-auto">
-          {posts.map((post) => (
-            <div class="transform-none hover:transform-none">
-              <ArrowCard entry={post} pill={true} />
-            </div>
-          ))}
-        </div>
-        
-        <div class="text-center">
-          <a href="/blog" class="btn-supabase btn-supabase-primary group">
-            <span>All Posts</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Timeless Quote Section -->
-      <section class="space-y-12 animate-section">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-          <div class="relative inline-block">
-            <div class="relative p-12 rounded-3xl bg-white/5 dark:bg-black/5 border border-black/10 dark:border-white/10">
-              <svg class="w-12 h-12 mx-auto mb-6 text-black/20 dark:text-white/20" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
-              <blockquote class="text-2xl md:text-3xl font-bold italic text-black dark:text-white leading-relaxed mb-6">
-                "Prolonged derangement of the senses in order to obtain the unknown."
-              </blockquote>
-              <p>
-                — Jim Morrison
-              </p>
-            </div>
-          </div>
-          </div>
-          
-          <div class="space-y-4 text-center">
-            <h3 class="text-xl font-semibold text-black dark:text-white">-.-.-</h3>
-          
-            <p class="text-black/60 dark:text-white/60 max-w-2xl mx-auto text-center">
-              You made it this far. Hope it's worth it.
-            </p>
-            <h3 class="text-xl font-semibold text-black dark:text-white">-.-.-</h3>
-          </div>
+    <!-- RECENT POSTS -->
+    <section class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-12 gap-6 mb-10 items-end">
+        <div class="col-span-12 md:col-span-7">
+          <div class="text-[0.625rem] uppercase tracking-[0.3em] text-slate-400 mb-3">§ 02 — recent dispatches</div>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tighter text-slate-900 font-display leading-[1.05]">
+            Things I've<br/>
+            <em class="font-display italic text-blue-600 font-normal">written,</em><br/>
+            lately.
+          </h2>
         </div>
-      </section>
+        <div class="col-span-12 md:col-span-4 md:col-start-9 text-slate-500 md:text-right">
+          <p class="text-sm leading-relaxed">
+            Thoughts on anything that I wish I could put into words. Read at your own pace.
+          </p>
+        </div>
+      </div>
 
-    </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {posts.map((post) => (
+          <ArrowCard entry={post} pill={true} />
+        ))}
+      </div>
+
+      <div class="mt-12 flex items-center justify-center gap-4">
+        <div class="h-px flex-1 max-w-[120px] bg-slate-200"></div>
+        <a href="/blog" class="btn btn-primary">
+          <span>View all posts</span>
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <div class="h-px flex-1 max-w-[120px] bg-slate-200"></div>
+      </div>
+    </section>
+
+    <!-- QUOTE / SIGN-OFF -->
+    <section class="max-w-4xl mx-auto">
+      <div class="relative">
+        <div aria-hidden="true" class="absolute -top-10 -left-6 text-[8rem] font-display text-blue-500/15 leading-none select-none pointer-events-none font-bold">"</div>
+
+        <blockquote class="relative">
+          <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium italic text-slate-800 leading-[1.25] tracking-tight">
+            Prolonged derangement of the senses in order to obtain the unknown.
+          </p>
+          <footer class="mt-6 flex items-center gap-3 text-sm text-slate-500">
+            <span class="h-px w-8 bg-slate-300"></span>
+            <span class="uppercase tracking-[0.2em] text-xs">Jim Morrison</span>
+          </footer>
+        </blockquote>
+      </div>
+
+      <div class="mt-20 text-center space-y-4">
+        <div class="flex items-center justify-center gap-2 text-slate-300 font-mono text-xs tracking-[0.4em]">
+          <span>·</span><span>·</span><span>·</span>
+        </div>
+        <p class="text-slate-500 text-sm italic font-display">you made it this far. hope it's worth it.</p>
+        <div class="flex items-center justify-center gap-2 text-slate-300 font-mono text-xs tracking-[0.4em]">
+          <span>·</span><span>·</span><span>·</span>
+        </div>
+        <a href="/about" class="inline-block mt-6 text-sm text-slate-500 hover:text-blue-600 transition-colors border-b border-slate-300 hover:border-blue-600 pb-0.5">
+          more about me →
+        </a>
+      </div>
+    </section>
   </div>
-  
-
 </PageLayout>

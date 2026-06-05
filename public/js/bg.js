@@ -1,122 +1,37 @@
+function initBG() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function generateParticles(n) {
-    let value = `${getRandom(2560)}px ${getRandom(2560)}px #000`;
-    for (let i = 2; i <= n; i++) {
-      value += `, ${getRandom(2560)}px ${getRandom(2560)}px #000`;
-    }
-    return value;
+  if (isReducedMotion) return;
+
+  const container = document.getElementById('particles');
+  if (!container) return;
+
+  const count = isMobile ? 30 : 60;
+
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    const size = Math.random() * 3 + 1;
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const duration = Math.random() * 20 + 15;
+    const delay = Math.random() * 10;
+
+    dot.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, ${Math.random() * 0.2 + 0.05});
+      left: ${x}%;
+      top: ${y}%;
+      animation: float ${duration}s ease-in-out ${delay}s infinite;
+      pointer-events: none;
+    `;
+
+    container.appendChild(dot);
   }
+}
 
-  function generateStars(n) {
-    let value = `${getRandom(2560)}px ${getRandom(2560)}px #fff`;
-    for (let i = 2; i <= n; i++) {
-      value += `, ${getRandom(2560)}px ${getRandom(2560)}px #fff`;
-    }
-    return value;
-  }
-
-  function getRandom(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-  function initBG() {
-    // Optimize particle count based on device capabilities
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    let particleCount = {
-      small: 300,
-      medium: 150,
-      large: 75
-    };
-    
-    if (isMobile) {
-      particleCount = {
-        small: 100,
-        medium: 50,
-        large: 25
-      };
-    }
-    
-    if (isReducedMotion) {
-      particleCount = {
-        small: 0,
-        medium: 0,
-        large: 0
-      };
-    }
-    
-    const particlesSmall = generateParticles(particleCount.small);
-    const particlesMedium = generateParticles(particleCount.medium);
-    const particlesLarge = generateParticles(particleCount.large);
-    const particles1 = document.getElementById('particles1');
-    const particles2 = document.getElementById('particles2');
-    const particles3 = document.getElementById('particles3');
-
-    if (particles1) {
-      particles1.style.cssText = `
-      width: 1px;
-      height: 1px;
-      border-radius: 50%;
-      box-shadow: ${particlesSmall};
-      animation: animStar 50s linear infinite;
-      `;
-    }
-
-    if (particles2) {
-      particles2.style.cssText = `
-      width: 1.5px;
-      height: 1.5px;
-      border-radius: 50%;
-      box-shadow: ${particlesMedium};
-      animation: animateParticle 100s linear infinite;
-      `;
-    }
-
-    if (particles3) {
-      particles3.style.cssText = `
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      box-shadow: ${particlesLarge};
-      animation: animateParticle 150s linear infinite;
-      `;
-    }
-
-    const starsSmall = generateStars(200);
-    const starsMedium = generateStars(100);
-    const starsLarge = generateStars(50);
-    const stars1 = document.getElementById('stars1');
-    const stars2 = document.getElementById('stars2');
-    const stars3 = document.getElementById('stars3');
-
-    if (stars1) {
-      stars1.style.cssText = `
-      width: 1px;
-      height: 1px;
-      border-radius: 50%;
-      box-shadow: ${starsSmall};
-      `;
-    }
-
-    if (stars2) {
-      stars2.style.cssText = `
-      width: 1.5px;
-      height: 1.5px;
-      border-radius: 50%;
-      box-shadow: ${starsMedium};
-      `;
-    }
-
-    if (stars3) {
-      stars3.style.cssText = `
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      box-shadow: ${starsLarge};
-      `;
-    }
-  }
-
-  document.addEventListener('astro:after-swap', initBG);
-  initBG();
+document.addEventListener('astro:after-swap', initBG);
+initBG();

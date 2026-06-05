@@ -16,8 +16,9 @@ const tags = [...new Set(projects.flatMap(project => project.data.tags))]
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <TopLayout>
-    <div class="animate page-heading">
-      {PROJECTS.TITLE}
+    <div class="animate">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 font-display">{PROJECTS.TITLE}</h1>
+      <p class="mt-4 text-lg text-slate-600">{PROJECTS.DESCRIPTION}</p>
     </div>
   </TopLayout>
   <BottomLayout>

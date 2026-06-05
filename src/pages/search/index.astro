@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content"
+import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import TopLayout from "@layouts/TopLayout.astro"
 import BottomLayout from "@layouts/BottomLayout.astro"
@@ -12,13 +12,20 @@ const posts = (await getCollection("blog"))
 const projects = (await getCollection("projects"))
   .filter(post => !post.data.draft)
 
-const data = [...posts, ...projects] as CollectionEntry<"blog">[]
+const data = [...posts, ...projects].map((entry) => ({
+  collection: entry.collection,
+  slug: entry.slug,
+  title: entry.data.title,
+  summary: entry.data.summary,
+  tags: entry.data.tags ?? [],
+}))
 ---
 
 <PageLayout title={SEARCH.TITLE} description={SEARCH.DESCRIPTION}>
   <TopLayout>
-    <div class="animate page-heading">
-      {SEARCH.TITLE}
+    <div class="animate">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 font-display">{SEARCH.TITLE}</h1>
+      <p class="mt-4 text-lg text-slate-600">{SEARCH.DESCRIPTION}</p>
     </div>
   </TopLayout>
   <BottomLayout>

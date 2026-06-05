@@ -4,9 +4,9 @@
   
   <!-- Fallback Comment Section -->
   <div id="fallback-comments" class="hidden">
-    <div class="bg-black/5 dark:bg-white/5 rounded-lg p-6">
-      <h3 class="text-lg font-semibold text-black dark:text-white mb-4">Join the Discussion</h3>
-      <p class="text-black/70 dark:text-white/70 mb-4">
+    <div class="bg-black/5 rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-black mb-4">Join the Discussion</h3>
+      <p class="text-black/70 mb-4">
         Comments are powered by GitHub Discussions. Click below to participate in the conversation.
       </p>
       <div class="space-y-3">
@@ -22,7 +22,7 @@
         <a href="https://github.com/rizfahma/rizdotkim/discussions" 
            target="_blank" 
            rel="noopener noreferrer"
-           class="inline-flex items-center px-4 py-2 border border-black/20 dark:border-white/20 text-black dark:text-white rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+           class="inline-flex items-center px-4 py-2 border border-black/20 text-black rounded-lg hover:bg-black/5 transition-colors">
           View All Discussions
         </a>
       </div>
@@ -31,22 +31,19 @@
 </div>
 
 <script is:inline>
-  // Set initial theme to light mode
-  const initialTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  const initialTheme = 'light';
   
-  // Function to load Giscus with proper configuration
   function loadGiscus() {
     const container = document.getElementById('giscus-comments');
     const fallback = document.getElementById('fallback-comments');
     
     if (!container) return;
     
-    // Create Giscus script element with minimal required attributes
     const giscusScript = document.createElement('script');
     giscusScript.src = 'https://giscus.app/client.js';
     giscusScript.setAttribute('data-repo', 'rizfahma/rizdotkim');
     giscusScript.setAttribute('data-mapping', 'url');
-    giscusScript.setAttribute('data-strict', '0'); // Allow more flexible matching
+    giscusScript.setAttribute('data-strict', '0');
     giscusScript.setAttribute('data-reactions-enabled', '1');
     giscusScript.setAttribute('data-emit-metadata', '0');
     giscusScript.setAttribute('data-input-position', 'top');
@@ -56,19 +53,16 @@
     giscusScript.setAttribute('crossorigin', 'anonymous');
     giscusScript.async = true;
     
-    // Set up timeout to show fallback if Giscus doesn't load
     const timeout = setTimeout(() => {
       if (container && !container.querySelector('iframe.giscus-frame')) {
         console.log('Giscus failed to load, showing fallback');
         container.style.display = 'none';
         fallback.classList.remove('hidden');
       }
-    }, 5000); // 5 second timeout
+    }, 5000);
     
-    // Add success handling
     giscusScript.onload = function() {
       clearTimeout(timeout);
-      // Check if Giscus loaded successfully after a short delay
       setTimeout(() => {
         if (container && !container.querySelector('iframe.giscus-frame')) {
           console.log('Giscus loaded but no iframe found, showing fallback');
@@ -78,7 +72,6 @@
       }, 2000);
     };
     
-    // Add error handling
     giscusScript.onerror = function() {
       clearTimeout(timeout);
       console.log('Giscus script error, showing fallback');
@@ -89,53 +82,9 @@
     container.appendChild(giscusScript);
   }
   
-  // Function to update Giscus theme
-  function updateGiscusTheme() {
-    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (iframe) {
-      iframe.contentWindow.postMessage({
-        giscus: {
-          setConfig: {
-            theme: theme
-          }
-        }
-      }, 'https://giscus.app');
-    }
-  }
-  
-  // Set up theme change listeners
-  function setupThemeListeners() {
-    // Listen for theme changes by observing document element class changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          setTimeout(updateGiscusTheme, 100);
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-    
-    // Also listen to the theme buttons directly
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('#header-theme-button, #drawer-theme-button')) {
-        setTimeout(updateGiscusTheme, 150);
-      }
-    });
-  }
-  
-  // Load Giscus and set up theme listeners
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      loadGiscus();
-      setTimeout(setupThemeListeners, 1000);
-    });
+    document.addEventListener('DOMContentLoaded', loadGiscus);
   } else {
     loadGiscus();
-    setTimeout(setupThemeListeners, 1000);
   }
 </script>

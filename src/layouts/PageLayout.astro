@@ -3,7 +3,6 @@ import "@styles/global.css"
 import BaseHead from "@components/BaseHead.astro"
 import Header from "@components/Header.astro"
 import Footer from "@components/Footer.astro"
-import Drawer from "@components/Drawer.astro"
 import ChatWidget from "@components/ChatWidget.tsx"
 const { title, description } = Astro.props
 import { SITE } from "@consts"
@@ -14,59 +13,38 @@ import { SITE } from "@consts"
   <head>
     <BaseHead title={`${title} | ${SITE.TITLE}`} description={description} />
   </head>
-  <body class="min-h-screen bg-white dark:bg-[#0D0D0D] text-black/75 dark:text-white">
+  <body class="min-h-screen bg-white text-slate-900">
     <Header />
-    <Drawer />
-    <div class="relative">
-      <main>
-        <slot />
-      </main>
-    </div>
+    
+    <main class="flex-1 pt-16">
+      <slot />
+    </main>
+
     <Footer />
-    
     <ChatWidget client:only="solid-js" />
-    
+
     <!-- Back to Top Button -->
-    <button 
-      id="back-to-top"
-      type="button"
-      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-      class="fixed bottom-8 right-8 z-50 p-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm border border-black/10 dark:border-white/10 rounded-full shadow-lg hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 opacity-0 translate-y-10"
-      style="display: none;"
-      aria-label="Scroll to top"
-    >
-      <svg class="w-5 h-5 text-black/60 dark:text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 15l-6-6-6 6"/>
-      </svg>
+    <button id="back-to-top" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-50 p-3 bg-white backdrop-blur-sm border border-slate-200 rounded-lg text-slate-500 hover:text-blue-600 hover:border-blue-300 transition-all duration-300 opacity-0 translate-y-10 cursor-pointer" style="display:none" aria-label="Scroll to top">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
     </button>
-    
-    <!-- Back to Top Button Script -->
+
     <script is:inline>
-      // Show/hide back to top button based on scroll position
       const backToTopBtn = document.getElementById('back-to-top');
-      
-      // Show button initially if page is scrolled
-      if (window.scrollY > 300) {
-        backToTopBtn.style.display = 'block';
-        backToTopBtn?.classList.remove('opacity-0', 'translate-y-10');
-        backToTopBtn?.classList.add('opacity-100', 'translate-y-0');
-      } else {
-        backToTopBtn.style.display = 'none';
-        backToTopBtn?.classList.remove('opacity-100', 'translate-y-0');
-        backToTopBtn?.classList.add('opacity-0', 'translate-y-10');
-      }
-      
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.display = 'block';
+      function updateBackToTop() {
+        if (window.scrollY > 400) {
+          backToTopBtn.style.display = 'flex';
+          backToTopBtn.style.alignItems = 'center';
+          backToTopBtn.style.justifyContent = 'center';
           backToTopBtn?.classList.remove('opacity-0', 'translate-y-10');
           backToTopBtn?.classList.add('opacity-100', 'translate-y-0');
         } else {
-          backToTopBtn.style.display = 'none';
           backToTopBtn?.classList.remove('opacity-100', 'translate-y-0');
           backToTopBtn?.classList.add('opacity-0', 'translate-y-10');
+          setTimeout(() => { if (!backToTopBtn?.classList.contains('opacity-100')) backToTopBtn.style.display = 'none'; }, 300);
         }
-      });
+      }
+      if (window.scrollY > 400) { backToTopBtn.style.display = 'flex'; backToTopBtn.style.alignItems = 'center'; backToTopBtn.style.justifyContent = 'center'; backToTopBtn?.classList.remove('opacity-0', 'translate-y-10'); backToTopBtn?.classList.add('opacity-100', 'translate-y-0'); }
+      window.addEventListener('scroll', updateBackToTop, { passive: true });
     </script>
   </body>
 </html>

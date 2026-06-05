@@ -1,135 +1,100 @@
 ---
-import { SITE, SOCIALS } from "@consts"
 import Container from "@components/Container.astro"
+import { LINKS, SOCIALS, SITE } from "@consts"
+import { cn } from "@lib/utils"
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^/]+/g)
 ---
 
-<footer style="background-color: rgb(var(--background));">
-  <div class="animate">
-    <section class="py-5">
-      <!-- <Container size="md">
-        <div class="flex items-center justify-center sm:justify-end">
-          <button id="back-to-top" aria-label="Back to top of page" 
-            style="
-              display: flex;
-              gap: 0.5rem;
-              padding: 0.5rem 1rem;
-              font-size: 0.875rem;
-              align-items: center;
-              border-radius: 0.375rem;
-              border: 1px solid rgba(var(--border), 0.05);
-              color: rgb(var(--foreground));
-              transition: all 0.2s ease;
-              backdrop-filter: blur(8px);
-            "
-            onmouseover="this.style.backgroundColor = `rgb(var(--card-hover))`"
-            onmouseout="this.style.backgroundColor = 'transparent'"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(90deg)">
-              <polyline points="12 19 5 12 12 5" />
+<footer class="border-t border-slate-200/50 mt-auto relative z-10">
+  <Container size="md">
+    <div class="py-12 space-y-10">
+      <!-- Top row: brand + nav -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-5">
+          <a href="/" class="inline-flex items-center gap-3 group">
+            <svg class="size-7" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="500" cy="500" r="497.5" fill="currentColor"/>
+              <text x="500" y="750" font-family="Inter, sans-serif" font-size="600" font-weight="bold" text-anchor="middle" fill="white">RF</text>
             </svg>
-            Back to top
-          </button>
-        </div>
-      </Container> -->
-    </section>
-
-    <section class="py-5 border-t border-black/5 dark:border-purple-800/30" style="backdrop-filter: blur(8px);">
-      <Container size="md">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="flex flex-col items-center sm:items-start">
-            <a href="/" class="flex gap-1 w-fit font-semibold" 
-              style="
-                color: rgb(var(--foreground));
-                transition: opacity 0.2s ease;
-              "
-              onmouseover="this.style.opacity = '0.8'"
-              onmouseout="this.style.opacity = '1'"
-            >
-              <svg class="size-6" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="fill: currentColor">
-                <circle cx="500" cy="500" r="497.5" fill="black"/>
-                <text x="500" y="750" font-family="Geist, sans-serif" font-size="600" font-weight="bold" text-anchor="middle" fill="white">RF</text>
-              </svg>
-              {SITE.TITLE}
-            </a>
-          </div>
-          <div class="flex gap-2 justify-center sm:justify-end items-center" style="color: rgb(var(--muted));">
-            <span class="relative flex h-3 w-3">
-              <span class="absolute inline-flex h-full w-full rounded-full" 
-                style="
-                  background-color: rgba(var(--foreground), 0.3); 
-                  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-                "
-              ></span>
-              <span class="relative inline-flex rounded-full h-3 w-3" style="background-color: rgb(var(--foreground));"></span>
+            <span class="font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{SITE.TITLE}</span>
+          </a>
+          <p class="mt-4 text-sm text-slate-500 leading-relaxed max-w-sm">
+            A small corner of the internet where I write about code, ideas, and everything else that crosses my mind.
+          </p>
+          <div class="mt-4 flex items-center gap-3 text-sm text-slate-500">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            All systems normal
+            <span>All systems normal</span>
           </div>
         </div>
-      </Container>
-    </section>
 
-    <section class="py-5 border-t border-black/5 dark:border-purple-800/30" style="backdrop-filter: blur(8px);">
-      <Container size="md">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="order-2 sm:order-1 flex flex-col items-center sm:items-start">
-            <div class="space-x-2">
-              <a href="/legal/terms" style="color: rgb(var(--muted)); transition: color 0.2s ease;" onmouseover="this.style.color = `rgb(var(--foreground))`" onmouseout="this.style.color = `rgb(var(--muted))`">
-                Terms
-              </a>
-              <span style="color: rgb(var(--muted));">|</span>
-              <a href="/legal/privacy" style="color: rgb(var(--muted)); transition: color 0.2s ease;" onmouseover="this.style.color = `rgb(var(--foreground))`" onmouseout="this.style.color = `rgb(var(--muted))`">
-                Privacy
-              </a>
-            </div>
-            <div class="text-sm mt-2" style="color: rgb(var(--subtle));">
-              &copy; 20XX | All rights reserved
-            </div>
-          </div>
-
-          <div class="order-1 sm:order-2 flex justify-center sm:justify-end">
-            <div class="flex flex-wrap gap-1 items-center justify-center">
-              {
-                SOCIALS.map((SOCIAL) => (
-                  <a 
-                    href={SOCIAL.HREF} 
-                    target="_blank" 
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`} 
-                    class="group flex size-10 rounded-full p-2 items-center justify-center"
-                    style="
-                      transition: background-color 0.2s ease;
-                      color: rgb(var(--muted));
-                    "
-                    onmouseover="this.style.backgroundColor = `rgb(var(--card-hover))`; this.style.color = `rgb(var(--foreground))`"
-                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.color = `rgb(var(--muted))`"
-                  >
-                    <svg class="size-full" style="fill: currentColor">
-                      <use href={`/social.svg#${SOCIAL.ICON}`} />
-                    </svg>
-                  </a>
-                ))
-              }
-            </div>
-          </div>
+        <div class="md:col-span-3">
+          <div class="text-[0.625rem] uppercase tracking-[0.3em] text-slate-400 mb-4 font-mono">§ pages</div>
+          <ul class="space-y-2.5 text-sm">
+            {LINKS.map((LINK) => (
+              <li>
+                <a
+                  href={LINK.HREF}
+                  class={cn(
+                    "font-bold tracking-wide transition-colors duration-200",
+                    (pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF)
+                      ? "text-blue-600"
+                      : "text-slate-600 hover:text-slate-900"
+                  )}
+                  aria-current={(pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF) ? "page" : undefined}
+                >
+                  {LINK.TEXT}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </Container>
-    </section>
-  </div>
+
+        <div class="md:col-span-4">
+          <div class="text-[0.625rem] uppercase tracking-[0.3em] text-slate-400 mb-4 font-mono">§ elsewhere</div>
+          <ul class="space-y-2.5 text-sm">
+            {SOCIALS.map((SOCIAL) => (
+              <li>
+                <a href={SOCIAL.HREF} target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-600 font-bold tracking-wide transition-colors duration-200 inline-flex items-center gap-1.5">
+                  <span>{SOCIAL.NAME}</span>
+                  <span class="text-slate-400 text-xs">↗</span>
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href="/rss.xml" target="_blank" class="text-slate-600 hover:text-blue-600 font-bold tracking-wide transition-colors duration-200 inline-flex items-center gap-1.5">
+                <span>RSS feed</span>
+                <span class="text-slate-400 text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Decorative divider -->
+      <div class="flex items-center gap-3 text-slate-300">
+        <span class="h-px flex-1 bg-slate-200"></span>
+        <span class="text-[0.625rem] uppercase tracking-[0.4em] font-mono">· · ·</span>
+        <span class="h-px flex-1 bg-slate-200"></span>
+      </div>
+
+      <!-- Bottom row: legal + copyright -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-4">
+          <a href="/legal/terms" class="hover:text-blue-600 transition-colors duration-200">Terms</a>
+          <span class="text-slate-300">·</span>
+          <a href="/legal/privacy" class="hover:text-blue-600 transition-colors duration-200">Privacy</a>
+        </div>
+        <div class="font-mono text-slate-400">
+          &copy; {new Date().getFullYear()} {SITE.TITLE}
+        </div>
+        <div class="font-mono text-slate-400">
+          built with <span class="text-slate-500">astro</span>
+        </div>
+      </div>
+    </div>
+  </Container>
 </footer>
-
-<script is:inline>
-  function goBackToTop(event) {
-    event.preventDefault()
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    })
-  }
-
-  function inintializeBackToTop() {
-    const backToTop = document.getElementById("back-to-top")
-    backToTop?.addEventListener("click", goBackToTop)
-  }
-
-  document.addEventListener("astro:after-swap", inintializeBackToTop)
-  inintializeBackToTop()
-</script>

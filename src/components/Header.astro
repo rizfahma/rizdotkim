@@ -1,119 +1,117 @@
 ---
-import { SITE, LINKS } from "@consts"
+import { SITE, LINKS, SOCIALS } from "@consts"
 import { cn } from "@lib/utils"
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
-import Container from "@components/Container.astro"
 ---
 
-<header id="header" class="fixed top-0 w-full h-16 z-50 ">
-  <Container size="md">
-    <div class="relative h-full w-full">
-      <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
-        <a href="/" class="flex gap-2 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-          <svg class="size-9" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="500" cy="500" r="497.5" fill="black"/>
-            <text x="500" y="750" font-family="Inter, sans-serif" font-size="600" font-weight="bold" text-anchor="middle" fill="white">RF</text>
-          </svg>
-          <div class="flex items-center" style="font-family: 'Inter', sans-serif; font-weight: 600;">
-            {SITE.TITLE}
-          </div>
+<header id="header" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <svg class="size-8" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="500" cy="500" r="497.5" fill="currentColor"/>
+        <text x="500" y="750" font-family="Inter, sans-serif" font-size="600" font-weight="bold" text-anchor="middle" fill="white">RF</text>
+      </svg>
+      <span class="font-semibold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{SITE.TITLE}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
+      {LINKS.map((LINK) => (
+        <a
+          href={LINK.HREF}
+          data-nav-link
+          class={cn(
+            "nav-pill",
+            (pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF) && "active"
+          )}
+          aria-current={(pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF) ? "page" : undefined}
+        >
+          {LINK.TEXT}
         </a>
-      </div>
+      ))}
+    </nav>
 
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-      <nav class="hidden md:flex items-center justify-center text-sm gap-1">
-        {
-          LINKS.map((LINK) => (
-            <a href={LINK.HREF} class={cn("h-8 rounded-full px-3 text-current", "flex items-center justify-center", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF ? "bg-black dark:bg-white text-white dark:text-black" : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white")}>
-              {LINK.TEXT}
-            </a>
-          ))
-        }
-      </nav>
-    </div>
-
-    <div class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-1">
-      <a href="/search" aria-label={`Search blog posts and projects on ${SITE.TITLE}`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out", pathname === "/search" || "/" + subpath?.[0] === "/search" ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black" : "")}>
-        <svg class="size-full">
-          <use href="/ui.svg#search"></use>
-        </svg>
+    <div class="flex items-center gap-2">
+      <a href="/search" aria-label="Search" class={cn("icon-btn", (pathname === "/search" || "/" + subpath?.[0] === "/search") && "text-blue-600 border-blue-300")}>
+        <svg class="size-4"><use href="/ui.svg#search"></use></svg>
       </a>
 
-      <a href="/rss.xml" target="_blank" aria-label={`Rss feed for ${SITE.TITLE}`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
-        <svg class="size-full">
-          <use href="/ui.svg#rss"></use>
-        </svg>
-      </a>
-
-      <button id="header-theme-button" aria-label={`Toggle light and dark theme`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
-        <svg class="size-full block dark:hidden">
-          <use href="/ui.svg#sun"></use>
-        </svg>
-        <svg class="size-full hidden dark:block">
-          <use href="/ui.svg#moon"></use>
-        </svg>
-      </button>
-
-      <button id="header-drawer-button" aria-label={`Toggle drawer open and closed`} class={cn("flex md:hidden", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
-        <svg id="drawer-open" class="size-full">
-          <use href="/ui.svg#menu"></use>
-        </svg>
-        <svg id="drawer-close" class="size-full">
-          <use href="/ui.svg#x"></use>
-        </svg>
+      <button id="mobile-menu-button" class="md:hidden icon-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+        <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </div>
-  </Container>
+
+  <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200/50 bg-white/95 backdrop-blur-md">
+    <nav class="px-6 py-4 space-y-1" aria-label="Mobile">
+      {LINKS.map((LINK) => (
+        <a
+          href={LINK.HREF}
+          data-nav-link
+          class={cn(
+            "block px-4 py-3 rounded-lg text-sm font-bold tracking-wide transition-colors duration-200",
+            (pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF)
+              ? "text-blue-600 bg-blue-50"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+          )}
+          aria-current={(pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF) ? "page" : undefined}
+        >
+          {LINK.TEXT}
+        </a>
+      ))}
+      <div class="pt-4 mt-4 border-t border-slate-200/50 flex items-center gap-2">
+        <a href="/rss.xml" target="_blank" aria-label="RSS" class="icon-btn opacity-60 hover:opacity-100">
+          <svg class="size-4"><use href="/ui.svg#rss"></use></svg>
+        </a>
+        {SOCIALS.map((SOCIAL) => (
+          <a href={SOCIAL.HREF} target="_blank" rel="noopener noreferrer" aria-label={SOCIAL.NAME} class="icon-btn opacity-60 hover:opacity-100">
+            <svg class="size-4" style="fill: currentColor"><use href={`/social.svg#${SOCIAL.ICON}`}/></svg>
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
 </header>
 
-<style>
-  #header-drawer-button > #drawer-open {
-    @apply block;
-  }
-
-  #header-drawer-button > #drawer-close {
-    @apply hidden;
-  }
-
-  #header-drawer-button.open > #drawer-open {
-    @apply hidden;
-  }
-
-  #header-drawer-button.open > #drawer-close {
-    @apply block;
-  }
-</style>
-
 <script is:inline>
-  function toggleDrawer() {
-    const drawer = document.getElementById("drawer")
-    const drawerButton = document.getElementById("header-drawer-button")
-    drawer?.classList.toggle("open")
-    drawerButton?.classList.toggle("open")
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobile-menu")
+    menu?.classList.toggle("hidden")
   }
 
-  function initializeDrawerButton() {
-    const drawerButton = document.getElementById("header-drawer-button")
-    drawerButton?.addEventListener("click", toggleDrawer)
-  }
+  (function trackVisitedNavLinks() {
+    try {
+      var STORAGE_KEY = "riz:visited-nav";
+      var visited = {};
+      try { visited = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch (e) { visited = {}; }
 
-  document.addEventListener("astro:after-swap", initializeDrawerButton)
-  initializeDrawerButton()
+      var applyVisited = function () {
+        var navLinks = document.querySelectorAll("a[data-nav-link]");
+        navLinks.forEach(function (link) {
+          var href = link.getAttribute("href");
+          if (href && visited[href]) link.classList.add("visited");
+        });
+        var footerLinks = document.querySelectorAll("footer a[href^='/']");
+        footerLinks.forEach(function (link) {
+          var href = link.getAttribute("href");
+          if (href && visited[href]) {
+            link.classList.add("text-slate-900");
+            link.classList.remove("text-slate-600");
+          }
+        });
+      };
 
-  function initializeThemeSelect() {
-    const themeSelect = document.getElementById("theme-select");
-    if (themeSelect) {
-      themeSelect.value = localStorage.colorScheme || "github";
-      themeSelect.addEventListener("change", (e) => {
-        const scheme = e.target.value;
-        document.documentElement.setAttribute('data-theme', scheme);
-        localStorage.colorScheme = scheme;
+      var allLinks = document.querySelectorAll("a[data-nav-link], footer a[href^='/']");
+      allLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          var href = link.getAttribute("href");
+          if (!href) return;
+          visited[href] = true;
+          try { localStorage.setItem(STORAGE_KEY, JSON.stringify(visited)); } catch (e) {}
+        });
       });
-    }
-  }
 
-  document.addEventListener("astro:after-swap", initializeThemeSelect);
-  initializeThemeSelect();
+      applyVisited();
+    } catch (e) {}
+  })();
 </script>

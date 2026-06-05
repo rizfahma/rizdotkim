@@ -1,6 +1,5 @@
 ---
 import Container from "@components/Container.astro"
-import ChatWidget from "@components/ChatWidget.tsx"
 ---
 
 <div class="flex-1 py-5">
@@ -8,5 +7,3 @@ import ChatWidget from "@components/ChatWidget.tsx"
     <slot/>
   </Container>
 </div>
-
-<ChatWidget client:only="solid-js" />
