@@ -13,25 +13,15 @@ export default {
       typography: {
         DEFAULT: { css: { maxWidth: "none" } },
       },
-      rotate: { "45": "45deg", "135": "135deg", "225": "225deg", "315": "315deg" },
       animation: {
-        twinkle: "twinkle 2s ease-in-out forwards",
-        meteor: "meteor 3s ease-in-out forwards",
-        float: "float 6s ease-in-out infinite",
-        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "gradient-x": "gradient-x 15s ease infinite",
         "fade-in": "fade-in 0.5s ease-out",
         "fade-in-up": "fade-in-up 0.5s ease-out",
-        "slide-in-left": "slide-in-left 0.3s ease-out",
+        bounce: "bounce 1s infinite",
       },
       keyframes: {
-        twinkle: { "0%": { opacity: 0, transform: "rotate(0deg)" }, "50%": { opacity: 1, transform: "rotate(180deg)" }, "100%": { opacity: 0, transform: "rotate(360deg)" } },
-        meteor: { "0%": { opacity: 0, transform: "translateY(200%)" }, "50%": { opacity: 1 }, "100%": { opacity: 0, transform: "translateY(0)" } },
-        float: { "0%, 100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-10px)" } },
-        "gradient-x": { "0%, 100%": { "background-position": "0% 50%" }, "50%": { "background-position": "100% 50%" } },
         "fade-in": { "0%": { opacity: 0 }, "100%": { opacity: 1 } },
         "fade-in-up": { "0%": { opacity: 0, transform: "translateY(20px)" }, "100%": { opacity: 1, transform: "translateY(0)" } },
-        "slide-in-left": { "0%": { opacity: 0, transform: "translateX(-20px)" }, "100%": { opacity: 1, transform: "translateX(0)" } },
+        bounce: { "0%, 100%": { transform: "translateY(-25%)", animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)" }, "50%": { transform: "translateY(0)", animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)" } },
       },
       screens: { xs: "475px" },
       transitionTimingFunction: {
