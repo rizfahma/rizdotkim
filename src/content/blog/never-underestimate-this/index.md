@@ -10,7 +10,7 @@ summary: "My month-long battle with lower back pain: why ignoring early warning 
 
 ### Because someday it probably will haunt again
 
-So, during the recent month this pain comes back again, and it struck harder and longer. I am talking about [lower back pain, that I talked about a few times before on this blog](https://riz.kim/whats-going-on-with-january-2024/).
+So, during the recent month this pain comes back again, and it struck harder and longer. I am talking about [lower back pain, that I talked about a few times before on this blog](/blog/whats-going-on-with-january-2024/).
 
 **How the hell this happened again?**
 

@@ -91,7 +91,7 @@ export default function Search({ data }: Props) {
                 <li>
                   <ArrowCard
                     entry={
-                      { collection: result.collection, slug: result.slug, data: { title: result.title, summary: result.summary, date: new Date(), tags: result.tags }, body: "" } as any
+                      { collection: result.collection, slug: result.slug, data: { title: result.title, summary: result.summary, date: new Date("2024-01-01"), tags: result.tags ?? [] }, body: "" } as any
                     }
                     pill={true}
                   />

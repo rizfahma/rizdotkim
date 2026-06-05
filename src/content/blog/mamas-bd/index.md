@@ -10,7 +10,7 @@ tags:
 summary: "A birthday reflection on never giving enough to Mom: the guilt and love that drives me to do better"
 ---
 
-As I previously written about [birthday](https://riz.kim/another-day-of-another-year/)s, we don't "really" celebrate it among our family. But this time, or to my Mom, there should be some exception. Well, we didn't celebrate it though.
+As I previously written about [birthday](/blog/another-day-of-another-year/)s, we don't "really" celebrate it among our family. But this time, or to my Mom, there should be some exception. Well, we didn't celebrate it though.
 
 Sometimes I thought that I haven't given the best to my Mama, and I would always regret it.
 

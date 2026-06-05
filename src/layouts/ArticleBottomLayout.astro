@@ -22,18 +22,18 @@ const randomPosts = collection === "blog" ? (() => { const allBlogPosts = items.
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8 border-t border-slate-200">
     <a href={`/${prev.collection}/${prev.slug}`} class="card p-5 flex items-center gap-4 group">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-blue-500 rotate-180 transition-colors duration-200 flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       <div class="min-w-0">
         <div class="text-xs uppercase tracking-wider text-slate-500 mb-1">Previous</div>
         <div class="font-semibold text-sm text-slate-900 truncate group-hover:text-blue-600 transition-colors duration-200">{prev.data.title}</div>
       </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-blue-500 rotate-180 transition-colors duration-200 flex-shrink-0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
     <a href={`/${next.collection}/${next.slug}`} class="card p-5 flex items-center gap-4 group justify-end text-right">
       <div class="min-w-0">
         <div class="text-xs uppercase tracking-wider text-slate-500 mb-1">Next</div>
         <div class="font-semibold text-sm text-slate-900 truncate group-hover:text-blue-600 transition-colors duration-200">{next.data.title}</div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-blue-500 transition-colors duration-200 flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-blue-500 transition-colors duration-200 flex-shrink-0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 

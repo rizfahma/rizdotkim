@@ -15,7 +15,7 @@ summary: "How I thrive professionally without Instagram: challenging corporate a
 
 I don't understand why some companies rely on Instagram that much. Yes I understand that it has billions of users worldwide, thus it could be useful for marketing use. Might be for promoting their products, seeing people's reaction on their new campaigns, or using it for PR purposes. You name it.
 
-As [someone who doesn't have any personal account](https://riz.kim/no-instagram-no-facebook/), sometimes I found it challenging whenever the company representatives ask us to check some important news or updates on the instagram account.
+As someone who doesn't have any personal account, sometimes I found it challenging whenever the company representatives ask us to check some important news or updates on the instagram account.
 
 Oh no.
 
@@ -35,4 +35,4 @@ If you wonder why I do so, please go down in the rabbit hole of "Cambridge Analy
 
 Will I ever signup for personal instagram account again in the future? I have no idea. If so, that would make me more distracted and overwhelmed.
 
-I felt so relieved after [deleting my facebook](https://riz.kim/delete-facebook/) and instagram accounts 6 years ago.
+I felt so relieved after deleting my facebook and instagram accounts 6 years ago.

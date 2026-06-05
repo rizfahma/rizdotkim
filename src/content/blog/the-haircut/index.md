@@ -14,7 +14,7 @@ I just had my hair cut a few days ago. The first in 2025.
 
 **Happy new year, by the way.**
 
-The last time I had it was in November, before I went [to Turkey for an overseas training](https://riz.kim/sometime-in-turkey/). After that pretty much my hair grew wildly but kept relatively short like less than 8.5cm.
+The last time I had it was in November, before I went [to Turkey for an overseas training](/blog/sometime-in-turkey/). After that pretty much my hair grew wildly but kept relatively short like less than 8.5cm.
 
 Sometimes I had my hair cut monthly, other times every two months, depending on my mood or whether I had time to go to a barbershop.
 

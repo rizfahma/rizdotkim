@@ -65,8 +65,13 @@ samp {
 }
 
 ::selection {
-  background-color: rgba(var(--accent), 0.3);
-  color: rgb(var(--foreground));
+  background-color: rgba(59, 130, 246, 0.35);
+  color: rgb(15, 23, 42);
+}
+
+::-moz-selection {
+  background-color: rgba(59, 130, 246, 0.35);
+  color: rgb(15, 23, 42);
 }
 
 /* ─── ANIMATED GRADIENT BACKGROUND ─── */

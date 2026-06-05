@@ -12,9 +12,9 @@ coverImage: "10-tahun-rizqifahma.jpg"
 
 ### To me, it is more than just another kind of online existence
 
-Minggu malam tanggal 27 Februari 2011 terasa hampir sama dengan malam-malam sebelumnya. Namun berbeda dengan malam-malam sebelumnya, malam itu saya memutuskan untuk mendaftarkan domain [rizqifahma.com](https://riz.kim/). Sebenarnya saya sudah cukup sering memikirkan untuk mendaftarkan domain ini untuk jadi website/ blog pribadi saya, namun saya merasa belum _urgent_, karena saat itu saya sudah mengelola beberapa blog.
+Minggu malam tanggal 27 Februari 2011 terasa hampir sama dengan malam-malam sebelumnya. Namun berbeda dengan malam-malam sebelumnya, malam itu saya memutuskan untuk mendaftarkan domain [rizqifahma.com](https://rizqifahma.com/). Sebenarnya saya sudah cukup sering memikirkan untuk mendaftarkan domain ini untuk jadi website/ blog pribadi saya, namun saya merasa belum _urgent_, karena saat itu saya sudah mengelola beberapa blog.
 
-Beberapa kawan _bloggers_ saya sudah mendaftarkan domain pribadi masing-masing sebagai sarana tempat mereka menampilkan profil, portfolio, dan juga _curriculum vitae_. Waktu itu saya merasa belum se-_eiger_ itu, karena masih lebih mengutamakan Facebook (lalu kemudian beberapa tahun lalu saya [menghapus secara permanen akun pribadi Facebook](https://riz.kim/delete-facebook/) saya).
+Beberapa kawan _bloggers_ saya sudah mendaftarkan domain pribadi masing-masing sebagai sarana tempat mereka menampilkan profil, portfolio, dan juga _curriculum vitae_. Waktu itu saya merasa belum se-_eiger_ itu, karena masih lebih mengutamakan Facebook (lalu kemudian beberapa tahun lalu saya menghapus secara permanen akun pribadi Facebook saya).
 
 Singkat cerita, saya mendaftarkan domain rizqifahma.com, dan menjadikannya sebagai blog pribadi saya. Blog ini menjadi sarana untuk latihan menulis bagi saya, entah itu dalam Bahasa Indonesia maupun Bahasa Inggris.
 
