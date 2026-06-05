@@ -14,64 +14,63 @@ const posts = (await getCollection("blog"))
   <div class="fixed inset-0 gradient-bg pointer-events-none"></div>
   
   <div class="fixed inset-0 pointer-events-none overflow-hidden">
-    <div class="glow-orb glow-orb-blue w-[28rem] h-[28rem] -top-48 -right-48 animate-pulse-slow"></div>
-    <div class="glow-orb glow-orb-blue w-96 h-96 top-1/2 -left-48 animate-pulse-slow" style="animation-delay: 3s"></div>
-    <div class="glow-orb glow-orb-blue w-80 h-80 bottom-0 right-1/4 animate-pulse-slow" style="animation-delay: 5s"></div>
+    <div class="absolute -top-48 -right-48 w-[40rem] h-[40rem] bg-blue-500/[0.03] rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-1/3 -left-64 w-[36rem] h-[36rem] bg-blue-400/[0.03] rounded-full blur-[80px]"></div>
+    <div class="absolute top-1/2 right-1/4 w-[28rem] h-[28rem] bg-blue-500/[0.02] rounded-full blur-[60px]"></div>
   </div>
 
   <!-- HERO -->
-  <section class="relative min-h-[88vh] flex items-center justify-center px-6 pt-20 pb-16">
+  <section class="relative min-h-[85vh] flex items-center justify-center px-6 pt-20 pb-16">
     <div class="mx-auto max-w-6xl w-full relative z-10">
 
       <!-- Top decorative row -->
-      <div class="flex items-center justify-between text-[0.6875rem] uppercase tracking-[0.2em] text-slate-400 mb-12 animate-fade-in-up">
+      <div class="flex items-center justify-between text-[0.75rem] uppercase tracking-[0.2em] text-slate-500 mb-12 opacity-0" style="animation: fadeInUp 0.6s ease-out 0.1s forwards;">
         <div class="flex items-center gap-3">
           <span class="inline-block w-8 h-px bg-slate-400"></span>
-          <span>vol. 01 — est. YEAR OF HORSE</span>
+          <span>vol. 01 — est. Y34R0FH0RS3</span>
         </div>
         <div class="hidden sm:flex items-center gap-2">
           <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
           <span>writing in progress. always progressing</span>
         </div>
         <div class="flex items-center gap-3">
-          <span>personal archive</span>
+          <span>personal space</span>
           <span class="inline-block w-8 h-px bg-slate-400"></span>
         </div>
       </div>
 
       <!-- Decorative oversized punctuation -->
-      <div aria-hidden="true" class="absolute -top-4 left-2 sm:left-8 text-[10rem] sm:text-[14rem] font-display text-blue-500/10 leading-none select-none pointer-events-none font-bold">“</div>
-      <div aria-hidden="true" class="absolute top-1/3 -right-4 sm:right-4 text-[10rem] sm:text-[14rem] font-display text-blue-500/10 leading-none select-none pointer-events-none font-bold">”</div>
+      <div aria-hidden="true" class="absolute -top-4 left-2 sm:left-8 text-[10rem] sm:text-[14rem] font-display text-blue-500/[0.06] leading-none select-none pointer-events-none font-bold">"</div>
+      <div aria-hidden="true" class="absolute top-1/3 -right-4 sm:right-4 text-[10rem] sm:text-[14rem] font-display text-blue-500/[0.06] leading-none select-none pointer-events-none font-bold">"</div>
 
       <!-- Main hero content -->
       <div class="grid grid-cols-12 gap-6 items-end">
 
         <!-- Left: name and intro -->
-        <div class="col-span-12 md:col-span-8 space-y-8 animate-fade-in-up" style="animation-delay: 0.1s">
+        <div class="col-span-12 md:col-span-8 space-y-8 opacity-0" style="animation: fadeInUp 0.6s ease-out 0.2s forwards;">
           <div class="space-y-1">
-            <div class="text-xs sm:text-sm uppercase tracking-[0.3em] text-blue-600 font-medium">
+            <div class="text-sm sm:text-base uppercase tracking-[0.25em] text-blue-600 font-medium">
               a small corner of the internet
             </div>
           </div>
 
           <h1 class="font-display font-bold leading-[0.9] tracking-tighter text-slate-900">
-            <span class="block text-xl sm:text-2xl md:text-3xl font-light text-slate-500 mb-3 font-sans tracking-wide">
+            <span class="block text-xl sm:text-2xl md:text-3xl font-light text-slate-600 mb-3 font-sans tracking-wide">
               hello, i'm
             </span>
-            <span class="block text-[clamp(4rem,14vw,10rem)] text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-blue-700 to-blue-500 font-display" style="font-variation-settings: 'wdth' 50;">
+            <span class="block text-[clamp(3.5rem,12vw,9rem)] text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-blue-700 to-blue-500 font-display" style="font-variation-settings: 'wdth' 50;">
               Rizqi Fahma
             </span>
-            <span class="block text-3xl sm:text-4xl md:text-5xl font-light text-slate-700 italic mt-1 font-sans">
+            <span class="block text-2xl sm:text-3xl md:text-4xl font-light text-slate-700 italic mt-1 font-sans">
               — just a regular person.
             </span>
           </h1>
 
-          <p class="text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed">
-            I write here occasionally about <em class="text-slate-900 font-medium not-italic underline decoration-blue-400 decoration-2 underline-offset-4">life</em>,
-            <em class="text-slate-900 font-medium not-italic underline decoration-blue-400 decoration-2 underline-offset-4">ideas</em>, and
+          <p class="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
+            I write here occasionally about <em class="text-slate-800 font-medium not-italic underline decoration-blue-400 decoration-2 underline-offset-4">life</em>,
+            <em class="text-slate-800 font-medium not-italic underline decoration-blue-400 decoration-2 underline-offset-4">ideas</em>, and
             everything else that crosses my mind.
           </p>
 
@@ -79,7 +78,7 @@ const posts = (await getCollection("blog"))
             <a href="/blog" class="btn btn-primary btn-lg">
               <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
               <span>Read the blog</span>
-              <span class="opacity-70 font-mono text-xs">→</span>
+              <span class="opacity-70 font-mono text-sm">→</span>
             </a>
             <a href="/about" class="btn btn-lg">
               <span>About me</span>
@@ -88,25 +87,25 @@ const posts = (await getCollection("blog"))
         </div>
 
         <!-- Right: editorial sidebar -->
-        <aside class="col-span-12 md:col-span-4 md:pl-8 md:border-l border-slate-200 animate-fade-in-up" style="animation-delay: 0.3s">
+        <aside class="col-span-12 md:col-span-4 md:pl-8 md:border-l border-slate-200 opacity-0" style="animation: fadeInUp 0.6s ease-out 0.4s forwards;">
           <div class="space-y-6 text-sm">
             <div>
-              <div class="text-[0.625rem] uppercase tracking-[0.25em] text-slate-400 mb-2">now</div>
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">now</div>
               <p class="text-slate-700 leading-relaxed">
                 Tinkering with <span class="font-mono text-blue-600">STUFF!</span>
                 writing short notes, and reading more than I should.
               </p>
             </div>
             <div>
-              <div class="text-[0.625rem] uppercase tracking-[0.25em] text-slate-400 mb-2">interests</div>
-              <ul class="space-y-1 text-slate-700 font-mono text-xs">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">interests</div>
+              <ul class="space-y-1 text-slate-700 font-mono text-sm">
                 <li>· technologies</li>
                 <li>· useful tools, methods</li>
                 <li>· quiet internet spaces</li>
               </ul>
             </div>
             <div>
-              <div class="text-[0.625rem] uppercase tracking-[0.25em] text-slate-400 mb-2">elsewhere</div>
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">elsewhere</div>
               <div class="flex flex-col gap-1 text-slate-600">
                 <a href="https://twitter.com/rizfahma" target="_blank" rel="noopener" class="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5">
                   <span class="text-slate-400">→</span> twitter
@@ -121,14 +120,21 @@ const posts = (await getCollection("blog"))
       </div>
 
       <!-- Bottom indicator -->
-      <div class="mt-16 flex items-center justify-center gap-3 text-slate-400 animate-fade-in-up" style="animation-delay: 0.5s">
+      <div class="mt-16 flex items-center justify-center gap-3 text-slate-400 opacity-0" style="animation: fadeInUp 0.6s ease-out 0.6s forwards;">
         <div class="h-px w-16 bg-gradient-to-r from-transparent to-slate-300"></div>
-        <span class="text-[0.625rem] uppercase tracking-[0.3em]">scroll to read</span>
+        <span class="text-xs uppercase tracking-[0.25em]">scroll to read</span>
         <svg class="size-3.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         <div class="h-px w-16 bg-gradient-to-l from-transparent to-slate-300"></div>
       </div>
     </div>
   </section>
+
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 
   <div class="relative z-10 px-6 py-20 space-y-28">
 
@@ -137,7 +143,7 @@ const posts = (await getCollection("blog"))
       <div class="grid grid-cols-12 gap-6 items-start">
         <div class="col-span-12 md:col-span-3">
           <div class="sticky top-24">
-            <div class="text-[0.625rem] uppercase tracking-[0.3em] text-slate-400 mb-3">§ 01</div>
+            <div class="text-xs uppercase tracking-[0.25em] text-slate-500 mb-3">§ 01</div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-slate-900 font-display leading-[1.05]">
               Building<br/>things<br/>that<br/>
               <em class="font-display italic text-blue-600 font-normal">matter.</em>
@@ -145,11 +151,11 @@ const posts = (await getCollection("blog"))
           </div>
         </div>
         <div class="col-span-12 md:col-span-7 md:col-start-5 space-y-6 text-slate-600 text-lg leading-relaxed">
-          <p class="text-2xl text-slate-900 font-light leading-snug">
+          <p class="text-2xl text-slate-800 font-light leading-snug">
             I'm just a regular person — someone who enjoys simple things done well.
           </p>
           <p>
-            I enjoy <span class="text-slate-900 font-medium">building things</span>. I thrive on challenges that let me learn by doing and solving problems — the kind where you don't know the answer yet, and that's the whole point.
+            I enjoy <span class="text-slate-800 font-medium">building things</span>. I thrive on challenges that let me learn by doing and solving problems — the kind where you don't know the answer yet, and that's the whole point.
           </p>
           <p>
             This site is a small archive. A place to put words, half-finished ideas, and the occasional thing I made. Nothing fancy. Just a record.
@@ -162,15 +168,15 @@ const posts = (await getCollection("blog"))
     <section class="max-w-6xl mx-auto">
       <div class="grid grid-cols-12 gap-6 mb-10 items-end">
         <div class="col-span-12 md:col-span-7">
-          <div class="text-[0.625rem] uppercase tracking-[0.3em] text-slate-400 mb-3">§ 02 — recent dispatches</div>
+          <div class="text-xs uppercase tracking-[0.25em] text-slate-500 mb-3">§ 02 — recent dispatches</div>
           <h2 class="text-3xl md:text-5xl font-bold tracking-tighter text-slate-900 font-display leading-[1.05]">
             Things I've<br/>
             <em class="font-display italic text-blue-600 font-normal">written,</em><br/>
             lately.
           </h2>
         </div>
-        <div class="col-span-12 md:col-span-4 md:col-start-9 text-slate-500 md:text-right">
-          <p class="text-sm leading-relaxed">
+        <div class="col-span-12 md:col-span-4 md:col-start-9 text-slate-600 md:text-right">
+          <p class="text-base leading-relaxed">
             Thoughts on anything that I wish I could put into words. Read at your own pace.
           </p>
         </div>
@@ -195,28 +201,28 @@ const posts = (await getCollection("blog"))
     <!-- QUOTE / SIGN-OFF -->
     <section class="max-w-4xl mx-auto">
       <div class="relative">
-        <div aria-hidden="true" class="absolute -top-10 -left-6 text-[8rem] font-display text-blue-500/15 leading-none select-none pointer-events-none font-bold">"</div>
+        <div aria-hidden="true" class="absolute -top-10 -left-6 text-[8rem] font-display text-blue-500/[0.08] leading-none select-none pointer-events-none font-bold">"</div>
 
         <blockquote class="relative">
           <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium italic text-slate-800 leading-[1.25] tracking-tight">
             Prolonged derangement of the senses in order to obtain the unknown.
           </p>
-          <footer class="mt-6 flex items-center gap-3 text-sm text-slate-500">
+          <footer class="mt-6 flex items-center gap-3 text-sm text-slate-600">
             <span class="h-px w-8 bg-slate-300"></span>
-            <span class="uppercase tracking-[0.2em] text-xs">Jim Morrison</span>
+            <span class="uppercase tracking-[0.2em] text-sm">Jim Morrison</span>
           </footer>
         </blockquote>
       </div>
 
       <div class="mt-20 text-center space-y-4">
-        <div class="flex items-center justify-center gap-2 text-slate-300 font-mono text-xs tracking-[0.4em]">
+        <div class="flex items-center justify-center gap-2 text-slate-300 font-mono text-sm tracking-[0.3em]">
           <span>·</span><span>·</span><span>·</span>
         </div>
-        <p class="text-slate-500 text-sm italic font-display">you made it this far. hope it's worth it.</p>
-        <div class="flex items-center justify-center gap-2 text-slate-300 font-mono text-xs tracking-[0.4em]">
+        <p class="text-slate-600 text-base italic font-display">you made it this far. hope it's worth it.</p>
+        <div class="flex items-center justify-center gap-2 text-slate-300 font-mono text-sm tracking-[0.3em]">
           <span>·</span><span>·</span><span>·</span>
         </div>
-        <a href="/about" class="inline-block mt-6 text-sm text-slate-500 hover:text-blue-600 transition-colors border-b border-slate-300 hover:border-blue-600 pb-0.5">
+        <a href="/about" class="inline-block mt-6 text-base text-slate-600 hover:text-blue-600 transition-colors border-b border-slate-300 hover:border-blue-600 pb-0.5">
           more about me →
         </a>
       </div>

@@ -28,29 +28,29 @@ export default function ArrowCard({ entry, pill }: Props) {
         <div class="relative h-full flex flex-col">
           {pill && (
             <div class="mb-2.5">
-              <span class="text-[0.625rem] font-semibold uppercase tracking-[0.12em] px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">
+              <span class="text-xs font-semibold uppercase tracking-[0.1em] px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">
                 {isBlog ? "Post" : "Project"}
               </span>
             </div>
           )}
 
-          <div class="flex items-center gap-2 mb-3 text-[0.625rem] font-medium uppercase tracking-[0.1em] text-slate-500 leading-none min-w-0">
+          <div class="flex items-center gap-2 mb-3 text-xs font-medium uppercase tracking-[0.08em] text-slate-500 leading-none min-w-0">
             <span class="inline-flex items-center gap-1 min-w-0">
-              <svg class="size-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <svg class="size-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
               <span class="whitespace-nowrap">{compactDate(entry.data.date)}</span>
             </span>
             {readTime && (
               <>
                 <span class="text-slate-300 flex-shrink-0">·</span>
                 <span class="inline-flex items-center gap-1 min-w-0">
-                  <svg class="size-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <svg class="size-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                   <span class="whitespace-nowrap">{readTime}</span>
                 </span>
               </>
             )}
           </div>
 
-          <h3 class="text-base font-semibold mb-2 leading-tight tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-200 font-display">
+          <h3 class="text-base font-semibold mb-2 leading-tight tracking-tight text-slate-800 group-hover:text-blue-600 transition-colors duration-200 font-display">
             {entry.data.title}
           </h3>
 
@@ -61,12 +61,12 @@ export default function ArrowCard({ entry, pill }: Props) {
           {entry.data.tags && entry.data.tags.length > 0 && (
             <div class="flex flex-wrap gap-1.5">
               {entry.data.tags.slice(0, 3).map((tag: string) => (
-                <span class="text-[0.625rem] font-medium uppercase tracking-[0.1em] px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200">
+                <span class="text-xs font-medium uppercase tracking-[0.08em] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
                   {tag}
                 </span>
               ))}
               {entry.data.tags.length > 3 && (
-                <span class="text-[0.625rem] font-medium uppercase tracking-[0.1em] px-1.5 py-0.5 rounded bg-slate-100 text-slate-400 border border-slate-200">
+                <span class="text-xs font-medium uppercase tracking-[0.08em] px-2 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200">
                   +{entry.data.tags.length - 3}
                 </span>
               )}

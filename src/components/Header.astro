@@ -12,7 +12,7 @@ const subpath = pathname.match(/[^/]+/g)
         <circle cx="500" cy="500" r="497.5" fill="currentColor"/>
         <text x="500" y="750" font-family="Inter, sans-serif" font-size="600" font-weight="bold" text-anchor="middle" fill="white">RF</text>
       </svg>
-      <span class="font-semibold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{SITE.TITLE}</span>
+      <span class="font-semibold tracking-tight text-slate-800 group-hover:text-blue-600 transition-colors duration-200">{SITE.TITLE}</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
@@ -52,7 +52,7 @@ const subpath = pathname.match(/[^/]+/g)
             "block px-4 py-3 rounded-lg text-sm font-bold tracking-wide transition-colors duration-200",
             (pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF)
               ? "text-blue-600 bg-blue-50"
-              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              : "text-slate-600 hover:text-slate-800 hover:bg-slate-100"
           )}
           aria-current={(pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF) ? "page" : undefined}
         >
