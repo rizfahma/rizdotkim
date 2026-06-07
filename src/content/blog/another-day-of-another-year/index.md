@@ -22,13 +22,13 @@ When ever my birthday comes, I honestly feel somehow of scared myself. I just do
 
 Not good. Overall.
 
-Not going into details here, but to be completely honest, 2021-2022 are not so amazing years for me. Personal life wise, career wise, financial wise, etc. Nothing that really amazes me. However, I have to carry on with what I have (remains) with me. Life is always be hard challenging.
+Not going into details here, but to be completely honest, 2021-2022 are not so amazing years for me. Personal life wise, career wise, financial wise, etc. Nothing that really amazes me. However, I have to carry on with what I have (remains) with me. Life is always be ~~hard~~ challenging.
 
 #### Upcoming year's wishes
 
 I don't have a lot of wish(es) for the next year. Sometimes I have things that I could write in bulletpoints, but I don't know, currently I just don't have any spirit to do so. Just too afraid of things actually. So I think I would just let it flow and let my self bump into things that could probably lead to other form of experience.
 
-Truth be told, life's been challenging harder this recent year or so. And I could never wanted to spill those details here. It's not gonna change anything.
+Truth be told, life's been ~~challenging~~ harder this recent year or so. And I could never wanted to spill those details here. It's not gonna change anything.
 
 Enough of the rambling, good to write here again. Making it like what it's supposed to be, as a blog of mine.
 

@@ -66,11 +66,11 @@ I didn't really have this plan actually. My Mother texted me whether I would com
 
 We just had some things to deal with in the office after several activites that took days to fix and sacrificed our holidays for that. I thought I have to standby, in case something unnecessary happens.
 
-But as Dominic Torretto (Vin Diesel) said in one of the Fast & Furious movies said that family comes first.
+But as Dominic Torretto (Vin Diesel) said in one of the Fast & Furious movies that family comes first.
 
 >Money will come and go. We all know that. The most important thing in life will always be the people in this room. Right here, right now. Salute, mi familia.
 
--Dominic Torretto
+**-Dominic Torretto**
 
 So, I booked my flight, just 2 days beforehand. The ticket was quite pricey, but hey, family comes first. I didn't visit my parents in Eid Mubarak day a few months ago, so yeah why not I enjoy this Eid Al Adha among my big family there.
 

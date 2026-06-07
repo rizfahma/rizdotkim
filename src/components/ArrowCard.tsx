@@ -59,7 +59,7 @@ export default function ArrowCard({ entry, pill }: Props) {
           </p>
 
           {entry.data.tags && entry.data.tags.length > 0 && (
-            <div class="flex flex-wrap gap-1.5">
+            <div class="flex flex-wrap gap-1.5 items-center pr-6">
               {entry.data.tags.slice(0, 3).map((tag: string) => (
                 <span class="text-xs font-medium uppercase tracking-[0.08em] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
                   {tag}
@@ -70,14 +70,21 @@ export default function ArrowCard({ entry, pill }: Props) {
                   +{entry.data.tags.length - 3}
                 </span>
               )}
+              <div class="absolute right-5 top-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                <svg class="size-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
             </div>
           )}
 
-          <div class="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
-            <svg class="size-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </div>
+          {!entry.data.tags || entry.data.tags.length === 0 && (
+            <div class="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+              <svg class="size-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          )}
         </div>
       </a>
     </article>
