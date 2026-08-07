@@ -792,6 +792,36 @@ article > *:last-child {
   transform: translateY(0);
 }
 
+/*
+ * Content-bearing sections (the actual post body, comments, etc.) must never
+ * be gated on JS/IntersectionObserver to become visible - if the script is
+ * slow, blocked, or the element never intersects (e.g. it's already in the
+ * initial viewport math but the observer hasn't attached yet), the content
+ * stays stuck at opacity:0 and the page reads as broken/incomplete. This
+ * plays a one-shot CSS-only fade-in on paint - no JS dependency, and it
+ * always resolves to fully visible.
+ */
+@keyframes content-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-reveal {
+  animation: content-reveal-in 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-reveal {
+    animation: none;
+  }
+}
+
 /* ─── BACK TO TOP ─── */
 
 #back-to-top {
